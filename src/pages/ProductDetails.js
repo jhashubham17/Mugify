@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import Button from "../components/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import allProducts from "../data/AllProducts";
 
@@ -9,12 +7,12 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(50);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [isSpecificationsOpen, setIsSpecificationsOpen] = useState(false);
   const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
-  const { addToCart } = useCart();
+  const [enquirySent, setEnquirySent] = useState(false);
 
   useEffect(() => {
     const foundProduct = allProducts.find((p) => p._id === id);
@@ -36,15 +34,15 @@ const ProductDetails = () => {
     }${imagePath}`;
   };
 
-  const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product);
-    }
+  const handleSendEnquiry = () => {
+    // Here you would typically send the enquiry to your backend
+    console.log(`Enquiry sent for ${quantity} units of ${product.name}`);
+    setEnquirySent(true);
+    setTimeout(() => setEnquirySent(false), 3000);
   };
 
-  const increaseQuantity = () => setQuantity((prev) => prev + 1);
-  const decreaseQuantity = () =>
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  // Predefined quantity options
+  const quantityOptions = [50, 100, 150, 200];
 
   if (!product) {
     return (
@@ -388,65 +386,70 @@ const ProductDetails = () => {
             )}
 
             {/* Quantity Selector */}
-            <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-              <span className="font-semibold text-gray-800">Quantity:</span>
-              <div className="flex items-center border border-gray-300 rounded-lg bg-white">
-                <button
-                  onClick={decreaseQuantity}
-                  className="px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors"
-                >
-                  -
-                </button>
-                <span className="px-4 py-2 text-lg font-semibold">
-                  {quantity}
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <span className="font-semibold text-gray-800 block mb-3"></span>
+
+              {/* Manual quantity controls */}
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-gray-800">
+                  Custom Quantity:
                 </span>
-                <button
-                  onClick={increaseQuantity}
-                  className="px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors"
-                >
-                  +
-                </button>
+                <div className="flex items-center border border-gray-300 rounded-lg bg-white">
+                  <button
+                    onClick={() =>
+                      setQuantity((prev) => Math.max(50, prev - 50))
+                    }
+                    disabled={quantity <= 50}
+                    className={`px-3 py-2 transition-colors ${
+                      quantity <= 50
+                        ? "text-gray-400 cursor-not-allowed"
+                        : "text-gray-600 hover:text-gray-800"
+                    }`}
+                  >
+                    -
+                  </button>
+                  <span className="px-4 py-2 text-lg font-semibold min-w-[80px] text-center">
+                    {quantity}
+                  </span>
+                  <button
+                    onClick={() => setQuantity((prev) => prev + 50)}
+                    className="px-3 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </div>
+
+            {/* Bulk Order Info */}
             <div className="bg-blue-50 p-4 rounded-lg">
               <p className="text-blue-800 font-semibold text-center">
                 Bulk Order? Call{" "}
                 <span className="text-blue-600">9060917383</span>
               </p>
             </div>
+
+            {/* Send Enquiry Button */}
             <div>
-              {/* Add to Cart Button - Smaller */}
-              <Button
-                onClick={handleAddToCart}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md text-base transition-all duration-300 whitespace-nowrap"
+              <motion.button
+                onClick={handleSendEnquiry}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300"
               >
-                Add to Cart
-              </Button>
+                {enquirySent ? "Enquiry Sent!" : "Send Enquiry"}
+              </motion.button>
+
+              {enquirySent && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-green-600 mt-3 text-center"
+                >
+                  Thank you for your enquiry! We'll contact you shortly.
+                </motion.p>
+              )}
             </div>
-            {/* Additional Info - Centered and Better Styled
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
-              <div className="text-center bg-blue-50 p-4 rounded-lg">
-                <div className="text-2xl mb-2">🚚</div>
-                <p className="text-sm font-semibold text-gray-800">
-                  Free Shipping
-                </p>
-                <p className="text-xs text-gray-600">On orders over ₹5000</p>
-              </div>
-              <div className="text-center bg-green-50 p-4 rounded-lg">
-                <div className="text-2xl mb-2">↩️</div>
-                <p className="text-sm font-semibold text-gray-800">
-                  Easy Returns
-                </p>
-                <p className="text-xs text-gray-600">7-day return policy</p>
-              </div>
-              <div className="text-center bg-purple-50 p-4 rounded-lg">
-                <div className="text-2xl mb-2">🔒</div>
-                <p className="text-sm font-semibold text-gray-800">
-                  Secure Payment
-                </p>
-                <p className="text-xs text-gray-600">SSL encrypted</p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
