@@ -22,27 +22,17 @@ const ProductDetails = () => {
   // Function to get correct image path
   const getImagePath = (imagePath) => {
     if (!imagePath) return "/placeholder-image.jpg";
-
-    // If it's already a full URL (http or https), use it directly
-    if (imagePath.startsWith("http")) {
-      return imagePath;
-    }
-
-    // If it's a relative path, prepend with public URL
+    if (imagePath.startsWith("http")) return imagePath;
     return `${process.env.PUBLIC_URL}${
       imagePath.startsWith("/") ? "" : "/"
     }${imagePath}`;
   };
 
   const handleSendEnquiry = () => {
-    // Here you would typically send the enquiry to your backend
     console.log(`Enquiry sent for ${quantity} units of ${product.name}`);
     setEnquirySent(true);
     setTimeout(() => setEnquirySent(false), 3000);
   };
-
-  // Predefined quantity options
-  const quantityOptions = [50, 100, 150, 200];
 
   if (!product) {
     return (
@@ -52,7 +42,6 @@ const ProductDetails = () => {
     );
   }
 
-  // Create array of images (main image + additional images if available)
   const images = [
     getImagePath(product.image),
     ...(product.additionalImages || []).map((img) => getImagePath(img)),
@@ -86,7 +75,6 @@ const ProductDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Product Images */}
           <div className="space-y-4">
-            {/* Main Image with Zoom */}
             <div
               className="bg-gray-100 rounded-lg p-4 relative cursor-zoom-in overflow-hidden"
               onClick={() => setIsZoomed(!isZoomed)}
@@ -142,7 +130,6 @@ const ProductDetails = () => {
 
           {/* Product Details */}
           <div className="space-y-6">
-            {/* Product Header */}
             <div>
               <h1 className="text-3xl font-bold text-gray-800 mb-2">
                 {product.name}
@@ -154,15 +141,49 @@ const ProductDetails = () => {
               )}
             </div>
 
-            {/* Price and Add to Cart Section */}
+            {/* Price Section */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg">
-              {/* Price */}
               <div className="flex items-center gap-4">
                 <p className="text-3xl font-bold text-blue-600">
                   ₹{product.price}
                 </p>
               </div>
             </div>
+
+            {/* 🔥 Special Highlight for T-Shirts */}
+            {product.category === "t-shirt" && (
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg shadow-sm">
+                <h2 className="text-lg font-bold text-yellow-700 mb-2">
+                  Key Highlights for T-Shirts
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                  <div className="p-3 bg-white rounded-lg shadow">
+                    <span className="block text-sm font-semibold text-gray-500">
+                      GSM
+                    </span>
+                    <span className="text-xl font-bold text-gray-800">
+                      {product.GMS}
+                    </span>
+                  </div>
+                  <div className="p-3 bg-white rounded-lg shadow">
+                    <span className="block text-sm font-semibold text-gray-500">
+                      Size
+                    </span>
+                    <span className="text-xl font-bold text-gray-800">
+                      {product.Size}
+                    </span>
+                  </div>
+                  <div className="p-3 bg-white rounded-lg shadow">
+                    <span className="block text-sm font-semibold text-gray-500">
+                      Colour
+                    </span>
+                    <span className="text-xl font-bold text-gray-800">
+                      {product.Colour}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Collapsible Description */}
             <div className="border border-gray-200 rounded-lg">
@@ -332,7 +353,7 @@ const ProductDetails = () => {
               </AnimatePresence>
             </div>
 
-            {/* Collapsible Features */}
+            {/* Features */}
             {product.features && product.features.length > 0 && (
               <div className="border border-gray-200 rounded-lg">
                 <button
@@ -387,9 +408,6 @@ const ProductDetails = () => {
 
             {/* Quantity Selector */}
             <div className="p-4 bg-gray-50 rounded-lg">
-              <span className="font-semibold text-gray-800 block mb-3"></span>
-
-              {/* Manual quantity controls */}
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-gray-800">
                   Custom Quantity:
@@ -429,7 +447,7 @@ const ProductDetails = () => {
               </p>
             </div>
 
-            {/* Send Enquiry Button */}
+            {/* Enquiry Button */}
             <div>
               <motion.button
                 onClick={handleSendEnquiry}
