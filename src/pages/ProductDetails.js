@@ -53,7 +53,7 @@ const ProductDetails = () => {
     );
 
     // Construct WhatsApp message
-    const yourWhatsAppNumber = "+919060917383"; // Replace with your actual WhatsApp number
+    const yourWhatsAppNumber = "+919060917383";
     const message = encodeURIComponent(
       `New Enquiry:\nProduct: ${product.name}\nQuantity: ${quantity}\nMobile: ${mobileNumber}`
     );
@@ -78,7 +78,7 @@ const ProductDetails = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="animate-pulse space-y-4 w-full max-w-2xl">
-          <div className="h-96 bg-gray-200 rounded-lg"></div>
+          <div className="h-96 bg-gray-200 rounded-xl"></div>
           <div className="h-8 bg-gray-200 rounded w-3/4"></div>
           <div className="h-4 bg-gray-200 rounded w-1/2"></div>
           <div className="h-12 bg-gray-200 rounded w-1/4"></div>
@@ -94,10 +94,10 @@ const ProductDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
-        <nav className="mb-8">
-          <ol className="flex items-center space-x-3 text-sm text-gray-500">
+        <nav className="mb-6 md:mb-8">
+          <ol className="flex items-center space-x-2 text-sm text-gray-500">
             <li>
               <Link
                 to="/"
@@ -116,21 +116,23 @@ const ProductDetails = () => {
               </Link>
             </li>
             <li className="text-gray-400">/</li>
-            <li className="text-gray-800 font-semibold">{product.name}</li>
+            <li className="text-gray-800 font-semibold truncate max-w-[150px] md:max-w-none">
+              {product.name}
+            </li>
           </ol>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Product Images */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div
-              className="relative bg-white rounded-2xl shadow-lg p-6 cursor-zoom-in overflow-hidden"
+              className="relative bg-white rounded-xl shadow-sm p-4 cursor-zoom-in overflow-hidden border border-gray-100"
               onClick={() => setIsZoomed(!isZoomed)}
             >
               <motion.img
                 src={images[selectedImage]}
                 alt={product.name}
-                className="w-full h-[450px] object-contain rounded-xl"
+                className="w-full h-[350px] md:h-[450px] object-contain rounded-lg"
                 animate={{ scale: isZoomed ? 1.8 : 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 onError={(e) => {
@@ -138,7 +140,7 @@ const ProductDetails = () => {
                 }}
               />
               {isZoomed && (
-                <div className="absolute top-4 right-4 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute top-3 right-3 bg-black bg-opacity-70 text-white px-2.5 py-1 rounded-full text-xs font-medium">
                   Click to zoom out
                 </div>
               )}
@@ -146,7 +148,7 @@ const ProductDetails = () => {
 
             {/* Thumbnail Gallery */}
             {images.length > 1 && (
-              <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
                 {images.map((img, index) => (
                   <button
                     key={index}
@@ -154,10 +156,10 @@ const ProductDetails = () => {
                       setSelectedImage(index);
                       setIsZoomed(false);
                     }}
-                    className={`flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border transition-all duration-300 ${
                       selectedImage === index
-                        ? "border-blue-500 ring-2 ring-blue-100 shadow-md"
-                        : "border-gray-200 hover:border-blue-300 hover:shadow-sm"
+                        ? "border-blue-500 ring-2 ring-blue-100 shadow-sm"
+                        : "border-gray-200 hover:border-blue-300"
                     }`}
                   >
                     <img
@@ -175,24 +177,24 @@ const ProductDetails = () => {
           </div>
 
           {/* Product Details */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div>
-              <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
                 {product.name}
               </h1>
               {product.tag && (
-                <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mt-3">
+                <span className="inline-block bg-blue-100 text-blue-700 text-xs md:text-sm font-semibold px-3 py-1 rounded-full mt-2">
                   {product.tag}
                 </span>
               )}
             </div>
 
             {/* Price Section */}
-            <div className="flex items-center justify-between p-6 bg-white rounded-2xl shadow-md">
-              <p className="text-3xl font-bold text-blue-600">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-5 bg-white rounded-xl shadow-sm border border-gray-100">
+              <p className="text-2xl md:text-3xl font-bold text-blue-600">
                 ₹{product.price}
               </p>
-              <div className="text-sm text-gray-500">
+              <div className="text-xs md:text-sm text-gray-500 mt-1 md:mt-0">
                 <p>Inclusive of all taxes</p>
                 <p>Free shipping on orders above ₹500</p>
               </div>
@@ -200,32 +202,32 @@ const ProductDetails = () => {
 
             {/* Special Highlight for T-Shirts */}
             {product.category === "t-shirt" && (
-              <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-400 p-6 rounded-xl shadow-sm">
-                <h2 className="text-xl font-bold text-yellow-800 mb-4">
+              <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-400 p-4 md:p-5 rounded-xl shadow-sm">
+                <h2 className="text-lg md:text-xl font-bold text-yellow-800 mb-3">
                   T-Shirt Highlights
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                  <div className="p-4 bg-white rounded-lg shadow-sm">
-                    <span className="block text-sm font-medium text-gray-500">
+                <div className="grid grid-cols-3 gap-2 md:gap-3 text-center">
+                  <div className="p-2 md:p-3 bg-white rounded-lg shadow-xs border border-gray-100">
+                    <span className="block text-xs font-medium text-gray-500">
                       GSM
                     </span>
-                    <span className="text-lg font-bold text-gray-800">
+                    <span className="text-base md:text-lg font-bold text-gray-800">
                       {product.GMS}
                     </span>
                   </div>
-                  <div className="p-4 bg-white rounded-lg shadow-sm">
-                    <span className="block text-sm font-medium text-gray-500">
+                  <div className="p-2 md:p-3 bg-white rounded-lg shadow-xs border border-gray-100">
+                    <span className="block text-xs font-medium text-gray-500">
                       Size
                     </span>
-                    <span className="text-lg font-bold text-gray-800">
+                    <span className="text-base md:text-lg font-bold text-gray-800">
                       {product.Size}
                     </span>
                   </div>
-                  <div className="p-4 bg-white rounded-lg shadow-sm">
-                    <span className="block text-sm font-medium text-gray-500">
+                  <div className="p-2 md:p-3 bg-white rounded-lg shadow-xs border border-gray-100">
+                    <span className="block text-xs font-medium text-gray-500">
                       Colour
                     </span>
-                    <span className="text-lg font-bold text-gray-800">
+                    <span className="text-base md:text-lg font-bold text-gray-800">
                       {product.Colour}
                     </span>
                   </div>
@@ -246,83 +248,85 @@ const ProductDetails = () => {
                 isOpen: isSpecificationsOpen,
                 setIsOpen: setIsSpecificationsOpen,
                 content: (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                     {product.weight && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           Weight:
                         </span>
-                        <p className="text-gray-800">{product.weight}</p>
+                        <p className="text-gray-800 mt-1">{product.weight}</p>
                       </div>
                     )}
                     {product.material && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           Material:
                         </span>
-                        <p className="text-gray-800">{product.material}</p>
+                        <p className="text-gray-800 mt-1">{product.material}</p>
                       </div>
                     )}
                     {product.size && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           Size:
                         </span>
-                        <p className="text-gray-800">{product.size}</p>
+                        <p className="text-gray-800 mt-1">{product.size}</p>
                       </div>
                     )}
                     {product.brand && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           Brand:
                         </span>
-                        <p className="text-gray-800">{product.brand}</p>
+                        <p className="text-gray-800 mt-1">{product.brand}</p>
                       </div>
                     )}
                     {product.hsn && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           HSN:
                         </span>
-                        <p className="text-gray-800">{product.hsn}</p>
+                        <p className="text-gray-800 mt-1">{product.hsn}</p>
                       </div>
                     )}
                     {product.packaging && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           Packaging:
                         </span>
-                        <p className="text-gray-800">{product.packaging}</p>
+                        <p className="text-gray-800 mt-1">
+                          {product.packaging}
+                        </p>
                       </div>
                     )}
                     {product.sku && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           SKU:
                         </span>
-                        <p className="text-gray-800">{product.sku}</p>
+                        <p className="text-gray-800 mt-1">{product.sku}</p>
                       </div>
                     )}
                     {product.category && (
-                      <div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           Category:
                         </span>
-                        <p className="text-gray-800 capitalize">
+                        <p className="text-gray-800 mt-1 capitalize">
                           {product.category}
                         </p>
                       </div>
                     )}
                     {product.tags && (
-                      <div className="md:col-span-2">
+                      <div className="md:col-span-2 bg-gray-50 p-3 rounded-lg">
                         <span className="font-semibold text-gray-600">
                           Tags:
                         </span>
-                        <div className="flex flex-wrap gap-2 mt-1">
+                        <div className="flex flex-wrap gap-1.5 mt-1.5">
                           {product.tags.split(",").map((tag, index) => (
                             <span
                               key={index}
-                              className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
+                              className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium"
                             >
                               {tag.trim()}
                             </span>
@@ -339,14 +343,14 @@ const ProductDetails = () => {
                 setIsOpen: setIsFeaturesOpen,
                 content:
                   product.features && product.features.length > 0 ? (
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {product.features.map((feature, index) => (
                         <li
                           key={index}
-                          className="flex items-start gap-3 text-gray-600"
+                          className="flex items-start gap-2 text-gray-600"
                         >
-                          <span className="w-2.5 h-2.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
-                          <span>{feature}</span>
+                          <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 flex-shrink-0"></span>
+                          <span className="text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -361,12 +365,12 @@ const ProductDetails = () => {
                   >
                     <button
                       onClick={() => setIsOpen(!isOpen)}
-                      className="w-full px-6 py-4 text-left font-semibold text-gray-800 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                      className="w-full px-4 py-3 text-left font-semibold text-gray-800 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                       aria-expanded={isOpen}
                     >
-                      <span className="text-lg">{title}</span>
+                      <span className="text-base">{title}</span>
                       <svg
-                        className={`w-5 h-5 transition-transform duration-300 ${
+                        className={`w-4 h-4 transition-transform duration-300 ${
                           isOpen ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -390,7 +394,7 @@ const ProductDetails = () => {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 pb-4 text-gray-600 leading-relaxed">
+                          <div className="px-4 pb-3 text-gray-600 leading-relaxed text-sm">
                             {content}
                           </div>
                         </motion.div>
@@ -401,32 +405,32 @@ const ProductDetails = () => {
             )}
 
             {/* Quantity Selector */}
-            <div className="p-6 bg-white rounded-2xl shadow-md">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-gray-800 text-lg">
+            <div className="p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <span className="font-semibold text-gray-800 text-base">
                   Custom Quantity (Min. 50):
                 </span>
-                <div className="flex items-center border border-gray-300 rounded-full bg-white shadow-sm">
+                <div className="flex items-center border border-gray-300 rounded-full bg-white shadow-xs">
                   <button
                     onClick={() =>
                       setQuantity((prev) => Math.max(50, prev - 50))
                     }
                     disabled={quantity <= 50}
-                    className={`px-4 py-2 text-lg font-medium transition-colors ${
+                    className={`px-3 py-1.5 text-base font-medium transition-colors rounded-l-full ${
                       quantity <= 50
                         ? "text-gray-400 cursor-not-allowed"
-                        : "text-gray-600 hover:text-gray-800"
+                        : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
                     }`}
                     aria-label="Decrease quantity"
                   >
                     -
                   </button>
-                  <span className="px-6 py-2 text-lg font-semibold min-w-[100px] text-center">
+                  <span className="px-4 py-1.5 text-base font-semibold min-w-[80px] text-center">
                     {quantity}
                   </span>
                   <button
                     onClick={() => setQuantity((prev) => prev + 50)}
-                    className="px-4 py-2 text-lg font-medium text-gray-600 hover:text-gray-800 transition-colors"
+                    className="px-3 py-1.5 text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-r-full"
                     aria-label="Increase quantity"
                   >
                     +
@@ -436,12 +440,12 @@ const ProductDetails = () => {
             </div>
 
             {/* Bulk Order Info */}
-            <div className="bg-blue-50 p-4 rounded-xl text-center">
-              <p className="text-blue-800 font-semibold">
+            <div className="bg-blue-50 p-3 rounded-xl text-center border border-blue-100">
+              <p className="text-blue-800 text-sm font-medium">
                 Need a Bulk Order? Call{" "}
                 <a
                   href="tel:9060917383"
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 hover:underline font-semibold"
                 >
                   9060917383
                 </a>
@@ -449,12 +453,12 @@ const ProductDetails = () => {
             </div>
 
             {/* Enquiry Button */}
-            <div className="sticky bottom-4 lg:static">
+            <div className="sticky bottom-4 z-10 lg:static">
               <motion.button
                 onClick={handleOpenModal}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition-all duration-300 text-base"
                 aria-label="Open enquiry form"
               >
                 Send Enquiry
@@ -464,7 +468,7 @@ const ProductDetails = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3 }}
+                  transition
                   className="text-green-600 mt-3 text-center font-medium"
                 >
                   Thank you for your enquiry! We'll contact you shortly.
