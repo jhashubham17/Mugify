@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/product/:id" element={<ProductDetailsWrapper />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
@@ -28,5 +28,13 @@ function App() {
     </Router>
   );
 }
+
+// ProductDetails के लिए wrapper component
+const ProductDetailsWrapper = () => {
+  // Scroll to top when this component mounts
+  window.scrollTo(0, 0);
+
+  return <ProductDetails />;
+};
 
 export default App;

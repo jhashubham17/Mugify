@@ -6,13 +6,13 @@ const Contact = () => {
     {
       icon: "📞",
       title: "Call Us",
-      details: ["+91 9060917383", "Mon-Sat: 9AM-8PM"],
+      details: ["+91 9060917383", "Available 24/7"],
       color: "from-green-400 to-emerald-500",
     },
     {
       icon: "📧",
       title: "Email Us",
-      details: ["info@mugify.com", "orders@mugify.com", "support@mugify.com"],
+      details: ["araipaninspired@gmail.com", "Instant Support"],
       color: "from-blue-400 to-cyan-500",
     },
     {

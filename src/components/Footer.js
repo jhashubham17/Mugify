@@ -2,10 +2,30 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   const socialLinks = [
-    { name: "Instagram", icon: "📷", color: "hover:text-pink-400", link: "#" },
-    { name: "Facebook", icon: "📘", color: "hover:text-blue-400", link: "#" },
-    { name: "Twitter", icon: "🐦", color: "hover:text-sky-400", link: "#" },
-    { name: "YouTube", icon: "📺", color: "hover:text-red-400", link: "#" },
+    {
+      name: "Instagram",
+      icon: "📷",
+      color: "hover:text-pink-400",
+      link: "https://www.instagram.com/araipan_inspired?igsh=c3IwYzV3MGxoMGY3",
+    },
+    {
+      name: "Facebook",
+      icon: "📘",
+      color: "hover:text-blue-400",
+      link: "https://www.instagram.com/araipan_inspired?igsh=c3IwYzV3MGxoMGY3",
+    },
+    {
+      name: "Twitter",
+      icon: "🐦",
+      color: "hover:text-sky-400",
+      link: "https://www.instagram.com/araipan_inspired?igsh=c3IwYzV3MGxoMGY3",
+    },
+    {
+      name: "YouTube",
+      icon: "📺",
+      color: "hover:text-red-400",
+      link: "https://www.instagram.com/araipan_inspired?igsh=c3IwYzV3MGxoMGY3",
+    },
   ];
 
   const quickLinks = [
@@ -56,9 +76,9 @@ const Footer = () => {
               <div className="flex-shrink-0">
                 <a href="/" className="flex items-center space-x-2">
                   <img
-                    src="/Logo/MugifyLogo.png"
+                    src="/Logo/Logo.jpeg"
                     alt="Logo"
-                    className="h-12 w-auto object-contain"
+                    className="h-12 w-auto object-contain rounded-full"
                   />
                 </a>
               </div>
@@ -73,7 +93,7 @@ const Footer = () => {
             <div className="space-y-3 text-gray-400">
               <div className="flex items-center gap-3">
                 <span className="text-blue-400">📧</span>
-                <span>info@mugify.com</span>
+                <span>araipaninspired@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-green-400">📞</span>
@@ -153,11 +173,11 @@ const Footer = () => {
             </h4>
 
             {/* Newsletter */}
-            <div className="mb-8">
+            <div className="mb-8 ">
               <p className="text-gray-300 mb-4">
                 Get updates on new products and exclusive offers!
               </p>
-              <div className="flex flex-col sm:flex-row gap-2">
+              <div className="sm:flex-row gap-2">
                 <input
                   type="email"
                   placeholder="Enter your email"
@@ -166,7 +186,7 @@ const Footer = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                  className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 mt-2"
                 >
                   Subscribe
                 </motion.button>
@@ -214,7 +234,7 @@ const Footer = () => {
           className="flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <div className="text-gray-400 text-center md:text-left">
-            <p>&copy; 2025 Mugify. All rights reserved.</p>
+            <p>&copy; 2025 Araipan Inspired. All rights reserved.</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400">

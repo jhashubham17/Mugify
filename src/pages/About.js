@@ -117,9 +117,11 @@ const About = () => {
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
                   Welcome to{" "}
-                  <span className="font-semibold text-blue-600">Mugify</span>!
-                  What started as a small passion project in 2019 has grown into
-                  a premier destination for personalized products.
+                  <span className="font-semibold text-blue-600">
+                    Araipan Inspired
+                  </span>
+                  ! What started as a small passion project in 2019 has grown
+                  into a premier destination for personalized products.
                 </p>
                 <p>
                   We specialize in high-quality, custom products including

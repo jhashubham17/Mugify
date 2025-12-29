@@ -32,11 +32,6 @@ const Home = () => {
 
   const printingMethods = [
     {
-      name: "Sublimation Printing",
-      description: "Vibrant, all-over prints that become part of the product",
-      icon: "🔥",
-    },
-    {
       name: "Heat Transfer Printing",
       description: "Durable prints with a soft feel, perfect for garments",
       icon: "👕",
@@ -177,7 +172,7 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-center text-gray-800 mb-12"
+          className="text-3xl font-bold text-center text-gray-800 mb-12 pt-8"
         >
           Product Categories
         </motion.h2>

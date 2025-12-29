@@ -6,125 +6,92 @@ import allProducts, { categories } from "../data/AllProducts";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [category, setCategory] = useState("all");
-  const [search, setSearch] = useState("");
-  const [sortBy, setSortBy] = useState(""); // 👈 New state
   const location = useLocation();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const urlCategory = params.get("category") || "all";
     setCategory(urlCategory);
-
     setProducts(allProducts);
-    setFilteredProducts(allProducts);
   }, [location.search]);
 
-  useEffect(() => {
-    let filtered = products;
-
-    // Category filter
-    if (category !== "all") {
-      filtered = products.filter((p) => p.category === category);
-    }
-
-    // Search filter
-    if (search) {
-      filtered = filtered.filter((p) =>
-        p.name.toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
-    // Sorting logic
-    if (sortBy === "lowToHigh") {
-      filtered = [...filtered].sort((a, b) => a.price - b.price);
-    } else if (sortBy === "highToLow") {
-      filtered = [...filtered].sort((a, b) => b.price - a.price);
-    } else if (sortBy === "newest") {
-      filtered = [...filtered].sort((a, b) => b.id - a.id); // assuming id = latest
-    } else if (sortBy === "nameAZ") {
-      filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
-    }
-
-    setFilteredProducts(filtered);
-  }, [category, search, products, sortBy]);
+  // Filter products based on category only
+  const filteredProducts =
+    category === "all"
+      ? allProducts
+      : allProducts.filter((p) => p.category === category);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="container mx-auto p-4"
+      className="container mx-auto px-4 py-8"
     >
       {/* Title */}
-      <h1 className="text-3xl font-bold mb-4 text-center">
-        {category === "all"
-          ? "All Products"
-          : categories.find((cat) => cat.value === category)?.label ||
-            "Products"}
-      </h1>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          {category === "all"
+            ? "Our Premium Collection"
+            : categories.find((cat) => cat.value === category)?.label ||
+              "Products"}
+        </h1>
 
-      <p className="text-gray-600 mb-6 text-center">
-        {category === "all"
-          ? "Browse our full range of customizable products for every occasion."
-          : `Explore our premium ${
-              categories
+        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          {category === "all"
+            ? "Discover our curated selection of high-quality, customizable products for every occasion"
+            : `Explore our premium ${categories
                 .find((cat) => cat.value === category)
-                ?.label.toLowerCase() || "products"
-            }.`}
-      </p>
-
-      <div className="flex flex-col md:flex-row justify-between mb-4 gap-4">
-        {/* Category Select */}
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          {categories.map((cat) => (
-            <option key={cat.value} value={cat.value}>
-              {cat.label}
-            </option>
-          ))}
-        </select>
-        {/* Search */}
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="border p-2 rounded w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        {/* Sorting Select */}
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="">Sort By</option>
-          <option value="lowToHigh">Price: Low to High</option>
-          <option value="highToLow">Price: High to Low</option>
-          <option value="newest">Newest</option>
-          <option value="nameAZ">Name: A - Z</option>
-        </select>
+                ?.label.toLowerCase()} collection`}
+        </p>
       </div>
 
-      {/* Products / No Result */}
+      {/* Category Tabs */}
+      <div className="mb-8">
+        <div className="flex flex-wrap justify-center gap-3">
+          {categories.map((cat) => (
+            <button
+              key={cat.value}
+              onClick={() => setCategory(cat.value)}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                category === cat.value
+                  ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Product Count */}
+      <div className="mb-6 text-center">
+        <p className="text-gray-500">
+          Showing{" "}
+          <span className="font-bold text-gray-900">
+            {filteredProducts.length}
+          </span>{" "}
+          products
+        </p>
+      </div>
+
+      {/* Products */}
       {filteredProducts.length === 0 ? (
-        <div className="text-center py-10">
-          <p className="text-gray-500 text-lg">
-            No products found matching your criteria.
+        <div className="text-center py-16">
+          <div className="text-6xl mb-4">📦</div>
+          <h3 className="text-2xl font-bold text-gray-800 mb-3">
+            No Products Found
+          </h3>
+          <p className="text-gray-600 mb-6 max-w-md mx-auto">
+            We couldn't find any products in this category. Please check back
+            soon!
           </p>
           <button
-            onClick={() => {
-              setCategory("all");
-              setSearch("");
-              setSortBy("");
-            }}
-            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            onClick={() => setCategory("all")}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300"
           >
-            Reset Filters
+            View All Products
           </button>
         </div>
       ) : (

@@ -1,6 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Package,
+  Scale,
+  Ruler,
+  Tag,
+  ShoppingBag,
+  Truck,
+  Shield,
+  Printer,
+  CheckCircle,
+  ArrowRight,
+  Phone,
+  MessageCircle,
+  Palette,
+  Coffee,
+  Info,
+  Box,
+} from "lucide-react";
 import allProducts from "../data/AllProducts";
 
 const ProductDetails = () => {
@@ -8,14 +26,12 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(50);
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
-  const [isSpecificationsOpen, setIsSpecificationsOpen] = useState(false);
-  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [activeTab, setActiveTab] = useState("description");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mobileNumber, setMobileNumber] = useState("");
   const [mobileError, setMobileError] = useState("");
   const [enquirySent, setEnquirySent] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   useEffect(() => {
     const foundProduct = allProducts.find((p) => p._id === id);
@@ -47,41 +63,42 @@ const ProductDetails = () => {
       return;
     }
 
-    // Log enquiry details
-    console.log(
-      `Enquiry sent for ${quantity} units of ${product.name}, Mobile: ${mobileNumber}`
-    );
+    const printingCharge = 10;
+    const packagingCharge = 5;
+    const totalWithCharges =
+      (product.price + printingCharge + packagingCharge) * quantity;
 
-    // Construct WhatsApp message
-    const yourWhatsAppNumber = "+919060917383";
     const message = encodeURIComponent(
-      `New Enquiry:\nProduct: ${product.name}\nQuantity: ${quantity}\nMobile: ${mobileNumber}`
+      `🛍️ *NEW PRODUCT ENQUIRY*\n\n` +
+        `*Product:* ${product.name}\n` +
+        `*Quantity:* ${quantity} units\n` +
+        `*Base Price:* ₹${product.price} per unit\n` +
+        `*Printing Charge:* ₹${printingCharge} per unit\n` +
+        `*Packaging Charge:* ₹${packagingCharge} per unit\n` +
+        `*Total Price per unit:* ₹${
+          product.price + printingCharge + packagingCharge
+        }\n` +
+        `*Total Amount:* ₹${totalWithCharges}\n` +
+        `*Mobile:* ${mobileNumber}\n\n` +
+        `Please contact me for this bulk order.`
     );
-    const whatsappUrl = `https://wa.me/${yourWhatsAppNumber}?text=${message}`;
+    const whatsappUrl = `https://wa.me/919060917383?text=${message}`;
 
-    // Open WhatsApp in a new tab
     window.open(whatsappUrl, "_blank");
 
-    // Update UI
     setEnquirySent(true);
     setIsModalOpen(false);
     setTimeout(() => setEnquirySent(false), 3000);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setMobileNumber("");
-    setMobileError("");
-  };
-
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white">
         <div className="animate-pulse space-y-4 w-full max-w-2xl">
-          <div className="h-96 bg-gray-200 rounded-xl"></div>
-          <div className="h-8 bg-gray-200 rounded w-3/4"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-          <div className="h-12 bg-gray-200 rounded w-1/4"></div>
+          <div className="h-96 bg-gradient-to-r from-gray-200 to-gray-300 rounded-2xl"></div>
+          <div className="h-8 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl w-3/4"></div>
+          <div className="h-4 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl w-1/2"></div>
+          <div className="h-12 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl w-1/4"></div>
         </div>
       </div>
     );
@@ -92,63 +109,102 @@ const ProductDetails = () => {
     ...(product.additionalImages || []).map((img) => getImagePath(img)),
   ];
 
+  const tabs = [
+    { id: "description", label: "Description", icon: ShoppingBag },
+    { id: "specifications", label: "Specifications", icon: Package },
+    { id: "features", label: "Features", icon: CheckCircle },
+  ];
+
+  const specificationItems = [
+    { icon: Tag, label: "SKU", value: product.sku },
+    { icon: Scale, label: "Weight", value: product.weight },
+    { icon: Ruler, label: "Size", value: product.size },
+    { icon: Package, label: "Material", value: product.material },
+    { icon: Printer, label: "Print Type", value: product.print },
+    { icon: Tag, label: "Brand", value: product.brand },
+    { icon: Box, label: "Packaging", value: product.packaging },
+    { icon: Coffee, label: "Capacity", value: product.capacity },
+    { icon: Palette, label: "Color/Finish", value: product.paint },
+  ].filter((item) => item.value);
+
+  const printingCharge = 10;
+  const packagingCharge = 5;
+  const totalPerUnit = product.price + printingCharge + packagingCharge;
+
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <AnimatePresence>
+        {enquirySent && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
+          >
+            <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+              <CheckCircle className="w-5 h-5" />
+              <span className="font-semibold">Enquiry sent successfully!</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="container mx-auto px-4 py-8">
-        {/* Breadcrumb */}
-        <nav className="mb-6 md:mb-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-500">
+        {/* Breadcrumb - Made more subtle */}
+        <nav className="mb-6">
+          <ol className="flex items-center space-x-2 text-sm">
             <li>
               <Link
                 to="/"
-                className="hover:text-blue-600 transition-colors font-medium"
+                className="text-gray-400 hover:text-blue-500 transition-colors"
               >
                 Home
               </Link>
             </li>
-            <li className="text-gray-400">/</li>
+            <li className="text-gray-300">›</li>
             <li>
               <Link
                 to="/products"
-                className="hover:text-blue-600 transition-colors font-medium"
+                className="text-gray-400 hover:text-blue-500 transition-colors"
               >
                 Products
               </Link>
             </li>
-            <li className="text-gray-400">/</li>
-            <li className="text-gray-800 font-semibold truncate max-w-[150px] md:max-w-none">
+            <li className="text-gray-300">›</li>
+            <li className="text-gray-700 font-medium truncate max-w-[200px]">
               {product.name}
             </li>
           </ol>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Product Images */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+          {/* Product Images - Made more compact */}
           <div className="space-y-4">
-            <div
-              className="relative bg-white rounded-xl shadow-sm p-4 cursor-zoom-in overflow-hidden border border-gray-100"
-              onClick={() => setIsZoomed(!isZoomed)}
-            >
-              <motion.img
-                src={images[selectedImage]}
-                alt={product.name}
-                className="w-full h-[350px] md:h-[450px] object-contain rounded-lg"
-                animate={{ scale: isZoomed ? 1.8 : 1 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                onError={(e) => {
-                  e.target.src = `${process.env.PUBLIC_URL}/placeholder-image.jpg`;
-                }}
-              />
-              {isZoomed && (
-                <div className="absolute top-3 right-3 bg-black bg-opacity-70 text-white px-2.5 py-1 rounded-full text-xs font-medium">
-                  Click to zoom out
-                </div>
-              )}
+            <div className="bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+              <div
+                className="relative w-full h-[350px] cursor-zoom-in rounded-lg overflow-hidden"
+                onClick={() => setIsZoomed(!isZoomed)}
+              >
+                <img
+                  src={images[selectedImage]}
+                  alt={product.name}
+                  className={`w-full h-full object-contain transition-transform duration-500 ${
+                    isZoomed ? "scale-125" : "scale-100"
+                  }`}
+                  onError={(e) => {
+                    e.target.src = `${process.env.PUBLIC_URL}/placeholder-image.jpg`;
+                  }}
+                />
+                {isZoomed && (
+                  <div className="absolute top-3 right-3 bg-black/60 text-white px-2.5 py-1 rounded-full text-xs backdrop-blur-sm">
+                    Click to zoom out
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Thumbnail Gallery */}
             {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+              <div className="flex gap-2 overflow-x-auto pb-1">
                 {images.map((img, index) => (
                   <button
                     key={index}
@@ -156,19 +212,16 @@ const ProductDetails = () => {
                       setSelectedImage(index);
                       setIsZoomed(false);
                     }}
-                    className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-md overflow-hidden border transition-all duration-300 ${
+                    className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border transition-all ${
                       selectedImage === index
-                        ? "border-blue-500 ring-2 ring-blue-100 shadow-sm"
+                        ? "border-blue-500 ring-2 ring-blue-100"
                         : "border-gray-200 hover:border-blue-300"
                     }`}
                   >
                     <img
                       src={img}
-                      alt={`${product.name} view ${index + 1}`}
+                      alt={`View ${index + 1}`}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.src = `${process.env.PUBLIC_URL}/placeholder-image.jpg`;
-                      }}
                     />
                   </button>
                 ))}
@@ -176,406 +229,351 @@ const ProductDetails = () => {
             )}
           </div>
 
-          {/* Product Details */}
+          {/* Product Details - Better spacing */}
           <div className="space-y-6">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
+            {/* Header with subtle divider */}
+            <div className="pb-4 border-b border-gray-100">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                 {product.name}
               </h1>
-              {product.tag && (
-                <span className="inline-block bg-blue-100 text-blue-700 text-xs md:text-sm font-semibold px-3 py-1 rounded-full mt-2">
-                  {product.tag}
-                </span>
-              )}
             </div>
 
-            {/* Price Section */}
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-5 bg-white rounded-xl shadow-sm border border-gray-100">
-              <p className="text-2xl md:text-3xl font-bold text-blue-600">
-                ₹{product.price}
-              </p>
-              <div className="text-xs md:text-sm text-gray-500 mt-1 md:mt-0">
-                <p>Inclusive of all taxes</p>
-                <p>Free shipping on orders above ₹500</p>
-              </div>
-            </div>
-
-            {/* Special Highlight for T-Shirts */}
-            {product.category === "t-shirt" && (
-              <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-400 p-4 md:p-5 rounded-xl shadow-sm">
-                <h2 className="text-lg md:text-xl font-bold text-yellow-800 mb-3">
-                  T-Shirt Highlights
-                </h2>
-                <div className="grid grid-cols-3 gap-2 md:gap-3 text-center">
-                  <div className="p-2 md:p-3 bg-white rounded-lg shadow-xs border border-gray-100">
-                    <span className="block text-xs font-medium text-gray-500">
-                      GSM
-                    </span>
-                    <span className="text-base md:text-lg font-bold text-gray-800">
-                      {product.GMS}
-                    </span>
-                  </div>
-                  <div className="p-2 md:p-3 bg-white rounded-lg shadow-xs border border-gray-100">
-                    <span className="block text-xs font-medium text-gray-500">
-                      Size
-                    </span>
-                    <span className="text-base md:text-lg font-bold text-gray-800">
-                      {product.Size}
-                    </span>
-                  </div>
-                  <div className="p-2 md:p-3 bg-white rounded-lg shadow-xs border border-gray-100">
-                    <span className="block text-xs font-medium text-gray-500">
-                      Colour
-                    </span>
-                    <span className="text-base md:text-lg font-bold text-gray-800">
-                      {product.Colour}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Collapsible Sections */}
-            {[
-              {
-                title: "Product Description",
-                isOpen: isDescriptionOpen,
-                setIsOpen: setIsDescriptionOpen,
-                content: product.description || "No description available.",
-              },
-              {
-                title: "Product Specifications",
-                isOpen: isSpecificationsOpen,
-                setIsOpen: setIsSpecificationsOpen,
-                content: (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-                    {product.weight && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          Weight:
-                        </span>
-                        <p className="text-gray-800 mt-1">{product.weight}</p>
-                      </div>
-                    )}
-                    {product.material && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          Material:
-                        </span>
-                        <p className="text-gray-800 mt-1">{product.material}</p>
-                      </div>
-                    )}
-                    {product.size && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          Size:
-                        </span>
-                        <p className="text-gray-800 mt-1">{product.size}</p>
-                      </div>
-                    )}
-                    {product.brand && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          Brand:
-                        </span>
-                        <p className="text-gray-800 mt-1">{product.brand}</p>
-                      </div>
-                    )}
-                    {product.hsn && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          HSN:
-                        </span>
-                        <p className="text-gray-800 mt-1">{product.hsn}</p>
-                      </div>
-                    )}
-                    {product.packaging && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          Packaging:
-                        </span>
-                        <p className="text-gray-800 mt-1">
-                          {product.packaging}
-                        </p>
-                      </div>
-                    )}
-                    {product.sku && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          SKU:
-                        </span>
-                        <p className="text-gray-800 mt-1">{product.sku}</p>
-                      </div>
-                    )}
-                    {product.category && (
-                      <div className="bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          Category:
-                        </span>
-                        <p className="text-gray-800 mt-1 capitalize">
-                          {product.category}
-                        </p>
-                      </div>
-                    )}
-                    {product.tags && (
-                      <div className="md:col-span-2 bg-gray-50 p-3 rounded-lg">
-                        <span className="font-semibold text-gray-600">
-                          Tags:
-                        </span>
-                        <div className="flex flex-wrap gap-1.5 mt-1.5">
-                          {product.tags.split(",").map((tag, index) => (
-                            <span
-                              key={index}
-                              className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium"
-                            >
-                              {tag.trim()}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ),
-              },
-              {
-                title: "Product Features",
-                isOpen: isFeaturesOpen,
-                setIsOpen: setIsFeaturesOpen,
-                content:
-                  product.features && product.features.length > 0 ? (
-                    <ul className="space-y-2">
-                      {product.features.map((feature, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-2 text-gray-600"
-                        >
-                          <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 flex-shrink-0"></span>
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null,
-              },
-            ].map(
-              ({ title, isOpen, setIsOpen, content }) =>
-                content && (
-                  <div
-                    key={title}
-                    className="border border-gray-200 rounded-xl bg-white shadow-sm"
-                  >
-                    <button
-                      onClick={() => setIsOpen(!isOpen)}
-                      className="w-full px-4 py-3 text-left font-semibold text-gray-800 flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
-                      aria-expanded={isOpen}
-                    >
-                      <span className="text-base">{title}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <div className="px-4 pb-3 text-gray-600 leading-relaxed text-sm">
-                            {content}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                )
-            )}
-
-            {/* Quantity Selector */}
-            <div className="p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <span className="font-semibold text-gray-800 text-base">
-                  Custom Quantity (Min. 50):
-                </span>
-                <div className="flex items-center border border-gray-300 rounded-full bg-white shadow-xs">
-                  <button
-                    onClick={() =>
-                      setQuantity((prev) => Math.max(50, prev - 50))
-                    }
-                    disabled={quantity <= 50}
-                    className={`px-3 py-1.5 text-base font-medium transition-colors rounded-l-full ${
-                      quantity <= 50
-                        ? "text-gray-400 cursor-not-allowed"
-                        : "text-gray-600 hover:text-gray-800 hover:bg-gray-50"
-                    }`}
-                    aria-label="Decrease quantity"
-                  >
-                    -
-                  </button>
-                  <span className="px-4 py-1.5 text-base font-semibold min-w-[80px] text-center">
-                    {quantity}
+            {/* Price Section - More compact design */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-5 border border-blue-200">
+              <div className="mb-3">
+                <p className="text-xs text-gray-600 mb-1">Base Product Price</p>
+                <div className="flex items-baseline">
+                  <span className="text-3xl font-bold text-gray-900">
+                    ₹{product.price}
                   </span>
-                  <button
-                    onClick={() => setQuantity((prev) => prev + 50)}
-                    className="px-3 py-1.5 text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 transition-colors rounded-r-full"
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </button>
+                  <span className="text-gray-600 ml-2">/unit</span>
                 </div>
+              </div>
+
+              <div className="space-y-2 mb-3">
+                <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center gap-2">
+                    <Printer className="w-3.5 h-3.5 text-purple-500" />
+                    <span className="text-gray-700">Printing Charge</span>
+                  </div>
+                  <span className="font-medium">+ ₹{printingCharge}</span>
+                </div>
+                <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center gap-2">
+                    <Box className="w-3.5 h-3.5 text-orange-500" />
+                    <span className="text-gray-700">Individual Packaging</span>
+                  </div>
+                  <span className="font-medium">+ ₹{packagingCharge}</span>
+                </div>
+              </div>
+
+              <div className="border-t border-blue-200 pt-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-gray-900">
+                    Total per unit
+                  </span>
+                  <span className="text-xl font-bold text-blue-700">
+                    ₹{totalPerUnit}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-1.5 mt-3 pt-3 border-t border-blue-200">
+                <Info className="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <p className="text-xs text-blue-700">
+                  Printing and packaging charges apply per unit
+                </p>
               </div>
             </div>
 
-            {/* Bulk Order Info */}
-            <div className="bg-blue-50 p-3 rounded-xl text-center border border-blue-100">
-              <p className="text-blue-800 text-sm font-medium">
-                Need a Bulk Order? Call{" "}
-                <a
-                  href="tel:9060917383"
-                  className="text-blue-600 hover:underline font-semibold"
+            {/* Quantity Selector - More elegant */}
+            <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
+              <div className="mb-3">
+                <p className="font-semibold text-gray-900">Select Quantity</p>
+                <p className="text-xs text-gray-500">Minimum order: 50 units</p>
+              </div>
+              <div className="flex items-center justify-center">
+                <button
+                  onClick={() => setQuantity((prev) => Math.max(50, prev - 50))}
+                  disabled={quantity <= 50}
+                  className={`w-10 h-10 flex items-center justify-center rounded-l-lg border border-r-0 transition-colors ${
+                    quantity <= 50
+                      ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                  }`}
                 >
-                  9060917383
-                </a>
-              </p>
+                  -
+                </button>
+                <div className="w-20 h-10 flex items-center justify-center border-y bg-white">
+                  <span className="font-bold text-gray-900">{quantity}</span>
+                </div>
+                <button
+                  onClick={() => setQuantity((prev) => prev + 50)}
+                  className="w-10 h-10 flex items-center justify-center rounded-r-lg border border-l-0 bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors"
+                >
+                  +
+                </button>
+                <span className="ml-3 text-gray-600 text-sm">units</span>
+              </div>
             </div>
 
-            {/* Enquiry Button */}
-            <div className="sticky bottom-4 z-10 lg:static">
+            {/* Tabs - Cleaner design */}
+            <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
+              <div className="flex">
+                {tabs.map((tab) => {
+                  const Icon = tab.icon;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-medium transition-colors ${
+                        activeTab === tab.id
+                          ? "text-blue-600 border-b-2 border-blue-600"
+                          : "text-gray-500 hover:text-gray-700"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="p-4">
+                <AnimatePresence mode="wait">
+                  {activeTab === "description" && (
+                    <motion.div
+                      key="description"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="text-gray-700 text-sm leading-relaxed"
+                    >
+                      {product.description}
+                    </motion.div>
+                  )}
+
+                  {activeTab === "specifications" && (
+                    <motion.div
+                      key="specifications"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="space-y-3"
+                    >
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {specificationItems.map((item, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg"
+                          >
+                            <div className="w-8 h-8 rounded-md bg-blue-100 flex items-center justify-center">
+                              <item.icon className="w-4 h-4 text-blue-600" />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-xs text-gray-500 truncate">
+                                {item.label}
+                              </p>
+                              <p className="font-medium text-gray-900 truncate">
+                                {item.value}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {activeTab === "features" && (
+                    <motion.div
+                      key="features"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="space-y-2"
+                    >
+                      {product.features
+                        ?.filter(
+                          (feature) => !feature.includes("Heat Transfer")
+                        )
+                        .map((feature, index) => (
+                          <div key={index} className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-700 text-sm">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Benefits - More compact */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="bg-white p-3 rounded-lg border border-gray-100 text-center">
+                <Truck className="w-6 h-6 text-blue-500 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-gray-900">
+                  Free Shipping
+                </p>
+                <p className="text-[10px] text-gray-500">Above ₹500</p>
+              </div>
+              <div className="bg-white p-3 rounded-lg border border-gray-100 text-center">
+                <Shield className="w-6 h-6 text-green-500 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-gray-900">
+                  Quality Assured
+                </p>
+                <p className="text-[10px] text-gray-500">Premium Materials</p>
+              </div>
+              <div className="bg-white p-3 rounded-lg border border-gray-100 text-center">
+                <Printer className="w-6 h-6 text-purple-500 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-gray-900">
+                  Custom Print
+                </p>
+                <p className="text-[10px] text-gray-500">
+                  {product.print || "Available"}
+                </p>
+              </div>
+              <div className="bg-white p-3 rounded-lg border border-gray-100 text-center">
+                <MessageCircle className="w-6 h-6 text-orange-500 mx-auto mb-1" />
+                <p className="text-xs font-semibold text-gray-900">
+                  24/7 Support
+                </p>
+                <p className="text-[10px] text-gray-500">Call 9060917383</p>
+              </div>
+            </div>
+
+            {/* CTA Buttons - Better spacing */}
+            <div className="space-y-3">
               <motion.button
                 onClick={handleOpenModal}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition-all duration-300 text-base"
-                aria-label="Open enquiry form"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
               >
-                Send Enquiry
+                <MessageCircle className="w-5 h-5" />
+                Send Bulk Enquiry
               </motion.button>
-              {enquirySent && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition
-                  className="text-green-600 mt-3 text-center font-medium"
-                >
-                  Thank you for your enquiry! We'll contact you shortly.
-                </motion.p>
-              )}
+
+              <a
+                href="tel:9060917383"
+                className="w-full bg-gray-900 hover:bg-black text-white font-semibold py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              >
+                <Phone className="w-5 h-5" />
+                Call Now: 9060917383
+              </a>
             </div>
           </div>
         </div>
-
-        {/* Enquiry Modal */}
-        <AnimatePresence>
-          {isModalOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-              onClick={handleCloseModal}
-            >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="bg-white rounded-2xl p-8 w-full max-w-md mx-4 shadow-xl"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                  Send Enquiry
-                </h2>
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600">
-                      Product Name
-                    </label>
-                    <input
-                      type="text"
-                      value={product.name}
-                      readOnly
-                      className="mt-1 w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-800 focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600">
-                      Quantity
-                    </label>
-                    <input
-                      type="number"
-                      value={quantity}
-                      readOnly
-                      className="mt-1 w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-800 focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600">
-                      Mobile Number
-                    </label>
-                    <input
-                      type="text"
-                      value={mobileNumber}
-                      onChange={(e) => {
-                        setMobileNumber(e.target.value);
-                        setMobileError("");
-                      }}
-                      placeholder="Enter 10-digit mobile number"
-                      className={`mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${
-                        mobileError
-                          ? "border-red-500 focus:ring-red-500"
-                          : "border-gray-300 focus:ring-blue-500"
-                      }`}
-                      aria-describedby={
-                        mobileError ? "mobile-error" : undefined
-                      }
-                    />
-                    {mobileError && (
-                      <p
-                        id="mobile-error"
-                        className="mt-1 text-sm text-red-500"
-                      >
-                        {mobileError}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                <div className="mt-8 flex justify-end space-x-4">
-                  <button
-                    onClick={handleCloseModal}
-                    className="px-4 py-2 text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
-                    aria-label="Cancel enquiry"
-                  >
-                    Cancel
-                  </button>
-                  <motion.button
-                    onClick={handleSendEnquiry}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-full shadow-md transition-all duration-300"
-                    aria-label="Submit enquiry"
-                  >
-                    Submit Enquiry
-                  </motion.button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
+
+      {/* Enquiry Modal - Cleaner design */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-white rounded-xl p-6 w-full max-w-sm shadow-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-center mb-4">
+                <div className="w-14 h-14 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <MessageCircle className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                  Send Enquiry
+                </h3>
+                <p className="text-sm text-gray-600">
+                  We'll contact you shortly
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-xs text-gray-500">Product</p>
+                  <p className="font-medium text-gray-900">{product.name}</p>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Base Price</span>
+                    <span className="font-medium">₹{product.price}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Printing</span>
+                    <span className="font-medium">+ ₹{printingCharge}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Packaging</span>
+                    <span className="font-medium">+ ₹{packagingCharge}</span>
+                  </div>
+                  <div className="border-t pt-2">
+                    <div className="flex justify-between font-medium">
+                      <span>Total per unit</span>
+                      <span>₹{totalPerUnit}</span>
+                    </div>
+                    <div className="flex justify-between text-sm mt-1">
+                      <span className="text-gray-600">{quantity} units</span>
+                      <span className="font-bold text-green-700">
+                        ₹{totalPerUnit * quantity}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Mobile Number *
+                  </label>
+                  <input
+                    type="tel"
+                    value={mobileNumber}
+                    onChange={(e) => {
+                      setMobileNumber(e.target.value);
+                      setMobileError("");
+                    }}
+                    placeholder="10-digit number"
+                    className={`w-full px-3 py-2.5 text-sm rounded-lg border focus:outline-none focus:ring-1 ${
+                      mobileError
+                        ? "border-red-400 focus:ring-red-400"
+                        : "border-gray-300 focus:ring-blue-500"
+                    }`}
+                  />
+                  {mobileError && (
+                    <p className="mt-1 text-xs text-red-500">{mobileError}</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-6 flex gap-3">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 py-2.5 text-gray-600 font-medium rounded-lg hover:bg-gray-50 transition-colors text-sm"
+                >
+                  Cancel
+                </button>
+                <motion.button
+                  onClick={handleSendEnquiry}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-medium py-2.5 rounded-lg shadow-sm hover:shadow transition-all text-sm"
+                >
+                  Send via WhatsApp
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
