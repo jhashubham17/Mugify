@@ -3,6 +3,9 @@ import mugs from "./Mugs";
 import bottles from "./Bottles";
 import tShirts from "./TShirts";
 import corporateGifts from "./CorporateGifts";
+import metalPens from "./MetalPens"; // Import the metal pens data
+import plasticPens from "./PlasticPens"; // Import the plastic pens data
+
 // In your AllProducts.js file, make sure the category values match the filter values
 const allProducts = [
   // Mugs should have category: "mug"
@@ -19,6 +22,18 @@ const allProducts = [
     ...product,
     category: "corporate-gift",
   })),
+
+  // Metal Pens should have category: "metal-pen"
+  ...metalPens.map((product) => ({
+    ...product,
+    category: "metal-pen",
+  })),
+
+  // Plastic Pens should have category: "plastic-pen"
+  ...plasticPens.map((product) => ({
+    ...product,
+    category: "plastic-pen",
+  })),
 ];
 
 export const categories = [
@@ -26,6 +41,8 @@ export const categories = [
   { value: "mug", label: "Mugs" },
   { value: "bottle", label: "Bottles" },
   { value: "t-shirt", label: "T-Shirts" },
+  { value: "metal-pen", label: "Metal Pens" },
+  { value: "plastic-pen", label: "Plastic Pens" },
   { value: "corporate-gift", label: "Corporate Gifts" },
 ];
 

@@ -63,8 +63,9 @@ const ProductDetails = () => {
       return;
     }
 
-    const printingCharge = 10;
-    const packagingCharge = 5;
+    // Get charges from product data
+    const printingCharge = parseInt(product.printingCharge || "0");
+    const packagingCharge = parseInt(product.packingCharge || "0");
     const totalWithCharges =
       (product.price + printingCharge + packagingCharge) * quantity;
 
@@ -127,8 +128,9 @@ const ProductDetails = () => {
     { icon: Palette, label: "Color/Finish", value: product.paint },
   ].filter((item) => item.value);
 
-  const printingCharge = 10;
-  const packagingCharge = 5;
+  // Get charges from product data
+  const printingCharge = parseInt(product.printingCharge || "0");
+  const packagingCharge = parseInt(product.packingCharge || "0");
   const totalPerUnit = product.price + printingCharge + packagingCharge;
 
   return (
@@ -261,7 +263,7 @@ const ProductDetails = () => {
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2">
                     <Box className="w-3.5 h-3.5 text-orange-500" />
-                    <span className="text-gray-700">Individual Packaging</span>
+                    <span className="text-gray-700">Packaging Charge</span>
                   </div>
                   <span className="font-medium">+ ₹{packagingCharge}</span>
                 </div>
@@ -278,12 +280,21 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-1.5 mt-3 pt-3 border-t border-blue-200">
-                <Info className="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" />
-                <p className="text-xs text-blue-700">
-                  Printing and packaging charges apply per unit
-                </p>
-              </div>
+              {printingCharge > 0 || packagingCharge > 0 ? (
+                <div className="flex items-start gap-1.5 mt-3 pt-3 border-t border-blue-200">
+                  <Info className="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-xs text-blue-700">
+                    Printing and packaging charges apply per unit
+                  </p>
+                </div>
+              ) : (
+                <div className="flex items-start gap-1.5 mt-3 pt-3 border-t border-blue-200">
+                  <Info className="w-3.5 h-3.5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <p className="text-xs text-green-700">
+                    Printing and packaging included in base price
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Quantity Selector - More elegant */}
@@ -380,6 +391,37 @@ const ProductDetails = () => {
                             </div>
                           </div>
                         ))}
+                        {/* Add printing and packaging charges to specifications */}
+                        {printingCharge > 0 && (
+                          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                            <div className="w-8 h-8 rounded-md bg-purple-100 flex items-center justify-center">
+                              <Printer className="w-4 h-4 text-purple-600" />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-xs text-gray-500 truncate">
+                                Printing Charge
+                              </p>
+                              <p className="font-medium text-gray-900 truncate">
+                                ₹{printingCharge} per unit
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                        {packagingCharge > 0 && (
+                          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                            <div className="w-8 h-8 rounded-md bg-orange-100 flex items-center justify-center">
+                              <Box className="w-4 h-4 text-orange-600" />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-xs text-gray-500 truncate">
+                                Packaging Charge
+                              </p>
+                              <p className="font-medium text-gray-900 truncate">
+                                ₹{packagingCharge} per unit
+                              </p>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                   )}
@@ -392,18 +434,14 @@ const ProductDetails = () => {
                       exit={{ opacity: 0 }}
                       className="space-y-2"
                     >
-                      {product.features
-                        ?.filter(
-                          (feature) => !feature.includes("Heat Transfer")
-                        )
-                        .map((feature, index) => (
-                          <div key={index} className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-700 text-sm">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
+                      {product.features?.map((feature, index) => (
+                        <div key={index} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-sm">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -3,6 +3,8 @@ const mugs = [
     _id: "mug1",
     name: "White Mug",
     price: 35,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicWhiteMug.jpg",
     description:
       "Classic white ceramic mug with perfect 11 oz capacity. Ideal for daily coffee, tea, or hot chocolate. The pure white surface ensures your custom designs print with vibrant clarity.",
@@ -33,6 +35,8 @@ const mugs = [
     _id: "mug3",
     name: "Black Mug",
     price: 75,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicBlackMug.jpg",
     description:
       "Elegant black ceramic mug that makes a bold statement. Perfect for modern kitchens, offices, or as premium corporate gifts. The dark surface creates stunning contrast with printed designs.",
@@ -63,6 +67,8 @@ const mugs = [
     _id: "mug5",
     name: "Black Patch Mug",
     price: 75,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/BlackPatchMug.webp",
     description:
       "Unique ceramic mug featuring a distinctive black patch design. Adds character and style to your drinkware collection while maintaining excellent print quality on the white areas.",
@@ -93,6 +99,8 @@ const mugs = [
     _id: "mug6",
     name: "Red Patch Mug",
     price: 75,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/RedPatchMug.jpg",
     description:
       "Vibrant red patch ceramic mug that adds a pop of color to your kitchen. The contrasting white surface provides perfect canvas for custom designs, making it ideal for gifts and promotions.",
@@ -123,6 +131,8 @@ const mugs = [
     _id: "mug7",
     name: "Blue Patch Mug",
     price: 75,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/BluePatchMug.jpg",
     description:
       "Calming blue patch ceramic mug perfect for morning routines. The soothing blue accent combined with white printing area creates professional-looking custom mugs for businesses and events.",
@@ -153,6 +163,8 @@ const mugs = [
     _id: "mug8",
     name: "Yellow Patch Mug",
     price: 75,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/YellowPatchMug.jpg",
     description:
       "Cheerful yellow patch ceramic mug that brightens any coffee break. The sunny yellow accent makes it perfect for motivational messages, team building gifts, or promotional items.",
@@ -183,6 +195,8 @@ const mugs = [
     _id: "mug9",
     name: "Black Inner Handle Colour Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/BlackInnerHandleMug.jpg",
     description:
       "Modern two-tone mug with black interior and handle. This stylish design creates a sophisticated look while the white exterior provides excellent printing surface for custom designs.",
@@ -213,6 +227,8 @@ const mugs = [
     _id: "mug10",
     name: "Pink Inner Handle Colour Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/PinkInnerHandleMug.jpg",
     description:
       "Charming two-tone mug with pink interior and handle. Adds a feminine touch to your drinkware while maintaining professional printing quality on the white exterior surface.",
@@ -243,6 +259,8 @@ const mugs = [
     _id: "mug11",
     name: "Blue Inner Handle Colour Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicInnerHandleBlueMug1.avif",
     description:
       "Serene two-tone mug with blue interior and handle, evoking coastal vibes. The clean white exterior serves as perfect canvas for custom logos, photos, or messages.",
@@ -273,6 +291,8 @@ const mugs = [
     _id: "mug12",
     name: "Red Inner Handle Colour Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/RedInnerHandlerMug.jpg",
     description:
       "Bold two-tone mug with vibrant red interior and handle. Makes a strong statement while providing excellent white exterior surface for custom Heat Transfer printing.",
@@ -303,6 +323,8 @@ const mugs = [
     _id: "mug13",
     name: "Yellow Inner Handle Colour Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/YellowInnerHandleColorMug.jpg",
     description:
       "Cheerful two-tone mug with sunny yellow interior and handle. Brightens morning routines while offering professional-grade printing surface for custom designs.",
@@ -333,6 +355,8 @@ const mugs = [
     _id: "mug14",
     name: "Green Inner Handle Colour Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicInnerHandleGreenMug.jpg",
     description:
       "Fresh two-tone mug with natural green interior and handle. Brings nature-inspired aesthetics to your drinkware while maintaining professional printing capabilities.",
@@ -363,6 +387,8 @@ const mugs = [
     _id: "mug15",
     name: "Red Heart Handle Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/RedHeartHandleMug.jpg",
     description:
       "Romantic ceramic mug with vibrant red finish and unique heart-shaped handle. Perfect for special occasions, Valentine's Day, anniversaries, or romantic gestures.",
@@ -393,6 +419,8 @@ const mugs = [
     _id: "mug16",
     name: "Yellow Heart Handle Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/YellowHeartHandleMug.jpg",
     description:
       "Sunny ceramic mug with cheerful yellow finish and distinctive heart-shaped handle. Spreads happiness and positivity, ideal for friendship gifts or motivational messages.",
@@ -423,6 +451,8 @@ const mugs = [
     _id: "mug17",
     name: "Light Green Heart Handle Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicHeartHandleDarkGreenMug.webp",
     description:
       "Fresh ceramic mug with soothing light green finish and elegant heart-shaped handle. Creates a calming aesthetic perfect for tea lovers or spa-themed gifts.",
@@ -453,6 +483,8 @@ const mugs = [
     _id: "mug18",
     name: "Orange Heart Handle Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicHeartHandleOrangeMug.webp",
     description:
       "Energetic ceramic mug with vibrant orange finish and unique heart-shaped handle. Perfect for morning motivation, energy drinks, or as vibrant gift items.",
@@ -483,6 +515,8 @@ const mugs = [
     _id: "mug19",
     name: "Pink Heart Handle Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/PinkHeartHandleMug.jpg",
     description:
       "Sweet ceramic mug with soft pink finish and romantic heart-shaped handle. Ideal for Valentine's Day, Mother's Day, bridal showers, or romantic occasions.",
@@ -513,6 +547,8 @@ const mugs = [
     _id: "mug20",
     name: "Dark Green Heart Handle Mug",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicHeartHandleDarkGreenMug.webp",
     description:
       "Elegant ceramic mug with sophisticated dark green finish and distinctive heart-shaped handle. Perfect for premium gifts, corporate branding, or luxury drinkware.",
@@ -543,6 +579,8 @@ const mugs = [
     _id: "mug21",
     name: "Magic Color Changing Mug",
     price: 80,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicMagicMug.jpg",
     description:
       "Magical color-changing ceramic mug that reveals hidden designs when filled with hot liquid. Creates surprise elements perfect for gifts, promotions, or novelty items.",
@@ -573,6 +611,8 @@ const mugs = [
     _id: "mug22",
     name: "Bone China White Mug - 11 oz",
     price: 105,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicWhiteMug.jpg",
     description:
       "Premium bone china white mug with elegant translucency and refined feel. Made from fine bone china for superior quality, perfect for luxury gifts, hotels, or premium branding.",
@@ -603,6 +643,8 @@ const mugs = [
     _id: "mug23",
     name: "Bone China White Mug - 6 oz",
     price: 60,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicWhiteSmallMug.jpg",
     description:
       "Delicate bone china white mug with 6 oz capacity, perfect for elegant tea service. The smaller size and premium material make it ideal for tea ceremonies, cafes, or luxury gifts.",
@@ -633,6 +675,8 @@ const mugs = [
     _id: "mug24",
     name: "White Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralWhiteMug.jpg",
     description:
       "Unique white ceramic mug with textured coral finish for enhanced grip and tactile experience. The texture adds character while maintaining print quality on smooth areas.",
@@ -663,6 +707,8 @@ const mugs = [
     _id: "mug25",
     name: "Black Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralBlackMug.jpg",
     description:
       "Sophisticated black ceramic mug with textured coral finish. The unique texture provides better grip while creating modern aesthetic perfect for contemporary settings.",
@@ -693,6 +739,8 @@ const mugs = [
     _id: "mug26",
     name: "Red Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralRedMug.jpg",
     description:
       "Bold red ceramic mug with unique coral texture. The textured surface adds visual interest and better handling while allowing for custom Heat Transfer printing.",
@@ -723,6 +771,8 @@ const mugs = [
     _id: "mug27",
     name: "Yellow Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralYellowMug.jpg",
     description:
       "Cheerful yellow ceramic mug with coral texture finish. The sunny color combined with textured surface creates happy vibes perfect for cafes, offices, or gifts.",
@@ -753,6 +803,8 @@ const mugs = [
     _id: "mug28",
     name: "Light Green Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralGreenMug.jpg",
     description:
       "Fresh light green ceramic mug with coral texture. The nature-inspired color and textured finish create calming aesthetic perfect for organic brands, spas, or wellness centers.",
@@ -764,7 +816,7 @@ const mugs = [
     paint: "Light Green Coral Texture",
     print: "Heat Transfer",
     weight: "370g",
-    size: "Height: 9.5 cm, Diameter: 8 cm",
+    size: "Height: 9.5 cm",
     brand: "Custom Creations",
     packaging: "36pcs/carton",
     capacity: "11 Ounce",
@@ -783,6 +835,8 @@ const mugs = [
     _id: "mug29",
     name: "Dark Green Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralDarkGreenMug.jpg",
     description:
       "Elegant dark green ceramic mug with coral texture finish. The deep green color combined with textured surface creates sophisticated look for premium branding.",
@@ -813,6 +867,8 @@ const mugs = [
     _id: "mug30",
     name: "Blue Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralBlueMug.jpg",
     description:
       "Calming blue ceramic mug with ocean-inspired coral texture. Perfect for coastal themes, beach resorts, or any setting wanting relaxed, serene atmosphere.",
@@ -843,6 +899,8 @@ const mugs = [
     _id: "mug31",
     name: "Pink Coral Mug",
     price: 65,
+    printingCharge: "15",
+    packingCharge: "5",
     image: "./MugImage/Coral/CoralPinkMug.jpg",
     description:
       "Soft pink ceramic mug with romantic coral texture. The gentle pink color combined with textured surface creates perfect gift for feminine occasions or brands.",
