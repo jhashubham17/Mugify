@@ -2,7 +2,7 @@ const EcoFriendlyData = [
   {
     _id: "ef001",
     name: "VerdeFolio Organizer",
-    price: 14.99,
+    price: 175,
     printingCharge: "5",
     packingCharge: "0",
     image: "/EcoFriendlyImg/Eco Friendlya1.jpg",
@@ -30,7 +30,7 @@ const EcoFriendlyData = [
   {
     _id: "ef002",
     name: "ZenithGreen Desk Companion",
-    price: 18.5,
+    price: 153,
     printingCharge: "5",
     packingCharge: "0",
     image: "./EcoFriendlyImg/EcoFriendlyb1.jpg",
@@ -58,10 +58,10 @@ const EcoFriendlyData = [
   {
     _id: "ef003",
     name: "EarthHue Creative Hub",
-    price: 16.75,
+    price: 146,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyc1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyc1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyc2.webp"],
     description:
       "Vibrant artist-grade eco stationery kit with natural dye colors and textured recycled paper. Ideal for creatives who want sustainable tools.",
@@ -86,10 +86,10 @@ const EcoFriendlyData = [
   {
     _id: "ef004",
     name: "NexusLeaf Executive Set",
-    price: 22.99,
+    price: 142,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyd1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyd1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyd2.webp"],
     description:
       "Corporate-grade sustainable organization system with leather-alternative cover and smart compartments. Professional eco-solution for modern executives.",
@@ -114,10 +114,10 @@ const EcoFriendlyData = [
   {
     _id: "ef005",
     name: "AuraBloom Daily Planner",
-    price: 13.25,
+    price: 130,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlye1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlye1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlye2.webp"],
     description:
       "Gentle pastel-themed sustainable planner with floral embossing and calming design elements. Bring serenity to your daily organization.",
@@ -142,10 +142,10 @@ const EcoFriendlyData = [
   {
     _id: "ef006",
     name: "TerraCore Modular System",
-    price: 19.99,
+    price: 130,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyf1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyf1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyf2.webp"],
     description:
       "Innovative modular eco stationery that lets you customize your setup. Mix and match components for personalized sustainable organization.",
@@ -170,10 +170,10 @@ const EcoFriendlyData = [
   {
     _id: "ef007",
     name: "Celestia Notes Harmony",
-    price: 17.5,
+    price: 112,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyg1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyg1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyg2.webp"],
     description:
       "Celestial-themed sustainable stationery with metallic eco-foil accents and cosmic patterns. For those who dream while staying organized.",
@@ -198,10 +198,10 @@ const EcoFriendlyData = [
   {
     _id: "ef008",
     name: "UrbanSprout Compact Pro",
-    price: 11.99,
+    price: 110,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyh1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyh1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyh2.webp"],
     description:
       "Ultra-compact urban eco solution for on-the-go professionals. Slim design with maximum functionality for city dwellers.",
@@ -226,10 +226,10 @@ const EcoFriendlyData = [
   {
     _id: "ef009",
     name: "OceanBreeze Desk Set",
-    price: 15.5,
+    price: 101,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyi1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyi1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyi2.webp"],
     description:
       "Coastal-inspired eco stationery with wave patterns and sea-inspired color palette. Brings calm ocean vibes to your workspace.",
@@ -254,10 +254,10 @@ const EcoFriendlyData = [
   {
     _id: "ef010",
     name: "MountainPeak Organizer",
-    price: 20.25,
+    price: 98,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyj1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyj1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyj2.webp"],
     description:
       "Rugged adventure-themed eco organizer with topographic map designs and durable construction for outdoor enthusiasts.",
@@ -282,10 +282,10 @@ const EcoFriendlyData = [
   {
     _id: "ef011",
     name: "SolarFlare Workstation",
-    price: 16.99,
+    price: 98,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyk1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyk1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyk2.webp"],
     description:
       "Energy-themed sustainable stationery with solar patterns and bright, uplifting colors to boost productivity and positive energy.",
@@ -310,10 +310,10 @@ const EcoFriendlyData = [
   {
     _id: "ef012",
     name: "Rainforest Memo Hub",
-    price: 18.75,
+    price: 98,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyl1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyl1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyl2.webp"],
     description:
       "Lush jungle-inspired eco organizer with tropical leaf patterns and earthy tones. Connects you to nature while you work.",
@@ -338,10 +338,10 @@ const EcoFriendlyData = [
   {
     _id: "ef013",
     name: "DesertBloom Notes",
-    price: 14.25,
+    price: 90,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlym1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlym1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlym2.webp"],
     description:
       "Arid landscape-inspired eco stationery with cactus motifs and warm desert colors. Perfect for minimalist aesthetics.",
@@ -366,10 +366,10 @@ const EcoFriendlyData = [
   {
     _id: "ef014",
     name: "ArcticGlow Planner",
-    price: 19.5,
+    price: 90,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyn1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyn1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyn2.webp"],
     description:
       "Frosty winter-themed eco organizer with icy blue tones and snowflake patterns. Cool and calming for focused work sessions.",
@@ -394,10 +394,10 @@ const EcoFriendlyData = [
   {
     _id: "ef015",
     name: "MeadowWhisper Journal",
-    price: 12.99,
+    price: 90,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyo1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyo1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyo2.webp"],
     description:
       "Peaceful meadow-inspired eco notebook with wildflower prints and gentle green shades. For quiet contemplation and planning.",
@@ -422,10 +422,10 @@ const EcoFriendlyData = [
   {
     _id: "ef016",
     name: "RiverStone Companion",
-    price: 17.25,
+    price: 90,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyp1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyp1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyp2.webp"],
     description:
       "Smooth river stone-inspired eco organizer with water ripple patterns and organic shapes. Flows naturally with your workflow.",
@@ -450,10 +450,10 @@ const EcoFriendlyData = [
   {
     _id: "ef017",
     name: "ForestCanopy System",
-    price: 21.99,
+    price: 90,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyq1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyq1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyq2.webp"],
     description:
       "Multi-layered forest-inspired eco organizer with tree bark textures and leaf silhouettes. Deep connection to woodland ecosystems.",
@@ -478,10 +478,10 @@ const EcoFriendlyData = [
   {
     _id: "ef018",
     name: "CoralReef Creative",
-    price: 23.5,
+    price: 80,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlys1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlys1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlys2.webp"],
     description:
       "Vibrant underwater coral reef eco stationery with marine ecosystem illustrations. Supports ocean conservation awareness.",
@@ -506,10 +506,10 @@ const EcoFriendlyData = [
   {
     _id: "ef019",
     name: "SunsetHorizon Desk",
-    price: 15.75,
+    price: 80,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyt1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyt1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyt2.webp"],
     description:
       "Golden hour-inspired eco organizer with gradient sunset colors and silhouette patterns. Captures magic of twilight hours.",
@@ -534,10 +534,10 @@ const EcoFriendlyData = [
   {
     _id: "ef020",
     name: "MoonlitOrganizer",
-    price: 18.25,
+    price: 70,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyu1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyu1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyu2.webp"],
     description:
       "Nocturnal-themed eco stationery with moon phases and star constellations. Perfect for night owls and dreamers.",
@@ -562,10 +562,10 @@ const EcoFriendlyData = [
   {
     _id: "ef021",
     name: "Starlight Scheduler",
-    price: 16.5,
+    price: 70,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyv1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyv1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyv2.webp"],
     description:
       "Galaxy-inspired eco planner with twinkling star effects and cosmic navigation themes. For planning big dreams under virtual stars.",
@@ -590,10 +590,10 @@ const EcoFriendlyData = [
   {
     _id: "ef022",
     name: "CloudNine Notes",
-    price: 13.99,
+    price: 70,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyw1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyw1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyw2.webp"],
     description:
       "Soft cloud-themed eco stationery with fluffy textures and sky blue colors. Light as air organization solution.",
@@ -618,10 +618,10 @@ const EcoFriendlyData = [
   {
     _id: "ef023",
     name: "BambooGrove Essentials",
-    price: 22.5,
+    price: 70,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyx1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyx1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyx2.webp"],
     description:
       "Traditional bamboo-themed eco organizer with Asian-inspired designs and zen garden aesthetics. Harmony of nature and organization.",
@@ -646,10 +646,10 @@ const EcoFriendlyData = [
   {
     _id: "ef024",
     name: "MapleLeaf Office Set",
-    price: 19.25,
+    price: 67,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyy1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyy1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyy2.webp"],
     description:
       "Autumn foliage-inspired eco stationery with changing leaf colors and harvest season motifs. Warm and inviting workspace companion.",
@@ -674,10 +674,10 @@ const EcoFriendlyData = [
   {
     _id: "ef025",
     name: "PineCone Organizer",
-    price: 14.75,
+    price: 67,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyz1.webp",
+    image: "./EcoFriendlyImg/EcoFriendlyz1.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendlyz2.webp"],
     description:
       "Forest floor-inspired eco organizer with pine cone patterns and evergreen colors. Fresh pine scent infused for sensory experience.",
@@ -702,12 +702,11 @@ const EcoFriendlyData = [
   {
     _id: "ef026",
     name: "OliveBranch Planner",
-    price: 17.99,
+    price: 60,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendlyo1.webp",
+    image: "./EcoFriendlyImg/EcoFriendly01.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly02.webp"],
-    additionalImages: ["./EcoFriendlyImg/EcoFriendlyz2.webp"],
     description:
       "Mediterranean-inspired eco organizer with olive leaf motifs and peaceful green tones. Symbol of peace and wisdom in stationery form.",
     category: "Eco Friendly Product",
@@ -731,10 +730,10 @@ const EcoFriendlyData = [
   {
     _id: "ef027",
     name: "LavenderField Diary",
-    price: 16.25,
+    price: 60,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly03.webp",
+    image: "./EcoFriendlyImg/EcoFriendly03.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly04.webp"],
     description:
       "French countryside-inspired eco diary with lavender motifs and calming purple hues. Relaxing scent and stress-relief features included.",
@@ -759,10 +758,10 @@ const EcoFriendlyData = [
   {
     _id: "ef028",
     name: "RoseGarden Memo",
-    price: 15.5,
+    price: 60,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly05.webp",
+    image: "./EcoFriendlyImg/EcoFriendly05.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly06.webp"],
     description:
       "Romantic rose garden eco stationery with intricate floral patterns and velvet textures. Elegant and timeless organization solution.",
@@ -787,10 +786,10 @@ const EcoFriendlyData = [
   {
     _id: "ef029",
     name: "CitrusGrove Notes",
-    price: 13.75,
+    price: 60,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly07.webp",
+    image: "./EcoFriendlyImg/EcoFriendly07.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly08.webp"],
     description:
       "Zesty citrus fruit-inspired eco stationery with bright colors and refreshing citrus patterns. Energizes your workspace instantly.",
@@ -815,10 +814,10 @@ const EcoFriendlyData = [
   {
     _id: "ef030",
     name: "HerbGarden Companion",
-    price: 18.5,
+    price: 55,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly09.webp",
+    image: "./EcoFriendlyImg/EcoFriendly09.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly10.webp"],
     description:
       "Kitchen herb garden-inspired eco organizer with culinary herb illustrations and practical gardening tips. Fresh and functional.",
@@ -843,10 +842,10 @@ const EcoFriendlyData = [
   {
     _id: "ef031",
     name: "TeaLeaf Organizer",
-    price: 20.99,
+    price: 50,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly11.webp",
+    image: "./EcoFriendlyImg/EcoFriendly11.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly12.webp"],
     description:
       "Traditional tea ceremony-inspired eco organizer with tea leaf patterns and calming earth tones. Perfect for mindful work breaks.",
@@ -871,10 +870,10 @@ const EcoFriendlyData = [
   {
     _id: "ef032",
     name: "CoffeeBean Desk Set",
-    price: 19.75,
+    price: 46,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly13.webp",
+    image: "./EcoFriendlyImg/EcoFriendly13.jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly14.webp"],
     description:
       "Coffee shop-inspired eco stationery with coffee bean textures and rich brown colors. For coffee lovers who need morning productivity boost.",
@@ -899,10 +898,10 @@ const EcoFriendlyData = [
   {
     _id: "ef033",
     name: "Honeycomb System",
-    price: 21.25,
+    price: 36,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly15.webp",
+    image: "./EcoFriendlyImg/EcoFriendly15.Jpg",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly16.webp"],
     description:
       "Bee hive-inspired eco organizer with hexagonal patterns and golden honey colors. Celebrates importance of pollinators in ecosystem.",
@@ -927,10 +926,10 @@ const EcoFriendlyData = [
   {
     _id: "ef034",
     name: "NectarFlow Planner",
-    price: 17.25,
+    price: 21,
     printingCharge: "5",
     packingCharge: "0",
-    image: "./EcoFriendlyImg/EcoFriendly17.webp",
+    image: "./EcoFriendlyImg/EcoFriendly17.JPG",
     additionalImages: ["./EcoFriendlyImg/EcoFriendly18.webp"],
     description:
       "Sweet nectar-inspired eco planner with flower pollination motifs and flowing organic patterns. Smooth workflow like nectar flow.",
