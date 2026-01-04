@@ -6,6 +6,12 @@ const mugs = [
     printingCharge: "15",
     packingCharge: "5",
     image: "./MugImage/Ceramic/CeramicWhiteMug.jpg",
+    additionalImages: [
+      "./MugImage/Ceramic/WhiteMug5.jpeg",
+      "./MugImage/Ceramic/WhiteMug3.jpeg",
+      "./MugImage/Ceramic/WhiteMug2.jpeg",
+      "./MugImage/Ceramic/WhiteMug4.jpeg",
+    ],
     description:
       "Classic white ceramic mug with perfect 11 oz capacity. Ideal for daily coffee, tea, or hot chocolate. The pure white surface ensures your custom designs print with vibrant clarity.",
     category: "Mug",

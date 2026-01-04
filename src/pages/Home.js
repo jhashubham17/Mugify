@@ -40,6 +40,31 @@ const Home = () => {
       icon: "🎁",
       color: "from-indigo-400 to-purple-500",
     },
+    // नए 4 categories जोड़े गए
+    {
+      name: "Eco Friendly",
+      slug: "eco-friendly",
+      icon: "🌿",
+      color: "from-green-500 to-emerald-600",
+    },
+    {
+      name: "Table Calender",
+      slug: "table-calendar",
+      icon: "📅",
+      color: "from-red-400 to-pink-500",
+    },
+    {
+      name: "Coaster",
+      slug: "coaster",
+      icon: "🥤",
+      color: "from-yellow-400 to-amber-500",
+    },
+    {
+      name: "Paper Weight",
+      slug: "paper-weight",
+      icon: "📎",
+      color: "from-teal-400 to-blue-500",
+    },
   ];
 
   const printingMethods = [
@@ -78,11 +103,6 @@ const Home = () => {
       description:
         "Instant curing prints with vibrant colors on various surfaces",
       icon: "☀️",
-    },
-    {
-      name: "Sublimation Printing",
-      description: "Vibrant, permanent designs on coated pens and mugs",
-      icon: "🎨",
     },
   ];
 
@@ -152,8 +172,9 @@ const Home = () => {
               className="text-xl text-gray-600 mb-8 leading-relaxed"
             >
               Discover our premium collection of customizable products. From
-              everyday essentials like pens and mugs to unique gifts, we have
-              everything you need to express your creativity.
+              everyday essentials like pens and mugs to eco-friendly items and
+              unique gifts, we have everything you need to express your
+              creativity.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -168,6 +189,10 @@ const Home = () => {
               <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                 Custom Printing
+              </span>
+              <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
+                <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                Eco Friendly
               </span>
               <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
                 <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
@@ -197,7 +222,7 @@ const Home = () => {
         >
           Product Categories
         </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {categories.map((category, index) => (
             <motion.div
               key={category.slug}
@@ -210,6 +235,16 @@ const Home = () => {
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
                 ></div>
+
+                {/* Eco Friendly Badge */}
+                {category.slug === "eco-friendly" && (
+                  <div className="absolute top-3 left-3 z-10">
+                    <div className="bg-emerald-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                      <span className="text-xs">🌿</span>
+                      <span>Eco</span>
+                    </div>
+                  </div>
+                )}
 
                 {/* Content */}
                 <div className="relative p-6 text-center h-full flex flex-col">
@@ -227,12 +262,34 @@ const Home = () => {
                   </h3>
 
                   {/* Description for specific categories */}
-                  {(category.slug === "metal-pen" ||
-                    category.slug === "plastic-pen") && (
+                  {category.slug === "metal-pen" && (
                     <p className="text-sm text-gray-500 mb-3">
-                      {category.slug === "metal-pen"
-                        ? "Premium metal body pens with laser engraving"
-                        : "Cost-effective plastic pens with vibrant printing"}
+                      Premium metal body pens with laser engraving
+                    </p>
+                  )}
+                  {category.slug === "plastic-pen" && (
+                    <p className="text-sm text-gray-500 mb-3">
+                      Cost-effective plastic pens with vibrant printing
+                    </p>
+                  )}
+                  {category.slug === "eco-friendly" && (
+                    <p className="text-sm text-gray-500 mb-3">
+                      Sustainable and environmentally friendly products
+                    </p>
+                  )}
+                  {category.slug === "table-calendar" && (
+                    <p className="text-sm text-gray-500 mb-3">
+                      Custom calendars for offices and promotional gifts
+                    </p>
+                  )}
+                  {category.slug === "coaster" && (
+                    <p className="text-sm text-gray-500 mb-3">
+                      Drink coasters for home and office use
+                    </p>
+                  )}
+                  {category.slug === "paper-weight" && (
+                    <p className="text-sm text-gray-500 mb-3">
+                      Decorative and functional desk accessories
                     </p>
                   )}
 
@@ -299,7 +356,8 @@ const Home = () => {
           >
             We utilize state-of-the-art printing technologies to bring your
             designs to life with exceptional quality and precision, perfect for
-            all product types including pens, apparel, and promotional items.
+            all product types including eco-friendly items, apparel, and
+            promotional items.
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -323,80 +381,6 @@ const Home = () => {
         </div>
       </motion.div>
 
-      {/* Pen Specific Info */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="bg-gradient-to-r from-gray-100 to-gray-200 py-12"
-      >
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="text-4xl">✒️</div>
-                <h3 className="text-2xl font-bold text-gray-800">Metal Pens</h3>
-              </div>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
-                  Premium aluminum/steel construction
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
-                  Laser engraving for permanent branding
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
-                  Refillable with standard refills
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
-                  Ideal for corporate gifting
-                </li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="text-4xl">🖊️</div>
-                <h3 className="text-2xl font-bold text-gray-800">
-                  Plastic Pens
-                </h3>
-              </div>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Cost-effective for bulk orders
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Full-color digital printing
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Wide range of colors and styles
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                  Perfect for events and promotions
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
-
       {/* Bottom CTA Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -409,21 +393,24 @@ const Home = () => {
             Ready to Create Something Amazing?
           </h2>
           <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-            Browse our complete collection including premium pens, apparel, and
-            promotional items for your next customization project.
+            Browse our complete collection including mugs, bottles, pens,
+            apparel, eco-friendly items, and promotional products for your next
+            customization project.
           </p>
-          <Link to="/products">
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(255,255,255,0.3)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-50 transition-all duration-300 shadow-lg"
-            >
-              Explore All Products
-            </motion.button>
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/products">
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 30px rgba(255,255,255,0.3)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-blue-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-50 transition-all duration-300 shadow-lg"
+              >
+                Explore All Products
+              </motion.button>
+            </Link>
+          </div>
         </div>
       </motion.div>
     </div>
