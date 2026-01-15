@@ -81,11 +81,11 @@ const Products = () => {
         <div className="text-center py-16">
           <div className="text-6xl mb-4">📦</div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">
-            No Products Found
+            Products Coming Soon!
           </h3>
           <p className="text-gray-600 mb-6 max-w-md mx-auto">
-            We couldn't find any products in this category. Please check back
-            soon!
+            We're working hard to add more amazing products to this category.
+            Stay tuned!
           </p>
           <button
             onClick={() => setCategory("all")}

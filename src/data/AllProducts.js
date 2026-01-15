@@ -46,11 +46,11 @@ const allProducts = [
 export const categories = [
   { value: "all", label: "All Categories" },
   { value: "mug", label: "Mugs" },
-  { value: "bottle", label: "Bottles" },
-  { value: "t-shirt", label: "T-Shirts" },
   { value: "metal-pen", label: "Metal Pens" },
   { value: "plastic-pen", label: "Plastic Pens" },
   { value: "eco-friendly", label: "Eco Friendly" },
+  { value: "bottle", label: "Bottles" },
+  { value: "t-shirt", label: "T-Shirts" },
   { value: "corporate-gift", label: "Corporate Gifts" },
 ];
 
