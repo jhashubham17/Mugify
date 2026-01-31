@@ -3,9 +3,9 @@ const corporateGifts = [
   {
     _id: "cg1",
     name: "4 in 1 Gift Set - G4 606",
-    price: 316.0,
-    printingCharge: "15",
-    packingCharge: "10",
+    price: 420.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4606.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4606_2.jpg",
@@ -30,9 +30,9 @@ const corporateGifts = [
   {
     _id: "cg2",
     name: "4 in 1 Gift Set - G4 608",
-    price: 316.0,
-    printingCharge: "15",
-    packingCharge: "10",
+    price: 420.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4608.jpeg",
     additionalImages: [
       "./CorporateGifts/G4608_2.jpg",
@@ -56,9 +56,9 @@ const corporateGifts = [
   {
     _id: "cg3",
     name: "4 in 1 Gift Set - G4 618",
-    price: 316.0,
-    printingCharge: "15",
-    packingCharge: "10",
+    price: 420.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4618.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4618_2.jpg",
@@ -82,9 +82,9 @@ const corporateGifts = [
   {
     _id: "cg4",
     name: "4 in 1 Gift Set - G4 619",
-    price: 288.0,
-    printingCharge: "12",
-    packingCharge: "8",
+    price: 390.0,
+    printingCharge: "20",
+    packingCharge: "",
     image: "./CorporateGifts/G4619.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4619_2.jpg",
@@ -108,9 +108,9 @@ const corporateGifts = [
   {
     _id: "cg5",
     name: "4 in 1 Gift Set - G4 645",
-    price: 281.0,
-    printingCharge: "12",
-    packingCharge: "8",
+    price: 390.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4645.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4645_2.jpg",
@@ -134,9 +134,9 @@ const corporateGifts = [
   {
     _id: "cg6",
     name: "4 in 1 Gift Set - G4 646",
-    price: 312.0,
-    printingCharge: "15",
-    packingCharge: "10",
+    price: 420.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4646.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4646_2.jpg",
@@ -160,9 +160,9 @@ const corporateGifts = [
   {
     _id: "cg7",
     name: "4 in 1 Gift Set - G4 657",
-    price: 350.0,
-    printingCharge: "18",
-    packingCharge: "12",
+    price: 450.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4657.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4657_2.jpg",
@@ -186,8 +186,8 @@ const corporateGifts = [
   {
     _id: "cg8",
     name: "4 in 1 Gift Set - G4 669",
-    price: 270.0,
-    printingCharge: "12",
+    price: 380.0,
+    printingCharge: "20",
     packingCharge: "8",
     image: "./CorporateGifts/G4669.jpeg",
     additionalImages: [
@@ -212,9 +212,9 @@ const corporateGifts = [
   {
     _id: "cg9",
     name: "4 in 1 Gift Set - G4 675",
-    price: 285.0,
-    printingCharge: "12",
-    packingCharge: "8",
+    price: 390.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4675.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4675_2.jpg",
@@ -238,9 +238,9 @@ const corporateGifts = [
   {
     _id: "cg10",
     name: "4 in 1 Gift Set - G4 677 Cork",
-    price: 264.0,
-    printingCharge: "12",
-    packingCharge: "8",
+    price: 375.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4677.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4677C_2.jpg",
@@ -264,9 +264,9 @@ const corporateGifts = [
   {
     _id: "cg11",
     name: "4 in 1 Gift Set - G4 677 Grey",
-    price: 307.0,
-    printingCharge: "15",
-    packingCharge: "10",
+    price: 410.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4677-2.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4677G_2.jpg",
@@ -342,9 +342,9 @@ const corporateGifts = [
   {
     _id: "cg14",
     name: "4 in 1 Gift Set - G4 699",
-    price: 327.0,
-    printingCharge: "15",
-    packingCharge: "10",
+    price: 425.0,
+    printingCharge: "20",
+    packingCharge: "0",
     image: "./CorporateGifts/G4699.jpeg",
     additionalImages: [
       // "./CorporateGifts/G4699_2.jpg",
@@ -370,9 +370,9 @@ const corporateGifts = [
   {
     _id: "cg15",
     name: "3 in 1 Gift Set - G3 679",
-    price: 192.0,
-    printingCharge: "10",
-    packingCharge: "6",
+    price: 275.0,
+    printingCharge: "15",
+    packingCharge: "0",
     image: "./CorporateGifts/G3679.jpeg",
     additionalImages: [
       // "./CorporateGifts/G3679_2.jpg",
@@ -396,9 +396,9 @@ const corporateGifts = [
   {
     _id: "cg16",
     name: "3 in 1 Gift Set - G3 672",
-    price: 168.0,
-    printingCharge: "10",
-    packingCharge: "6",
+    price: 250.0,
+    printingCharge: "15",
+    packingCharge: "0",
     image: "./CorporateGifts/G3672.jpeg",
     additionalImages: [
       // "./CorporateGifts/G3672_2.jpg",
@@ -422,9 +422,9 @@ const corporateGifts = [
   {
     _id: "cg17",
     name: "3 in 1 Gift Set - G3 661",
-    price: 169.0,
-    printingCharge: "10",
-    packingCharge: "6",
+    price: 250.0,
+    printingCharge: "15",
+    packingCharge: "0",
     image: "./CorporateGifts/G3661.jpeg",
     additionalImages: [
       // "./CorporateGifts/G3661_2.jpg",
@@ -448,9 +448,9 @@ const corporateGifts = [
   {
     _id: "cg18",
     name: "3 in 1 Gift Set - G3 636",
-    price: 200.0,
-    printingCharge: "12",
-    packingCharge: "8",
+    price: 280.0,
+    printingCharge: "15",
+    packingCharge: "0",
     image: "./CorporateGifts/G3636.jpeg",
     additionalImages: [
       // "./CorporateGifts/G3636_2.jpg",
@@ -474,9 +474,9 @@ const corporateGifts = [
   {
     _id: "cg19",
     name: "3 in 1 Gift Set - G3 469",
-    price: 213.0,
-    printingCharge: "12",
-    packingCharge: "8",
+    price: 300.0,
+    printingCharge: "15",
+    packingCharge: "0",
     image: "./CorporateGifts/G3469.jpeg",
     additionalImages: [
       // "./CorporateGifts/G3469_2.jpg",
@@ -528,9 +528,9 @@ const corporateGifts = [
   {
     _id: "cg21",
     name: "2 in 1 Gift Set - G2 618",
-    price: 186.0,
-    printingCharge: "8",
-    packingCharge: "5",
+    price: 235.0,
+    printingCharge: "10",
+    packingCharge: "0",
     image: "./CorporateGifts/G2618.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2618_2.jpg",
@@ -554,9 +554,9 @@ const corporateGifts = [
   {
     _id: "cg22",
     name: "2 in 1 Gift Set - G2 622",
-    price: 120.0,
-    printingCharge: "8",
-    packingCharge: "5",
+    price: 180.0,
+    printingCharge: "15",
+    packingCharge: "0",
     image: "./CorporateGifts/G2622.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2622_2.jpg",
@@ -580,9 +580,9 @@ const corporateGifts = [
   {
     _id: "cg23",
     name: "2 in 1 Gift Set - G2 643",
-    price: 179.0,
+    price: 230.0,
     printingCharge: "10",
-    packingCharge: "6",
+    packingCharge: "0",
     image: "./CorporateGifts/G2643.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2643_2.jpg",
@@ -606,9 +606,9 @@ const corporateGifts = [
   {
     _id: "cg24",
     name: "2 in 1 Gift Set - G2 646 Red",
-    price: 178.0,
+    price: 230.0,
     printingCharge: "10",
-    packingCharge: "6",
+    packingCharge: "0",
     image: "./CorporateGifts/G2646.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2646R_2.jpg",
@@ -632,9 +632,9 @@ const corporateGifts = [
   {
     _id: "cg25",
     name: "2 in 1 Gift Set - G2 646 Blue",
-    price: 177.0,
+    price: 230.0,
     printingCharge: "10",
-    packingCharge: "6",
+    packingCharge: "0",
     image: "./CorporateGifts/G2646-2.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2646B_2.jpg",
@@ -658,9 +658,9 @@ const corporateGifts = [
   {
     _id: "cg26",
     name: "2 in 1 Gift Set - G2 651",
-    price: 178.0,
+    price: 225.0,
     printingCharge: "10",
-    packingCharge: "6",
+    packingCharge: "0",
     image: "./CorporateGifts/G2651.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2651_2.jpg",
@@ -684,9 +684,9 @@ const corporateGifts = [
   {
     _id: "cg27",
     name: "2 in 1 Gift Set - G2 652",
-    price: 222.0,
-    printingCharge: "12",
-    packingCharge: "8",
+    price: 280.0,
+    printingCharge: "10",
+    packingCharge: "0",
     image: "./CorporateGifts/G2652.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2652_2.jpg",
@@ -710,9 +710,9 @@ const corporateGifts = [
   {
     _id: "cg28",
     name: "2 in 1 Gift Set - G2 669",
-    price: 157.0,
-    printingCharge: "8",
-    packingCharge: "5",
+    price: 210.0,
+    printingCharge: "10",
+    packingCharge: "0",
     image: "./CorporateGifts/G2669.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2669_2.jpg",
@@ -736,9 +736,9 @@ const corporateGifts = [
   {
     _id: "cg29",
     name: "2 in 1 Gift Set - G2 675 Blue",
-    price: 172.0,
-    printingCharge: "8",
-    packingCharge: "5",
+    price: 220.0,
+    printingCharge: "10",
+    packingCharge: "0",
     image: "./CorporateGifts/G2675.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2675_2.jpg",
@@ -762,9 +762,9 @@ const corporateGifts = [
   {
     _id: "cg30",
     name: "2 in 1 Gift Set - G2 695 Blue",
-    price: 167.0,
-    printingCharge: "8",
-    packingCharge: "5",
+    price: 220.0,
+    printingCharge: "10",
+    packingCharge: "0",
     image: "./CorporateGifts/G2695.jpeg",
     additionalImages: [
       // "./CorporateGifts/G2695_2.jpg",

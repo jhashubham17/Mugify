@@ -18,6 +18,7 @@ import {
   Coffee,
   Info,
   Box,
+  Percent,
 } from "lucide-react";
 import allProducts from "../data/AllProducts";
 
@@ -37,6 +38,38 @@ const ProductDetails = () => {
     const foundProduct = allProducts.find((p) => p._id === id);
     setProduct(foundProduct || null);
   }, [id]);
+
+  // GST Rates mapping
+  const getGSTRate = (category) => {
+    const categoryLower = category?.toLowerCase() || "";
+
+    if (categoryLower.includes("mug")) {
+      return 5; // Mugs have 5% GST
+    }
+
+    // All other categories have 18% GST
+    const eighteenPercentCategories = [
+      "bottle",
+      "cooperative gift",
+      "pen",
+      "tshirt",
+      "eco friendly",
+      "table calender",
+      "calendar",
+      "coaster",
+      "paper weight",
+      "paperweight",
+    ];
+
+    for (const cat of eighteenPercentCategories) {
+      if (categoryLower.includes(cat)) {
+        return 18;
+      }
+    }
+
+    // Default GST rate if category not matched
+    return 18;
+  };
 
   const getImagePath = (imagePath) => {
     if (!imagePath) return "/placeholder-image.jpg";
@@ -66,22 +99,26 @@ const ProductDetails = () => {
     // Get charges from product data
     const printingCharge = parseInt(product.printingCharge || "0");
     const packagingCharge = parseInt(product.packingCharge || "0");
-    const totalWithCharges =
-      (product.price + printingCharge + packagingCharge) * quantity;
+    const gstRate = getGSTRate(product.category);
+
+    const basePricePerUnit = product.price + printingCharge + packagingCharge;
+    const gstAmountPerUnit = (basePricePerUnit * gstRate) / 100;
+    const totalPerUnitWithGST = basePricePerUnit + gstAmountPerUnit;
+    const totalAmount = totalPerUnitWithGST * quantity;
 
     const message = encodeURIComponent(
       `🛍️ *NEW PRODUCT ENQUIRY*\n\n` +
         `*Product:* ${product.name}\n` +
+        `*Category:* ${product.category}\n` +
         `*Quantity:* ${quantity} units\n` +
         `*Base Price:* ₹${product.price} per unit\n` +
         `*Printing Charge:* ₹${printingCharge} per unit\n` +
         `*Packaging Charge:* ₹${packagingCharge} per unit\n` +
-        `*Total Price per unit:* ₹${
-          product.price + printingCharge + packagingCharge
-        }\n` +
-        `*Total Amount:* ₹${totalWithCharges}\n` +
+        `*GST (${gstRate}%):* ₹${gstAmountPerUnit.toFixed(2)} per unit\n` +
+        `*Total Price per unit (with GST):* ₹${totalPerUnitWithGST.toFixed(2)}\n` +
+        `*Total Amount:* ₹${totalAmount.toFixed(2)}\n` +
         `*Mobile:* ${mobileNumber}\n\n` +
-        `Please contact me for this bulk order.`
+        `Please contact me for this bulk order.`,
     );
     const whatsappUrl = `https://wa.me/919060917383?text=${message}`;
 
@@ -118,6 +155,7 @@ const ProductDetails = () => {
 
   const specificationItems = [
     { icon: Tag, label: "SKU", value: product.sku },
+    { icon: Tag, label: "Category", value: product.category },
     { icon: Scale, label: "Weight", value: product.weight },
     { icon: Ruler, label: "Size", value: product.size },
     { icon: Package, label: "Material", value: product.material },
@@ -128,10 +166,14 @@ const ProductDetails = () => {
     { icon: Palette, label: "Color/Finish", value: product.paint },
   ].filter((item) => item.value);
 
-  // Get charges from product data
+  // Get charges and GST
   const printingCharge = parseInt(product.printingCharge || "0");
   const packagingCharge = parseInt(product.packingCharge || "0");
-  const totalPerUnit = product.price + printingCharge + packagingCharge;
+  const gstRate = getGSTRate(product.category);
+
+  const basePricePerUnit = product.price + printingCharge + packagingCharge;
+  const gstAmountPerUnit = (basePricePerUnit * gstRate) / 100;
+  const totalPerUnitWithGST = basePricePerUnit + gstAmountPerUnit;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -152,7 +194,7 @@ const ProductDetails = () => {
       </AnimatePresence>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Breadcrumb - Made more subtle */}
+        {/* Breadcrumb */}
         <nav className="mb-6">
           <ol className="flex items-center space-x-2 text-sm">
             <li>
@@ -180,7 +222,7 @@ const ProductDetails = () => {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-          {/* Product Images - Made more compact */}
+          {/* Product Images */}
           <div className="space-y-4">
             <div className="bg-white rounded-xl shadow-lg p-4 border border-gray-100">
               <div
@@ -231,16 +273,21 @@ const ProductDetails = () => {
             )}
           </div>
 
-          {/* Product Details - Better spacing */}
+          {/* Product Details */}
           <div className="space-y-6">
-            {/* Header with subtle divider */}
             <div className="pb-4 border-b border-gray-100">
               <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                 {product.name}
               </h1>
+              {product.category && (
+                <div className="inline-flex items-center gap-1.5 mt-1 px-2.5 py-0.5 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">
+                  <Tag className="w-3 h-3" />
+                  {product.category}
+                </div>
+              )}
             </div>
 
-            {/* Price Section - More compact design */}
+            {/* Price Section with GST */}
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-5 border border-blue-200">
               <div className="mb-3">
                 <p className="text-xs text-gray-600 mb-1">Base Product Price</p>
@@ -267,37 +314,39 @@ const ProductDetails = () => {
                   </div>
                   <span className="font-medium">+ ₹{packagingCharge}</span>
                 </div>
+                <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center gap-2">
+                    <Percent className="w-3.5 h-3.5 text-red-500" />
+                    <span className="text-gray-700">GST ({gstRate}%)</span>
+                  </div>
+                  <span className="font-medium text-red-600">
+                    + ₹{gstAmountPerUnit.toFixed(2)}
+                  </span>
+                </div>
               </div>
 
               <div className="border-t border-blue-200 pt-3">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-gray-900">
-                    Total per unit
+                    Total per unit (with GST)
                   </span>
                   <span className="text-xl font-bold text-blue-700">
-                    ₹{totalPerUnit}
+                    ₹{totalPerUnitWithGST.toFixed(2)}
                   </span>
                 </div>
               </div>
 
-              {printingCharge > 0 || packagingCharge > 0 ? (
-                <div className="flex items-start gap-1.5 mt-3 pt-3 border-t border-blue-200">
-                  <Info className="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-xs text-blue-700">
-                    Printing and packaging charges apply per unit
-                  </p>
-                </div>
-              ) : (
-                <div className="flex items-start gap-1.5 mt-3 pt-3 border-t border-blue-200">
-                  <Info className="w-3.5 h-3.5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <p className="text-xs text-green-700">
-                    Printing and packaging included in base price
-                  </p>
-                </div>
-              )}
+              <div className="flex items-start gap-1.5 mt-3 pt-3 border-t border-blue-200">
+                <Info className="w-3.5 h-3.5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <p className="text-xs text-blue-700">
+                  {gstRate === 5
+                    ? "Mugs qualify for 5% GST as per government regulations"
+                    : `${gstRate}% GST applicable as per product category`}
+                </p>
+              </div>
             </div>
 
-            {/* Quantity Selector - More elegant */}
+            {/* Quantity Selector */}
             <div className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
               <div className="mb-3">
                 <p className="font-semibold text-gray-900">Select Quantity</p>
@@ -326,9 +375,18 @@ const ProductDetails = () => {
                 </button>
                 <span className="ml-3 text-gray-600 text-sm">units</span>
               </div>
+              <div className="mt-3 text-sm text-gray-700">
+                <p>Total Amount for {quantity} units:</p>
+                <p className="text-lg font-bold text-green-700">
+                  ₹{(totalPerUnitWithGST * quantity).toFixed(2)}
+                </p>
+                <p className="text-xs text-gray-500">
+                  (Inclusive of all taxes and charges)
+                </p>
+              </div>
             </div>
 
-            {/* Tabs - Cleaner design */}
+            {/* Tabs */}
             <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
               <div className="flex">
                 {tabs.map((tab) => {
@@ -391,7 +449,7 @@ const ProductDetails = () => {
                             </div>
                           </div>
                         ))}
-                        {/* Add printing and packaging charges to specifications */}
+                        {/* Add charges and GST to specifications */}
                         {printingCharge > 0 && (
                           <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                             <div className="w-8 h-8 rounded-md bg-purple-100 flex items-center justify-center">
@@ -422,6 +480,19 @@ const ProductDetails = () => {
                             </div>
                           </div>
                         )}
+                        <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                          <div className="w-8 h-8 rounded-md bg-red-100 flex items-center justify-center">
+                            <Percent className="w-4 h-4 text-red-600" />
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-xs text-gray-500 truncate">
+                              GST Rate
+                            </p>
+                            <p className="font-medium text-gray-900 truncate">
+                              {gstRate}% (Included in price)
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -448,7 +519,7 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            {/* Benefits - More compact */}
+            {/* Benefits */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <div className="bg-white p-3 rounded-lg border border-gray-100 text-center">
                 <Truck className="w-6 h-6 text-blue-500 mx-auto mb-1" />
@@ -474,15 +545,15 @@ const ProductDetails = () => {
                 </p>
               </div>
               <div className="bg-white p-3 rounded-lg border border-gray-100 text-center">
-                <MessageCircle className="w-6 h-6 text-orange-500 mx-auto mb-1" />
+                <Percent className="w-6 h-6 text-red-500 mx-auto mb-1" />
                 <p className="text-xs font-semibold text-gray-900">
-                  24/7 Support
+                  GST Inclusive
                 </p>
-                <p className="text-[10px] text-gray-500">Call 9060917383</p>
+                <p className="text-[10px] text-gray-500">{gstRate}% Applied</p>
               </div>
             </div>
 
-            {/* CTA Buttons - Better spacing */}
+            {/* CTA Buttons */}
             <div className="space-y-3">
               <motion.button
                 onClick={handleOpenModal}
@@ -506,7 +577,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      {/* Enquiry Modal - Cleaner design */}
+      {/* Enquiry Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -539,6 +610,9 @@ const ProductDetails = () => {
                 <div className="bg-gray-50 rounded-lg p-3">
                   <p className="text-xs text-gray-500">Product</p>
                   <p className="font-medium text-gray-900">{product.name}</p>
+                  <p className="text-xs text-blue-600 mt-1">
+                    Category: {product.category} ({gstRate}% GST)
+                  </p>
                 </div>
 
                 <div className="space-y-2">
@@ -554,17 +628,26 @@ const ProductDetails = () => {
                     <span className="text-gray-600">Packaging</span>
                     <span className="font-medium">+ ₹{packagingCharge}</span>
                   </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">GST ({gstRate}%)</span>
+                    <span className="font-medium text-red-600">
+                      + ₹{gstAmountPerUnit.toFixed(2)}
+                    </span>
+                  </div>
                   <div className="border-t pt-2">
                     <div className="flex justify-between font-medium">
                       <span>Total per unit</span>
-                      <span>₹{totalPerUnit}</span>
+                      <span>₹{totalPerUnitWithGST.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-sm mt-1">
                       <span className="text-gray-600">{quantity} units</span>
                       <span className="font-bold text-green-700">
-                        ₹{totalPerUnit * quantity}
+                        ₹{(totalPerUnitWithGST * quantity).toFixed(2)}
                       </span>
                     </div>
+                    <p className="text-xs text-gray-500 mt-1 text-right">
+                      (All prices include GST)
+                    </p>
                   </div>
                 </div>
 
