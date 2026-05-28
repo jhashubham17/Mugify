@@ -1,72 +1,11 @@
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import Banner from "../components/Banner";
+import ProductCategories from "../components/ProductCategories";
 import { motion } from "framer-motion";
+import CustomerReviews from "../components/CustomerReviews";
 
 const Home = () => {
-  const categories = [
-    {
-      name: "Mugs",
-      slug: "mug",
-      icon: "☕",
-      color: "from-amber-400 to-orange-500",
-    },
-    {
-      name: "Bottles",
-      slug: "bottle",
-      icon: "🍶",
-      color: "from-blue-400 to-cyan-500",
-    },
-    {
-      name: "T-Shirts",
-      slug: "t-shirt",
-      icon: "👕",
-      color: "from-purple-400 to-pink-500",
-    },
-    {
-      name: "Metal Pens",
-      slug: "metal-pen",
-      icon: "✒️",
-      color: "from-gray-400 to-gray-600",
-    },
-    {
-      name: "Plastic Pens",
-      slug: "plastic-pen",
-      icon: "🖊️",
-      color: "from-green-400 to-emerald-500",
-    },
-    {
-      name: "Corporate Gifts",
-      slug: "corporate-gift",
-      icon: "🎁",
-      color: "from-indigo-400 to-purple-500",
-    },
-    // नए 4 categories जोड़े गए
-    {
-      name: "Eco Friendly",
-      slug: "eco-friendly",
-      icon: "🌿",
-      color: "from-green-500 to-emerald-600",
-    },
-    {
-      name: "Table Calender",
-      slug: "table-calendar",
-      icon: "📅",
-      color: "from-red-400 to-pink-500",
-    },
-    {
-      name: "Coaster",
-      slug: "coaster",
-      icon: "🥤",
-      color: "from-yellow-400 to-amber-500",
-    },
-    {
-      name: "Paper Weight",
-      slug: "paper-weight",
-      icon: "📎",
-      color: "from-teal-400 to-blue-500",
-    },
-  ];
-
   const printingMethods = [
     {
       name: "Heat Transfer Printing",
@@ -106,231 +45,11 @@ const Home = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.1,
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
-      },
-    },
-  };
-
-  const cardHover = {
-    scale: 1.05,
-    y: -5,
-    transition: {
-      type: "spring",
-      damping: 15,
-      stiffness: 200,
-    },
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
-        <div className="container mx-auto px-6 py-16 relative">
-          <div className="text-center max-w-4xl mx-auto">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent mb-6"
-            >
-              Our Customized Products
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl text-gray-600 mb-8 leading-relaxed"
-            >
-              Discover our premium collection of customizable products. From
-              everyday essentials like pens and mugs to eco-friendly items and
-              unique gifts, we have everything you need to express your
-              creativity.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap justify-center gap-4 text-sm text-gray-500"
-            >
-              <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                Premium Quality
-              </span>
-              <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                Custom Printing
-              </span>
-              <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                Eco Friendly
-              </span>
-              <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                Fast Delivery
-              </span>
-              <span className="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
-                Bulk Orders
-              </span>
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Categories Grid */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="container mx-auto px-6 pb-16"
-      >
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-center text-gray-800 mb-12 pt-8"
-        >
-          Product Categories
-        </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.slug}
-              variants={cardVariants}
-              whileHover={cardHover}
-              className="group"
-            >
-              <div className="relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-full">
-                {/* Gradient Background */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-                ></div>
-
-                {/* Eco Friendly Badge */}
-                {category.slug === "eco-friendly" && (
-                  <div className="absolute top-3 left-3 z-10">
-                    <div className="bg-emerald-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                      <span className="text-xs">🌿</span>
-                      <span>Eco</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className="relative p-6 text-center h-full flex flex-col">
-                  {/* Icon */}
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="text-4xl mb-4 filter drop-shadow-sm"
-                  >
-                    {category.icon}
-                  </motion.div>
-
-                  {/* Category Name */}
-                  <h3 className="text-lg font-bold text-gray-800 mb-4 group-hover:text-gray-900 transition-colors flex-grow">
-                    {category.name}
-                  </h3>
-
-                  {/* Description for specific categories */}
-                  {category.slug === "metal-pen" && (
-                    <p className="text-sm text-gray-500 mb-3">
-                      Premium metal body pens with laser engraving
-                    </p>
-                  )}
-                  {category.slug === "plastic-pen" && (
-                    <p className="text-sm text-gray-500 mb-3">
-                      Cost-effective plastic pens with vibrant printing
-                    </p>
-                  )}
-                  {category.slug === "eco-friendly" && (
-                    <p className="text-sm text-gray-500 mb-3">
-                      Sustainable and environmentally friendly products
-                    </p>
-                  )}
-                  {category.slug === "table-calendar" && (
-                    <p className="text-sm text-gray-500 mb-3">
-                      Custom calendars for offices and promotional gifts
-                    </p>
-                  )}
-                  {category.slug === "coaster" && (
-                    <p className="text-sm text-gray-500 mb-3">
-                      Drink coasters for home and office use
-                    </p>
-                  )}
-                  {category.slug === "paper-weight" && (
-                    <p className="text-sm text-gray-500 mb-3">
-                      Decorative and functional desk accessories
-                    </p>
-                  )}
-
-                  {/* Button */}
-                  <Link
-                    to={`/products?category=${category.slug}`}
-                    className="w-full"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Button
-                        className={`w-full bg-gradient-to-r ${category.color} hover:shadow-lg text-white font-semibold py-3 px-6 rounded-xl border-0 transition-all duration-300 transform hover:-translate-y-0.5`}
-                      >
-                        <span className="flex items-center justify-center gap-2">
-                          View Products
-                          <motion.span
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{
-                              duration: 1.5,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            →
-                          </motion.span>
-                        </span>
-                      </Button>
-                    </motion.div>
-                  </Link>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/20 to-transparent rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-500"></div>
-                <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-white/10 to-transparent rounded-full translate-y-8 -translate-x-8 group-hover:scale-125 transition-transform duration-500"></div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+      <Banner />
+      <ProductCategories />
 
       {/* Printing Methods Section */}
       <motion.div
@@ -380,6 +99,8 @@ const Home = () => {
           </div>
         </div>
       </motion.div>
+
+      <CustomerReviews />
 
       {/* Bottom CTA Section */}
       <motion.div

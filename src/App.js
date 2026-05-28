@@ -9,6 +9,7 @@ import ProductDetails from "./pages/ProductDetails";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
+import CustomerReviews from "./components/CustomerReviews";
 
 // ScrollToTop component - हर route change पर scroll को top पर ले जाएगा
 const ScrollToTop = () => {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </main>
