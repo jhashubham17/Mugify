@@ -6,7 +6,7 @@ const BalloonCategories = () => {
   const balloonCategories = [
     {
       id: 1,
-      name: "Sunset Glow Balloon",
+      name: "Balloon",
       image: "MainMugImage/Ballons.jpeg",
       badge: "Best Seller",
       color: "Amber & Coral",
