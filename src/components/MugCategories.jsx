@@ -15,9 +15,8 @@ const MugCategories = () => {
   const mugCategories = [
     {
       id: 1,
-      name: "White Classic Mug",
-      image:
-        "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=400&h=400&fit=crop",
+      name: "White Mug",
+      image: "./MainMugImage/WhiteMug.jpeg",
       badge: "Best Seller",
       color: "White",
       description: "Pure white ceramic mug perfect for any design",
@@ -25,9 +24,8 @@ const MugCategories = () => {
     },
     {
       id: 2,
-      name: "Black Elegant Mug",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed2f7a12b?w=400&h=400&fit=crop",
+      name: "Patch Mug",
+      image: "./MainMugImage/PatchMug.jpeg",
       badge: "Premium",
       color: "Black",
       description: "Sleek black mug for bold and vibrant prints",
@@ -36,8 +34,7 @@ const MugCategories = () => {
     {
       id: 3,
       name: "Inside Color Mug",
-      image:
-        "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=400&h=400&fit=crop",
+      image: "./MainMugImage/InsideColourMug.jpeg",
       badge: "Trending",
       color: "Multicolor",
       description: "Surprise color inside — makes every sip special",
@@ -48,8 +45,7 @@ const MugCategories = () => {
       name: "Coral Mug",
       price: "$15.99",
       oldPrice: "$20.99",
-      image:
-        "https://images.unsplash.com/photo-1517256064527-09ff73f86c4b?w=400&h=400&fit=crop",
+      image: "./MainMugImage/CoralMug.jpeg",
       badge: "New Arrival",
       color: "Coral",
       description: "Beautiful coral shade for summer vibes",
@@ -57,29 +53,36 @@ const MugCategories = () => {
     },
     {
       id: 5,
+      name: "Full Colour Mug",
+      image: "./MainMugImage/FullColourMug.jpeg",
+      badge: "Color Mug",
+      color: "Colour Mug",
+      description:
+        "Beautiful Full Color Mug Same Colour shade for summer vibes",
+      accent: "#818cf8",
+    },
+    {
+      id: 6,
       name: "Heart Handle Mug",
-      image:
-        "https://images.unsplash.com/photo-1520962880247-cfaf541c8724?w=400&h=400&fit=crop",
+      image: "./MainMugImage/HeartHandleMug.jpeg",
       badge: "Romantic",
       color: "Heart Shape",
       description: "Unique heart-shaped handle for loved ones",
       accent: "#f43f5e",
     },
     {
-      id: 6,
+      id: 7,
       name: "Aqua Mug",
-      image:
-        "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=400&fit=crop",
+      image: "./MainMugImage/AcquaMug.jpeg",
       badge: "Limited Edition",
       color: "Aqua Blue",
       description: "Beautiful aqua blue ceramic mug",
       accent: "#22d3ee",
     },
     {
-      id: 7,
+      id: 8,
       name: "Magic Mug",
-      image:
-        "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=400&h=400&fit=crop",
+      image: "./MainMugImage/MagicMug.jpeg",
       badge: "Magic Effect",
       color: "Color Changing",
       description: "Heat sensitive magic mug — reveals design when hot",
@@ -301,25 +304,31 @@ const MugCategories = () => {
 
         .pc-card-img-wrap {
           position: relative;
-          height: 220px;
+          height: 260px;
           overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+          padding: 16px;
         }
 
         .pc-card-img-wrap img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           transition: transform 0.6s ease;
         }
 
         .pc-card:hover .pc-card-img-wrap img {
-          transform: scale(1.08);
+          transform: scale(1.05);
         }
 
         .pc-card-img-overlay {
           position: absolute;
           inset: 0;
           background: linear-gradient(180deg, transparent 40%, rgba(19,19,31,0.95) 100%);
+          pointer-events: none;
         }
 
         .pc-badge {
@@ -336,6 +345,7 @@ const MugCategories = () => {
           background: rgba(255,255,255,0.12);
           backdrop-filter: blur(8px);
           border: 1px solid rgba(255,255,255,0.2);
+          z-index: 2;
         }
 
         .pc-color-dot {
@@ -344,11 +354,12 @@ const MugCategories = () => {
           right: 14px;
           font-size: 10px;
           font-weight: 500;
-          color: rgba(255,255,255,0.7);
+          color: rgba(255,255,255,0.9);
           padding: 5px 10px;
           border-radius: 30px;
-          background: rgba(0,0,0,0.4);
+          background: rgba(0,0,0,0.5);
           backdrop-filter: blur(8px);
+          z-index: 2;
         }
 
         .pc-card-body {
