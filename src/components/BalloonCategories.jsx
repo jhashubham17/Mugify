@@ -19,48 +19,35 @@ const BalloonCategories = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fredoka+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
 
         .balloon-section {
-          font-family: 'Quicksand', sans-serif;
-          background: linear-gradient(145deg, #f0f7ff 0%, #ffe6f0 100%);
+          font-family: 'DM Sans', sans-serif;
+          background: #0a0a0f;
           padding: 80px 0 100px;
           overflow: hidden;
           position: relative;
         }
 
         .balloon-section::before {
-          content: '🎈';
+          content: '';
           position: absolute;
-          top: 20px;
-          left: 10%;
-          font-size: 60px;
-          opacity: 0.1;
-          animation: floatAround 20s infinite ease-in-out;
-        }
-
-        .balloon-section::after {
-          content: '🎈';
-          position: absolute;
-          bottom: 20px;
-          right: 10%;
-          font-size: 80px;
-          opacity: 0.08;
-          animation: floatAround 25s infinite reverse ease-in-out;
-        }
-
-        @keyframes floatAround {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-30px) rotate(5deg); }
+          top: -200px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 800px;
+          height: 800px;
+          background: radial-gradient(ellipse, rgba(139,92,246,0.12) 0%, transparent 70%);
+          pointer-events: none;
         }
 
         .balloon-label {
-          font-family: 'Quicksand', sans-serif;
-          font-size: 12px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
           font-weight: 600;
-          letter-spacing: 4px;
+          letter-spacing: 3px;
           text-transform: uppercase;
-          color: #ec4899;
+          color: #7c3aed;
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -69,142 +56,156 @@ const BalloonCategories = () => {
 
         .balloon-label::before,
         .balloon-label::after {
-          content: '🎈';
-          font-size: 14px;
-          letter-spacing: 0;
+          content: '';
+          display: block;
+          width: 28px;
+          height: 1px;
+          background: #7c3aed;
         }
 
         .balloon-title {
-          font-family: 'Fredoka One', cursive;
+          font-family: 'Playfair Display', serif;
           font-size: clamp(2rem, 5vw, 3.5rem);
-          font-weight: 400;
-          color: #1e1b4b;
-          line-height: 1.2;
+          font-weight: 700;
+          color: #f8f8fc;
+          line-height: 1.15;
           margin-bottom: 16px;
-          letter-spacing: -0.01em;
+          letter-spacing: -0.02em;
         }
 
         .balloon-title span {
-          background: linear-gradient(135deg, #ec4899 0%, #f97316 50%, #eab308 100%);
+          font-style: italic;
+          background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
         .balloon-subtitle {
-          font-size: 16px;
-          font-weight: 400;
-          color: #6b7280;
-          max-width: 500px;
+          font-size: 15px;
+          font-weight: 300;
+          color: #6b6b80;
+          max-width: 420px;
           margin: 0 auto;
-          line-height: 1.6;
+          line-height: 1.7;
         }
 
         .balloon-card {
           width: 320px;
-          background: white;
-          border-radius: 28px;
+          background: #13131f;
+          border: 1px solid rgba(255,255,255,0.06);
+          border-radius: 20px;
           overflow: hidden;
           position: relative;
           transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
           cursor: pointer;
           margin: 0 auto;
         }
 
         .balloon-card:hover {
-          transform: translateY(-12px);
-          box-shadow: 0 25px 50px -12px rgba(236,72,153,0.25);
+          transform: translateY(-10px);
+          border-color: rgba(167,139,250,0.25);
+          box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(124,58,237,0.08);
         }
 
         .balloon-img-wrap {
           position: relative;
           height: 280px;
           overflow: hidden;
-          background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+          padding: 16px;
         }
 
         .balloon-img-wrap img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s ease;
+          object-fit: contain;
+          transition: transform 0.6s ease;
         }
 
         .balloon-card:hover .balloon-img-wrap img {
-          transform: scale(1.08);
+          transform: scale(1.05);
         }
 
         .balloon-img-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 30% 40%, transparent 40%, rgba(0,0,0,0.1) 100%);
+          background: linear-gradient(180deg, transparent 40%, rgba(19,19,31,0.95) 100%);
           pointer-events: none;
         }
 
         .balloon-badge {
           position: absolute;
-          top: 16px;
-          left: 16px;
+          top: 14px;
+          left: 14px;
           font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.5px;
+          font-weight: 600;
+          letter-spacing: 1px;
           text-transform: uppercase;
           color: #fff;
-          padding: 5px 12px;
+          padding: 5px 10px;
           border-radius: 30px;
-          background: linear-gradient(135deg, #ec4899, #f97316);
-          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+          background: rgba(255,255,255,0.12);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255,255,255,0.2);
+          z-index: 2;
         }
 
         .balloon-color-dot {
           position: absolute;
-          top: 16px;
-          right: 16px;
+          top: 14px;
+          right: 14px;
           font-size: 10px;
-          font-weight: 600;
-          color: #374151;
-          padding: 5px 12px;
+          font-weight: 500;
+          color: rgba(255,255,255,0.9);
+          padding: 5px 10px;
           border-radius: 30px;
-          background: rgba(255,255,255,0.9);
-          backdrop-filter: blur(4px);
-          box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+          background: rgba(0,0,0,0.5);
+          backdrop-filter: blur(8px);
+          z-index: 2;
         }
 
         .balloon-card-body {
-          padding: 20px 18px 22px;
+          padding: 18px 20px 22px;
         }
 
         .balloon-card-name {
-          font-family: 'Fredoka One', cursive;
-          font-size: 20px;
-          font-weight: 400;
-          color: #1f2937;
-          margin-bottom: 8px;
+          font-family: 'Playfair Display', serif;
+          font-size: 18px;
+          font-weight: 600;
+          color: #f0f0fa;
+          margin-bottom: 6px;
           line-height: 1.3;
           text-align: center;
         }
 
         .balloon-card-desc {
-          font-size: 13px;
-          font-weight: 400;
-          color: #6b7280;
-          line-height: 1.55;
-          margin-bottom: 20px;
+          font-size: 12.5px;
+          font-weight: 300;
+          color: #5a5a70;
+          line-height: 1.6;
+          margin-bottom: 14px;
           text-align: center;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         .balloon-view-btn {
           display: block;
           width: 100%;
-          padding: 12px 0;
-          border-radius: 40px;
-          background: linear-gradient(135deg, #fdf2f8 0%, #fef9c3 100%);
-          border: none;
-          color: #ec4899;
-          font-family: 'Quicksand', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
+          padding: 11px 0;
+          border-radius: 12px;
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08);
+          color: #c4c4d8;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 500;
           text-align: center;
           cursor: pointer;
           transition: all 0.25s ease;
@@ -212,9 +213,9 @@ const BalloonCategories = () => {
         }
 
         .balloon-view-btn:hover {
-          background: linear-gradient(135deg, #ec4899, #f97316);
-          color: white;
-          transform: scale(0.98);
+          background: rgba(124,58,237,0.15);
+          border-color: rgba(124,58,237,0.4);
+          color: #c4b5fd;
         }
 
         .balloon-card-accent {
@@ -222,8 +223,8 @@ const BalloonCategories = () => {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #ec4899, #f97316, #eab308);
+          height: 2px;
+          background: linear-gradient(90deg, #7c3aed, #ec4899);
           transform: scaleX(0);
           transform-origin: left;
           transition: transform 0.4s ease;
@@ -231,32 +232,6 @@ const BalloonCategories = () => {
 
         .balloon-card:hover .balloon-card-accent {
           transform: scaleX(1);
-        }
-
-        .floating-balloon-1 {
-          position: absolute;
-          bottom: -50px;
-          left: 5%;
-          font-size: 40px;
-          opacity: 0.15;
-          animation: floatUp 18s infinite ease-in-out;
-          pointer-events: none;
-        }
-
-        .floating-balloon-2 {
-          position: absolute;
-          top: -30px;
-          right: 8%;
-          font-size: 55px;
-          opacity: 0.1;
-          animation: floatUp 22s infinite reverse ease-in-out;
-          pointer-events: none;
-        }
-
-        @keyframes floatUp {
-          0% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
-          50% { transform: translateY(-40px) rotate(8deg); opacity: 0.2; }
-          100% { transform: translateY(-80px) rotate(0deg); opacity: 0; }
         }
 
         .center-container {
@@ -268,16 +243,13 @@ const BalloonCategories = () => {
       `}</style>
 
       <section className="balloon-section">
-        <div className="floating-balloon-1">🎈</div>
-        <div className="floating-balloon-2">🎈</div>
-
         <div
           style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
         >
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             style={{ textAlign: "center", marginBottom: "52px" }}
           >
@@ -296,9 +268,9 @@ const BalloonCategories = () => {
             {balloonCategories.map((balloon, index) => (
               <motion.div
                 key={balloon.id}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.07 }}
+                transition={{ duration: 0.5, delay: index * 0.06 }}
                 viewport={{ once: true }}
                 className="balloon-card"
               >
