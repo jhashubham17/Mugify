@@ -125,7 +125,7 @@ const Footer = () => {
               <Link to="/" className="flex items-center space-x-3 group">
                 <div className="relative">
                   <img
-                    src="/Logo/Logo.jpeg"
+                    src="./MainMugImage/Logo.jpeg"
                     alt="Araipan Inspired"
                     className="h-12 w-auto object-contain rounded-full transition-transform duration-300 group-hover:scale-105"
                   />
@@ -137,9 +137,7 @@ const Footer = () => {
                     {" "}
                     Inspired
                   </span>
-                  <p className="text-gray-500 text-xs">
-                    Custom Printing Experts
-                  </p>
+                  <p className="text-gray-500 text-xs">POD Experts</p>
                 </div>
               </Link>
             </div>

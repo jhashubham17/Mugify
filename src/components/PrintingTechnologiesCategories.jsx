@@ -15,96 +15,77 @@ const PrintingTechnologies = () => {
   const printingMethods = [
     {
       id: 1,
-      name: "Heat Transfer Printing",
-      description:
-        "Durable prints with a soft feel, perfect for garments & mugs",
-      icon: "🔥",
-      badge: "Popular",
-      color: "Heat Transfer",
-      image:
-        "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&auto=format",
-      accent: "#f97316",
-    },
-    {
-      id: 2,
       name: "DTF Printing",
       description:
         "Direct-to-film printing for detailed, colorful designs on any fabric",
       icon: "🎞️",
       badge: "Advanced",
       color: "DTF",
-      image:
-        "https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?w=400&auto=format",
+      image: "./MainMugImage/Dtf.jpeg",
       accent: "#8b5cf6",
     },
     {
-      id: 3,
-      name: "DTG Printing",
-      description:
-        "Direct-to-garment printing for photorealistic designs with soft touch",
-      icon: "🖨️",
-      badge: "Premium",
-      color: "DTG",
-      image:
-        "https://images.unsplash.com/photo-1562329264-e6d34663d08c?w=400&auto=format",
-      accent: "#06b6d4",
-    },
-    {
-      id: 4,
+      id: 2,
       name: "Screen Printing",
       description: "Classic technique for bold, opaque designs on dark fabrics",
       icon: "🖼️",
       badge: "Traditional",
       color: "Screen",
-      image:
-        "https://images.unsplash.com/photo-1535044209761-2d9f3d8b7c2c?w=400&auto=format",
+      image: "./MainMugImage/SkinPrinting.jpg",
       accent: "#ec4899",
     },
     {
-      id: 5,
+      id: 3,
       name: "Laser Engraving",
       description: "Permanent, precise markings on wood, metal, glass & more",
       icon: "⚡",
       badge: "Precision",
       color: "Laser",
-      image:
-        "https://images.unsplash.com/photo-1581092335871-4c5a1b4e5f8d?w=400&auto=format",
+      image: "./MainMugImage/LeaserEngravingImage.jpg",
       accent: "#10b981",
     },
     {
-      id: 6,
+      id: 4,
       name: "Pad Printing",
       description:
         "Versatile printing on irregularly shaped objects & curved surfaces",
       icon: "🔄",
       badge: "Versatile",
       color: "Pad",
-      image:
-        "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&auto=format",
+      image: "./MainMugImage/HeatPressMachine.jpeg",
       accent: "#f59e0b",
     },
     {
-      id: 7,
+      id: 5,
       name: "UV Printing",
       description:
         "Instant curing prints with vibrant colors on various surfaces",
       icon: "☀️",
       badge: "Eco-Friendly",
       color: "UV",
-      image:
-        "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&auto=format",
+      image: "./MainMugImage/UV.jpg",
       accent: "#ef4444",
     },
     {
-      id: 8,
+      id: 6,
+      name: "UV DTF",
+      description:
+        "Instant curing prints with vibrant colors on various surfaces",
+      icon: "☀️",
+      badge: "Eco-Friendly",
+      color: "UV",
+      image: "./MainMugImage/UVSticker.jpg",
+      accent: "#ef4444",
+    },
+    {
+      id: 7,
       name: "Sublimation Printing",
       description:
         "Full-color dye transfer for polyester fabrics & coated mugs",
       icon: "🎨",
       badge: "Trending",
       color: "Sublimation",
-      image:
-        "https://images.unsplash.com/photo-1581092335871-4c5a1b4e5f8d?w=400&auto=format",
+      image: "./MainMugImage/Dtf.jpeg",
       accent: "#a78bfa",
     },
   ];

@@ -2,74 +2,74 @@ import { useState, useEffect } from "react";
 
 const reviews = [
   {
-    name: "Michael Chen",
-    location: "San Francisco, CA",
+    name: "Rajesh Sharma",
+    location: "Delhi, NCR",
     rating: 5,
     text: "Ordered 500 custom mugs and bottles for our annual company event. The logo placement was perfect on every single piece, quality was consistent, and not a single defect. Delivery arrived 2 days early. They're now our permanent gifting vendor!",
   },
   {
-    name: "Sarah Johnson",
-    location: "Austin, TX",
+    name: "Priya Singh",
+    location: "Noida, UP",
     rating: 5,
     text: "We needed 800 printed T-shirts and water bottles for our school's Annual Day celebration — for students, teachers, and staff. The quality was absolutely top-notch and delivery arrived before the event. Parents even complimented the mugs! Will definitely order from them again.",
   },
   {
-    name: "David Williams",
-    location: "Chicago, IL",
+    name: "Amit Verma",
+    location: "Gurugram, Haryana",
     rating: 5,
     text: "Got 1000+ printed T-shirts for our field service team with logos and city names. The consistency across such a large bulk order was remarkable. The fabric is durable for daily use. Best vendor for fast-growing teams!",
   },
   {
-    name: "Jessica Martinez",
-    location: "Miami, FL",
+    name: "Neha Gupta",
+    location: "Ghaziabad, UP",
     rating: 5,
     text: "Ordered 1200 custom mugs and pens for Freshers' Party. Every item had the logo and batch year printed perfectly. Students were super excited receiving these gifts. Bulk pricing was reasonable with no compromise on quality. Perfect vendor for university events!",
   },
   {
-    name: "Robert Taylor",
-    location: "Seattle, WA",
+    name: "Vikram Malhotra",
+    location: "Faridabad, Haryana",
     rating: 5,
     text: "Ordered 2000 printed bottles for our delivery team with logo and tagline. Not a single piece was rejected during quality check — something that never happened with previous vendors. Competitive pricing. Already placed our next order!",
   },
   {
-    name: "Emily Brown",
-    location: "Denver, CO",
+    name: "Anjali Mehta",
+    location: "South Delhi, Delhi",
     rating: 5,
     text: "For our annual fest, we ordered 600 T-shirts and 400 branded pens. Got the mockup within 24 hours, changes were incorporated immediately, delivery was on time. The print quality on T-shirts was incredibly sharp. Highly recommend them to everyone!",
   },
   {
-    name: "James Wilson",
-    location: "Boston, MA",
+    name: "Rohan Kapoor",
+    location: "Greater Noida, UP",
     rating: 5,
     text: "Ordered 300 premium branded mugs and pen sets for a client appreciation drive. The packaging was so premium that we could gift them directly — no extra wrapping needed. Clients themselves complimented the quality. Such quality in bulk is rare to find.",
   },
   {
-    name: "Amanda Lee",
-    location: "Portland, OR",
+    name: "Kavita Reddy",
+    location: "Rohini, Delhi",
     rating: 4,
     text: "Ordered 750 branded bottles and mugs for a promotional campaign. The colors matched our brand guidelines exactly — they even did Pantone matching! There was a slight delay on one order, but communication was completely transparent. Very professional team, will work with them again.",
   },
   {
-    name: "Daniel Kim",
-    location: "Atlanta, GA",
+    name: "Arjun Nair",
+    location: "Dwarka, Delhi",
     rating: 5,
     text: "Got 500 branded T-shirts, mugs, and pen sets for placement season. Getting everything from one place was super convenient. The quality impressed everyone. Many people asked where we got them made — I gave them this company's name!",
   },
   {
-    name: "Olivia Parker",
-    location: "Nashville, TN",
+    name: "Meera Iyer",
+    location: "Saket, Delhi",
     rating: 5,
     text: "Ordered 150 onboarding kits for our team — printed T-shirts, mugs, and pens all together. Honestly didn't expect such good quality on a startup budget. Now every new joiner receives this kit and feels motivated. Small thing but makes a huge difference!",
   },
   {
-    name: "Thomas Anderson",
-    location: "New York, NY",
+    name: "Sunil Joshi",
+    location: "Connaught Place, Delhi",
     rating: 5,
     text: "Been using their services for over 2 years now. The consistency in quality across multiple bulk orders is unmatched. Customer support is responsive and they always meet deadlines. Couldn't ask for a better printing partner.",
   },
   {
-    name: "Rachel Green",
-    location: "Los Angeles, CA",
+    name: "Pooja Sharma",
+    location: "Lajpat Nagar, Delhi",
     rating: 5,
     text: "The attention to detail on our corporate gifts was impressive. Each pen and mug was individually inspected before shipping. Our clients loved the personalized touch. Will definitely be a repeat customer!",
   },
@@ -200,7 +200,7 @@ export default function CustomerReviews() {
               <div className="h-1 w-14 sm:w-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
             </div>
             <p className="text-gray-400 text-sm mt-3 max-w-md mx-auto">
-              Real stories from businesses and organizations we've worked with
+              Real stories from businesses across India
             </p>
           </div>
 

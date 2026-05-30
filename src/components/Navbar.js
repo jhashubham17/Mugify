@@ -120,14 +120,14 @@ const Navbar = () => {
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="relative">
                 <img
-                  src="/Logo/Logo.jpeg"
+                  src="./MainMugImage/Logo.jpeg"
                   alt="Logo"
-                  className="h-10 w-auto lg:h-12 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-10 w-auto lg:h-12 object-contain transition-transform duration-300 group-hover:scale-105 rounded-3xl"
                 />
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
               </div>
               <span className="text-white font-bold text-xl lg:text-2xl hidden sm:block">
-                <span className="logo-text">PrintWonders</span>
+                <span className="logo-text">Araipan Inspired</span>
               </span>
             </Link>
 
