@@ -9,11 +9,12 @@ const ProductCategories = () => {
   return (
     <>
       <MugCategories />
-      <BottleCategories />
+      {/* <BottleCategories /> */}
       <TShirtCategories />
-      <CapCategories />
-      <PenCategories />
+      {/* <CapCategories /> */}
       <CooperativeGiftCategories />
+      <PenCategories />
+
       <BalloonCategories />
     </>
   );
