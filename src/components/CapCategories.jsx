@@ -15,8 +15,8 @@ const CapCategories = () => {
   const capCategories = [
     {
       id: 1,
-      name: "Classic Baseball Cap",
-      image: "./MainCapImage/ClassicBaseball.jpeg",
+      name: "Cotton Cap",
+      image: "./MainMugImage/Cotton.jpg",
       badge: "Best Seller",
       color: "Black",
       description:
@@ -25,8 +25,8 @@ const CapCategories = () => {
     },
     {
       id: 2,
-      name: "Premium Dad Hat",
-      image: "./MainCapImage/PremiumDadHat.jpeg",
+      name: "Polyester Cap",
+      image: "./MainMugImage/polysterCap.jpg",
       badge: "Premium",
       color: "Navy Blue",
       description: "Low-profile, unstructured cap with adjustable strap",
@@ -34,8 +34,8 @@ const CapCategories = () => {
     },
     {
       id: 3,
-      name: "Snapback Cap",
-      image: "./MainCapImage/SnapbackCap.jpeg",
+      name: "Canvas Cap",
+      image: "./MainMugImage/ConvasCap.jpg",
       badge: "Trending",
       color: "Red",
       description: "High-quality snapback with flat brim and bold style",
@@ -43,8 +43,8 @@ const CapCategories = () => {
     },
     {
       id: 4,
-      name: "Trucker Cap",
-      image: "./MainCapImage/TruckerCap.jpeg",
+      name: "Denim Cap",
+      image: "./MainMugImage/DenimCap.jpg",
       badge: "New Arrival",
       color: "Grey",
       description: "Mesh back cap with foam front for breathable comfort",
@@ -52,39 +52,12 @@ const CapCategories = () => {
     },
     {
       id: 5,
-      name: "Golf Cap",
-      image: "./MainCapImage/GolfCap.jpeg",
+      name: "Nylon Cap",
+      image: "./MainMugImage/neonCap.jpg",
       badge: "Sporty",
       color: "White",
       description: "Performance cap with moisture-wicking fabric",
       accent: "#818cf8",
-    },
-    {
-      id: 6,
-      name: "Cotton Twill Cap",
-      image: "./MainCapImage/CottonTwill.jpeg",
-      badge: "Premium",
-      color: "Khaki",
-      description: "Soft cotton twill cap with embroidered logo space",
-      accent: "#f43f5e",
-    },
-    {
-      id: 7,
-      name: "Retro Vintage Cap",
-      image: "./MainCapImage/RetroVintage.jpeg",
-      badge: "Limited Edition",
-      color: "Brown",
-      description: "Vintage-style washed cap for a classic look",
-      accent: "#22d3ee",
-    },
-    {
-      id: 8,
-      name: "Neon Party Cap",
-      image: "./MainCapImage/NeonParty.jpeg",
-      badge: "Party Wear",
-      color: "Neon Green",
-      description: "Bright neon cap perfect for festivals and events",
-      accent: "#c084fc",
     },
   ];
 
