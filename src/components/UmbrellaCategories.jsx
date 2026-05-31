@@ -16,7 +16,7 @@ const UmbrellaCategories = () => {
     {
       id: 1,
       name: "1 Fold Umbrella",
-      image: "./MainMugImage/1FoldUmbrella.WEBP",
+      image: "./MainMugImage/1FoldUmbrella.jpg",
       badge: "Compact",
       color: "Various",
       description: "Ultra-compact design that fits in any pocket or small bag",
@@ -25,7 +25,7 @@ const UmbrellaCategories = () => {
     {
       id: 2,
       name: "2 Fold Umbrella",
-      image: "./MainMugImage/2FoldUmbrella3.WEBP",
+      image: "./MainMugImage/2FoldUmbrella3.jpg",
       badge: "Popular",
       color: "Various",
       description: "Sleek two-fold mechanism for reliable everyday protection",
@@ -34,7 +34,7 @@ const UmbrellaCategories = () => {
     {
       id: 3,
       name: "3 Fold Umbrella",
-      image: "./MainMugImage/3FoldUmbrella.WEBP",
+      image: "./MainMugImage/3FoldUmbrella.jpg",
       badge: "Best Seller",
       color: "Various",
       description:
