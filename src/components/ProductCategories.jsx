@@ -6,6 +6,7 @@ import UmbrellaCategories from "./UmbrellaCategories";
 import PenCategories from "./PenCategories";
 import CooperativeGiftCategories from "./CooperativeGiftCategories";
 import CapCategories from "./CapCategories";
+import MousepadCategories from "./MousepadCategories";
 
 const ProductCategories = () => {
   return (
@@ -16,6 +17,7 @@ const ProductCategories = () => {
       <CapCategories />
       <CooperativeGiftCategories />
       <UmbrellaCategories />
+      <MousepadCategories />
       <PenCategories />
 
       <BalloonCategories />
