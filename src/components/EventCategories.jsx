@@ -15,7 +15,7 @@ const EventCategories = () => {
     {
       id: 1,
       name: "Wristbands",
-      image: "./MainMugImage/Wristband.jpg",
+      image: "./MainMugImage/WristBand.jpeg",
       badge: "Best Seller",
       color: "Multiple Colors",
       description:
@@ -23,17 +23,27 @@ const EventCategories = () => {
     },
     {
       id: 2,
+      name: "Wristbands Rubber",
+      image: "./MainMugImage/WristBandRubber.jpeg",
+      badge: "Best Seller",
+      color: "Multiple Colors",
+      description:
+        "Silicone wristbands perfect for events, fundraisers, and awareness campaigns",
+    },
+
+    {
+      id: 3,
       name: "Lanyards",
-      image: "./MainMugImage/Lanyard.jpg",
+      image: "./MainMugImage/Lanyard.jpeg",
       badge: "Trending",
       color: "Custom Printing",
       description:
         "Premium lanyards with custom printing, ideal for conferences and ID badges",
     },
     {
-      id: 3,
+      id: 4,
       name: "ID Cards",
-      image: "./MainMugImage/IDCard.jpg",
+      image: "./MainMugImage/IdCard.jpeg",
       badge: "New",
       color: "PVC/Plastic",
       description:
