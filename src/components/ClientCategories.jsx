@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 
-const MousepadCategories = () => {
+const WeWorkCategories = () => {
   const scrollContainerRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -11,36 +11,42 @@ const MousepadCategories = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
-  const mousepadCategories = [
+  const weWorkCategories = [
     {
       id: 1,
-      name: "7 by 9",
-      image: "MainMugImage/MousePad7By9.jpeg",
-      badge: "Best Seller",
-      color: "Stealth Black",
+      name: "Custom Printing",
+      image: "./MainMugImage/CustomPrinting.jpg",
+      badge: "Specialty",
+      color: "Full Color",
       description:
-        "Smooth gliding surface with anti-fray stitching, perfect for gamers and professionals",
-      accent: "#4f46e5",
+        "High-quality custom printing on mugs, pens, mouse pads, and more with vibrant colors",
     },
     {
       id: 2,
-      name: "12 by 30",
-      image: "MainMugImage/MousePad12By30.jpeg",
-      badge: "Best Seller",
-      color: "Stealth Black",
+      name: "Bulk Orders",
+      image: "./MainMugImage/BulkOrder.jpg",
+      badge: "Discount",
+      color: "Wholesale Price",
       description:
-        "Smooth gliding surface with anti-fray stitching, perfect for gamers and professionals",
-      accent: "#4f46e5",
+        "Special pricing for bulk quantities - perfect for corporate gifting and events",
     },
     {
       id: 3,
-      name: "Custom Size",
-      image: "MainMugImage/MousePad12By30.jpeg",
-      badge: "Best Seller",
-      color: "Stealth Black",
+      name: "Fast Delivery",
+      image: "./MainMugImage/FastDelivery.jpg",
+      badge: "Express",
+      color: "Pan India",
       description:
-        "Smooth gliding surface with anti-fray stitching, perfect for gamers and professionals",
-      accent: "#4f46e5",
+        "Quick turnaround time with reliable shipping across all major cities",
+    },
+    {
+      id: 4,
+      name: "Custom Design",
+      image: "./MainMugImage/CustomDesign.jpg",
+      badge: "Free Support",
+      color: "Expert Team",
+      description:
+        "Get professional design assistance to bring your creative vision to life",
     },
   ];
 
@@ -124,7 +130,7 @@ const MousepadCategories = () => {
   return (
     <section className="bg-[#0a0a0f] py-16 md:py-20 lg:py-24 overflow-hidden relative">
       {/* Background Effect */}
-      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-[radial-gradient(ellipse,rgba(79,70,229,0.12)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-[radial-gradient(ellipse,rgba(236,72,153,0.08)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
@@ -135,23 +141,22 @@ const MousepadCategories = () => {
           viewport={{ once: true }}
           className="text-center mb-10 sm:mb-12 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold tracking-[2px] sm:tracking-[3px] uppercase text-indigo-500 mb-3 sm:mb-4">
-            <span className="w-5 sm:w-7 h-px bg-indigo-500"></span>
-            Gaming Gear
-            <span className="w-5 sm:w-7 h-px bg-indigo-500"></span>
+          <div className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold tracking-[2px] sm:tracking-[3px] uppercase text-pink-500 mb-3 sm:mb-4">
+            <span className="w-5 sm:w-7 h-px bg-pink-500"></span>
+            How We Work
+            <span className="w-5 sm:w-7 h-px bg-pink-500"></span>
           </div>
 
           <h2 className="font-['Playfair_Display',serif] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
-            Precision{" "}
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Mouse Pads
-            </span>{" "}
-            for Every Setup
+            Our{" "}
+            <span className="bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">
+              Work Process
+            </span>
           </h2>
 
           <p className="text-sm sm:text-[15px] text-gray-400 max-w-md mx-auto">
-            Discover our premium mouse pad collection — smooth gliding,
-            anti-slip base, and perfect for gaming and work.
+            Simple, transparent, and efficient process to bring your ideas to
+            life with premium quality products.
           </p>
         </motion.div>
 
@@ -164,7 +169,7 @@ const MousepadCategories = () => {
           {/* Left Arrow */}
           {showLeftArrow && (
             <button
-              className="absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-white cursor-pointer flex items-center justify-center transition-all hover:bg-indigo-600 hover:border-indigo-600 hover:scale-105 left-0 sm:-left-3 md:-left-5"
+              className="absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-white cursor-pointer flex items-center justify-center transition-all hover:bg-pink-600 hover:border-pink-600 hover:scale-105 left-0 sm:-left-3 md:-left-5"
               onClick={() => scroll("left")}
             >
               <svg
@@ -187,7 +192,7 @@ const MousepadCategories = () => {
           {/* Right Arrow */}
           {showRightArrow && (
             <button
-              className="absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-white cursor-pointer flex items-center justify-center transition-all hover:bg-indigo-600 hover:border-indigo-600 hover:scale-105 right-0 sm:-right-3 md:-right-5"
+              className="absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-white cursor-pointer flex items-center justify-center transition-all hover:bg-pink-600 hover:border-pink-600 hover:scale-105 right-0 sm:-right-3 md:-right-5"
               onClick={() => scroll("right")}
             >
               <svg
@@ -218,21 +223,21 @@ const MousepadCategories = () => {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div className="flex gap-5 md:gap-6 w-max">
-              {mousepadCategories.map((mousepad, index) => (
+              {weWorkCategories.map((item, index) => (
                 <motion.div
-                  key={mousepad.id}
+                  key={item.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="w-[280px] md:w-[300px] bg-[#13131f] rounded-2xl overflow-hidden border border-white/10 hover:border-indigo-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-900/20 group"
+                  className="w-[280px] md:w-[300px] bg-[#13131f] rounded-2xl overflow-hidden border border-white/10 hover:border-pink-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-900/20 group"
                 >
                   {/* Image Section */}
-                  <Link to={`/products/mousepad/${mousepad.id}`}>
+                  <Link to={`/how-we-work/${item.id}`}>
                     <div className="relative h-[260px] bg-gradient-to-br from-[#1a1a2e] to-[#16213e] flex items-center justify-center overflow-hidden">
                       <img
-                        src={mousepad.image}
-                        alt={mousepad.name}
+                        src={item.image}
+                        alt={item.name}
                         className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                         draggable="false"
                       />
@@ -240,41 +245,38 @@ const MousepadCategories = () => {
 
                       {/* Badge */}
                       <span className="absolute top-3 left-3 text-[10px] font-semibold uppercase text-white px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 z-10">
-                        {mousepad.badge}
+                        {item.badge}
                       </span>
 
                       {/* Color Tag */}
                       <span className="absolute top-3 right-3 text-[10px] font-medium text-white px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md z-10">
-                        {mousepad.color}
+                        {item.color}
                       </span>
                     </div>
                   </Link>
 
                   {/* Content */}
                   <div className="p-5">
-                    <Link
-                      to={`/products/mousepad/${mousepad.id}`}
-                      className="block"
-                    >
+                    <Link to={`/how-we-work/${item.id}`} className="block">
                       <h3 className="font-['Playfair_Display',serif] text-xl font-semibold text-white mb-2 text-center">
-                        {mousepad.name}
+                        {item.name}
                       </h3>
                     </Link>
 
                     <p className="text-sm text-gray-400 leading-relaxed mb-4 text-center line-clamp-2">
-                      {mousepad.description}
+                      {item.description}
                     </p>
 
                     <Link
-                      to={`/products/mousepad/${mousepad.id}`}
-                      className="block w-full py-2.5 text-center bg-white/5 border border-white/10 rounded-xl text-gray-300 text-sm font-medium transition-all hover:bg-indigo-600/20 hover:border-indigo-500/50 hover:text-white"
+                      to={`/how-we-work/${item.id}`}
+                      className="block w-full py-2.5 text-center bg-white/5 border border-white/10 rounded-xl text-gray-300 text-sm font-medium transition-all hover:bg-pink-600/20 hover:border-pink-500/50 hover:text-white"
                     >
-                      View Details →
+                      Learn More →
                     </Link>
                   </div>
 
                   {/* Hover Accent Line */}
-                  <div className="h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <div className="h-0.5 bg-gradient-to-r from-pink-500 to-rose-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </motion.div>
               ))}
             </div>
@@ -283,7 +285,7 @@ const MousepadCategories = () => {
 
         {/* Dots Indicator */}
         <div className="flex gap-2 justify-center mt-8 sm:mt-10">
-          {mousepadCategories.map((_, i) => (
+          {weWorkCategories.map((_, i) => (
             <button
               key={i}
               onClick={() => {
@@ -301,7 +303,7 @@ const MousepadCategories = () => {
               <div
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   i === 0
-                    ? "w-6 bg-gradient-to-r from-indigo-500 to-purple-500"
+                    ? "w-6 bg-gradient-to-r from-pink-500 to-rose-500"
                     : "w-1.5 bg-gray-700 hover:bg-gray-500"
                 }`}
               />
@@ -318,10 +320,10 @@ const MousepadCategories = () => {
           className="text-center mt-10 sm:mt-12 md:mt-14"
         >
           <Link
-            to="/products"
-            className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border border-white/10 text-gray-300 text-xs sm:text-sm font-medium transition-all hover:bg-gradient-to-r hover:from-indigo-600 hover:to-purple-600 hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-indigo-600/25 hover:-translate-y-0.5"
+            to="/how-we-work"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border border-white/10 text-gray-300 text-xs sm:text-sm font-medium transition-all hover:bg-gradient-to-r hover:from-pink-600 hover:to-rose-600 hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-pink-600/25 hover:-translate-y-0.5"
           >
-            View All Mouse Pads
+            View Our Complete Process
             <svg
               width="12"
               height="12"
@@ -356,4 +358,4 @@ const MousepadCategories = () => {
   );
 };
 
-export default MousepadCategories;
+export default WeWorkCategories;

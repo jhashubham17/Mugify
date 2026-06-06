@@ -7,6 +7,7 @@ import CustomerReviews from "../components/CustomerReviews";
 import PrintingTechnologies from "../components/PrintingTechnologiesCategories";
 import WhyChooseUs from "../components/WhyChooseUs";
 import CustomizationProcess from "../components/CustomizationProcess";
+import ClientCategories from "../components/ClientCategories";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <PrintingTechnologies />
       <CustomerReviews />
       <WhyChooseUs />
+      {/* <ClientCategories /> */}
       <CustomizationProcess />
     </div>
   );
