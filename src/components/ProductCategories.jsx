@@ -7,6 +7,7 @@ import PenCategories from "./PenCategories";
 import CooperativeGiftCategories from "./CooperativeGiftCategories";
 import CapCategories from "./CapCategories";
 import MousepadCategories from "./MousepadCategories";
+import EventCategories from "./EventCategories";
 
 const ProductCategories = () => {
   return (
@@ -19,7 +20,7 @@ const ProductCategories = () => {
       <UmbrellaCategories />
       <MousepadCategories />
       <PenCategories />
-
+      <EventCategories />
       <BalloonCategories />
     </>
   );
