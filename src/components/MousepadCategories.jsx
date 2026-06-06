@@ -1,335 +1,355 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
 
-const MousepadCategories = () => {
-  const mousepadCategories = [
+const EventCategories = () => {
+  const scrollContainerRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+
+  const eventCategories = [
     {
       id: 1,
-      name: "7 by 9",
-      image: "MainMugImage/MousePad7By9.jpeg",
+      name: "Wristbands",
+      image: "./MainMugImage/Wristband.jpg",
       badge: "Best Seller",
-      color: "Stealth Black",
+      color: "Multiple Colors",
       description:
-        "Smooth gliding surface with anti-fray stitching, perfect for gamers and professionals",
-      accent: "#4f46e5",
+        "Silicone wristbands perfect for events, fundraisers, and awareness campaigns",
     },
     {
       id: 2,
-      name: "12 by 30",
-      image: "MainMugImage/MousePad12By30.jpeg",
-      badge: "Best Seller",
-      color: "Stealth Black",
+      name: "Lanyards",
+      image: "./MainMugImage/Lanyard.jpg",
+      badge: "Trending",
+      color: "Custom Printing",
       description:
-        "Smooth gliding surface with anti-fray stitching, perfect for gamers and professionals",
-      accent: "#4f46e5",
+        "Premium lanyards with custom printing, ideal for conferences and ID badges",
     },
     {
       id: 3,
-      name: "Custom Size",
-      image: "MainMugImage/MousePad12By30.jpeg",
-      badge: "Best Seller",
-      color: "Stealth Black",
+      name: "ID Cards",
+      image: "./MainMugImage/IDCard.jpg",
+      badge: "New",
+      color: "PVC/Plastic",
       description:
-        "Smooth gliding surface with anti-fray stitching, perfect for gamers and professionals",
-      accent: "#4f46e5",
+        "High-quality ID cards with photo, barcode, and custom designs for events",
     },
   ];
 
+  // Auto-scroll logic
+  useEffect(() => {
+    let interval;
+    if (isAutoScrolling && scrollContainerRef.current) {
+      interval = setInterval(() => {
+        const container = scrollContainerRef.current;
+        if (container) {
+          const { scrollLeft, scrollWidth, clientWidth } = container;
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            container.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            container.scrollBy({ left: 280, behavior: "smooth" });
+          }
+        }
+      }, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoScrolling]);
+
+  const checkScrollButtons = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollLeft + clientWidth < scrollWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      checkScrollButtons();
+      container.addEventListener("scroll", checkScrollButtons);
+      window.addEventListener("resize", checkScrollButtons);
+      return () => {
+        container.removeEventListener("scroll", checkScrollButtons);
+        window.removeEventListener("resize", checkScrollButtons);
+      };
+    }
+  }, []);
+
+  const scroll = (direction) => {
+    setIsAutoScrolling(false);
+    if (scrollContainerRef.current) {
+      const cardWidth = window.innerWidth < 640 ? 280 : 300;
+      const gap = window.innerWidth < 640 ? 16 : 24;
+      const scrollAmount =
+        direction === "left" ? -(cardWidth + gap) : cardWidth + gap;
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+    setTimeout(() => setIsAutoScrolling(true), 10000);
+  };
+
+  const handleMouseDown = (e) => {
+    setIsAutoScrolling(false);
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setTimeout(() => setIsAutoScrolling(true), 10000);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    setTimeout(() => setIsAutoScrolling(true), 10000);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+    <section className="bg-[#0a0a0f] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden relative">
+      {/* Background Effect */}
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-[radial-gradient(ellipse,rgba(139,92,246,0.12)_0%,transparent_70%)] pointer-events-none" />
 
-        .mousepad-section {
-          font-family: 'DM Sans', sans-serif;
-          background: #0a0a0f;
-          padding: 80px 0 100px;
-          overflow: hidden;
-          position: relative;
-        }
-
-        .mousepad-section::before {
-          content: '';
-          position: absolute;
-          top: -200px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 800px;
-          height: 800px;
-          background: radial-gradient(ellipse, rgba(79,70,229,0.12) 0%, transparent 70%);
-          pointer-events: none;
-        }
-
-        .mousepad-label {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: #4f46e5;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          margin-bottom: 16px;
-        }
-
-        .mousepad-label::before,
-        .mousepad-label::after {
-          content: '';
-          display: block;
-          width: 28px;
-          height: 1px;
-          background: #4f46e5;
-        }
-
-        .mousepad-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2rem, 5vw, 3.5rem);
-          font-weight: 700;
-          color: #f8f8fc;
-          line-height: 1.15;
-          margin-bottom: 16px;
-          letter-spacing: -0.02em;
-        }
-
-        .mousepad-title span {
-          font-style: italic;
-          background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .mousepad-subtitle {
-          font-size: 15px;
-          font-weight: 300;
-          color: #6b6b80;
-          max-width: 420px;
-          margin: 0 auto;
-          line-height: 1.7;
-        }
-
-        .mousepad-card {
-          width: 320px;
-          background: #13131f;
-          border: 1px solid rgba(255,255,255,0.06);
-          border-radius: 20px;
-          overflow: hidden;
-          position: relative;
-          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          cursor: pointer;
-          margin: 0 auto;
-        }
-
-        .mousepad-card:hover {
-          transform: translateY(-10px);
-          border-color: rgba(129,140,248,0.25);
-          box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(79,70,229,0.08);
-        }
-
-        .mousepad-img-wrap {
-          position: relative;
-          height: 280px;
-          overflow: hidden;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-          padding: 16px;
-        }
-
-        .mousepad-img-wrap img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          transition: transform 0.6s ease;
-        }
-
-        .mousepad-card:hover .mousepad-img-wrap img {
-          transform: scale(1.05);
-        }
-
-        .mousepad-img-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(180deg, transparent 40%, rgba(19,19,31,0.95) 100%);
-          pointer-events: none;
-        }
-
-        .mousepad-badge {
-          position: absolute;
-          top: 14px;
-          left: 14px;
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          color: #fff;
-          padding: 5px 10px;
-          border-radius: 30px;
-          background: rgba(255,255,255,0.12);
-          backdrop-filter: blur(8px);
-          border: 1px solid rgba(255,255,255,0.2);
-          z-index: 2;
-        }
-
-        .mousepad-color-dot {
-          position: absolute;
-          top: 14px;
-          right: 14px;
-          font-size: 10px;
-          font-weight: 500;
-          color: rgba(255,255,255,0.9);
-          padding: 5px 10px;
-          border-radius: 30px;
-          background: rgba(0,0,0,0.5);
-          backdrop-filter: blur(8px);
-          z-index: 2;
-        }
-
-        .mousepad-card-body {
-          padding: 18px 20px 22px;
-        }
-
-        .mousepad-card-name {
-          font-family: 'Playfair Display', serif;
-          font-size: 18px;
-          font-weight: 600;
-          color: #f0f0fa;
-          margin-bottom: 6px;
-          line-height: 1.3;
-          text-align: center;
-        }
-
-        .mousepad-card-desc {
-          font-size: 12.5px;
-          font-weight: 300;
-          color: #5a5a70;
-          line-height: 1.6;
-          margin-bottom: 14px;
-          text-align: center;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .mousepad-view-btn {
-          display: block;
-          width: 100%;
-          padding: 11px 0;
-          border-radius: 12px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
-          color: #c4c4d8;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 13px;
-          font-weight: 500;
-          text-align: center;
-          cursor: pointer;
-          transition: all 0.25s ease;
-          text-decoration: none;
-        }
-
-        .mousepad-view-btn:hover {
-          background: rgba(79,70,229,0.15);
-          border-color: rgba(79,70,229,0.4);
-          color: #a5b4fc;
-        }
-
-        .mousepad-card-accent {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #4f46e5, #c084fc);
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.4s ease;
-        }
-
-        .mousepad-card:hover .mousepad-card-accent {
-          transform: scaleX(1);
-        }
-
-        .center-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 400px;
-        }
-      `}</style>
-
-      <section className="mousepad-section">
-        <div
-          style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
+      {/* Main Container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="text-center mb-10 sm:mb-12 md:mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-            style={{ textAlign: "center", marginBottom: "52px" }}
-          >
-            <div className="mousepad-label">Gaming Gear</div>
-            <h2 className="mousepad-title">
-              Precision <span>Mouse Pads</span> for Every Setup
-            </h2>
-            <p className="mousepad-subtitle">
-              Discover our premium mouse pad collection — smooth gliding,
-              anti-slip base, and perfect for gaming and work.
-            </p>
-          </motion.div>
+          <div className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold tracking-[2px] sm:tracking-[3px] uppercase text-purple-600 mb-3 sm:mb-4">
+            <span className="w-5 sm:w-7 h-px bg-purple-600"></span>
+            Event Essentials
+            <span className="w-5 sm:w-7 h-px bg-purple-600"></span>
+          </div>
 
-          <div className="center-container">
-            {mousepadCategories.map((mousepad, index) => (
-              <motion.div
-                key={mousepad.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.06 }}
-                viewport={{ once: true }}
-                className="mousepad-card"
+          <h2 className="font-['Playfair_Display',serif] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2">
+            Shop by{" "}
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Event Categories
+            </span>
+          </h2>
+
+          <p className="text-sm sm:text-[15px] text-gray-400 max-w-md mx-auto px-4">
+            Discover our premium wristbands, lanyards, and ID cards — perfect
+            for events, conferences, and corporate branding.
+          </p>
+        </motion.div>
+
+        {/* Carousel Section */}
+        <div
+          className="relative"
+          onMouseEnter={() => setIsAutoScrolling(false)}
+          onMouseLeave={() => setTimeout(() => setIsAutoScrolling(true), 5000)}
+        >
+          {/* Left Arrow - Hidden on mobile when not needed */}
+          {showLeftArrow && (
+            <button
+              className="absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-white cursor-pointer flex items-center justify-center transition-all hover:bg-purple-600 hover:border-purple-600 hover:scale-105 left-0 sm:-left-3 md:-left-5"
+              onClick={() => scroll("left")}
+            >
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
               >
-                <Link to={`/products/mousepad/${mousepad.id}`}>
-                  <div className="mousepad-img-wrap">
-                    <img
-                      src={mousepad.image}
-                      alt={mousepad.name}
-                      draggable="false"
-                    />
-                    <div className="mousepad-img-overlay" />
-                    <span className="mousepad-badge">{mousepad.badge}</span>
-                    <span className="mousepad-color-dot">{mousepad.color}</span>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+          )}
+
+          {/* Right Arrow - Hidden on mobile when not needed */}
+          {showRightArrow && (
+            <button
+              className="absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-full border border-white/10 bg-black/60 backdrop-blur-md text-white cursor-pointer flex items-center justify-center transition-all hover:bg-purple-600 hover:border-purple-600 hover:scale-105 right-0 sm:-right-3 md:-right-5"
+              onClick={() => scroll("right")}
+            >
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          )}
+
+          {/* Scrollable Track */}
+          <div
+            ref={scrollContainerRef}
+            className="overflow-x-auto scrollbar-none cursor-grab active:cursor-grabbing pb-4 px-0 sm:px-2"
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            <div className="flex gap-4 sm:gap-5 md:gap-6 w-max px-2 sm:px-0">
+              {eventCategories.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="w-[260px] xs:w-[280px] sm:w-[290px] md:w-[300px] bg-[#13131f] rounded-2xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-900/20 group flex-shrink-0"
+                >
+                  {/* Image Section */}
+                  <Link to={`/products/event/${item.id}`}>
+                    <div className="relative h-[220px] xs:h-[240px] sm:h-[250px] md:h-[260px] bg-gradient-to-br from-[#1a1a2e] to-[#16213e] flex items-center justify-center overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        draggable="false"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#13131f] via-transparent to-transparent opacity-60" />
+
+                      {/* Badge */}
+                      <span className="absolute top-2 sm:top-3 left-2 sm:left-3 text-[9px] sm:text-[10px] font-semibold uppercase text-white px-2 sm:px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 z-10">
+                        {item.badge}
+                      </span>
+
+                      {/* Color Tag */}
+                      <span className="absolute top-2 sm:top-3 right-2 sm:right-3 text-[9px] sm:text-[10px] font-medium text-white px-2 sm:px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md z-10">
+                        {item.color}
+                      </span>
+                    </div>
+                  </Link>
+
+                  {/* Content */}
+                  <div className="p-4 sm:p-5">
+                    <Link to={`/products/event/${item.id}`} className="block">
+                      <h3 className="font-['Playfair_Display',serif] text-lg sm:text-xl font-semibold text-white mb-1.5 sm:mb-2">
+                        {item.name}
+                      </h3>
+                    </Link>
+
+                    <p className="text-xs sm:text-sm text-gray-400 leading-relaxed mb-3 sm:mb-4 line-clamp-2">
+                      {item.description}
+                    </p>
+
+                    <Link
+                      to={`/products/event/${item.id}`}
+                      className="block w-full py-2 sm:py-2.5 text-center bg-white/5 border border-white/10 rounded-xl text-gray-300 text-xs sm:text-sm font-medium transition-all hover:bg-purple-600/20 hover:border-purple-500/50 hover:text-white"
+                    >
+                      View Details →
+                    </Link>
                   </div>
-                </Link>
 
-                <div className="mousepad-card-body">
-                  <Link
-                    to={`/products/mousepad/${mousepad.id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <div className="mousepad-card-name">{mousepad.name}</div>
-                  </Link>
-                  <p className="mousepad-card-desc">{mousepad.description}</p>
-
-                  <Link
-                    to={`/products/mousepad/${mousepad.id}`}
-                    className="mousepad-view-btn"
-                  >
-                    View Details →
-                  </Link>
-                </div>
-
-                <div className="mousepad-card-accent" />
-              </motion.div>
-            ))}
+                  {/* Hover Accent Line */}
+                  <div className="h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
-    </>
+
+        {/* Dots Indicator */}
+        <div className="flex gap-1.5 sm:gap-2 justify-center mt-8 sm:mt-10">
+          {eventCategories.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                if (scrollContainerRef.current) {
+                  const cardWidth = window.innerWidth < 640 ? 276 : 300;
+                  const gap = window.innerWidth < 640 ? 16 : 24;
+                  scrollContainerRef.current.scrollTo({
+                    left: i * (cardWidth + gap),
+                    behavior: "smooth",
+                  });
+                }
+              }}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === 0
+                  ? "w-6 bg-gradient-to-r from-purple-500 to-pink-500"
+                  : "w-1.5 bg-gray-700 hover:bg-gray-500"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-center mt-10 sm:mt-12 md:mt-14"
+        >
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border border-white/10 text-gray-300 text-xs sm:text-sm font-medium transition-all hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-500 hover:border-transparent hover:text-white hover:shadow-lg hover:shadow-purple-600/25 hover:-translate-y-0.5"
+          >
+            View All Event Products
+            <svg
+              width="12"
+              height="12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 12h14M12 5l7 7-7 7"
+              />
+            </svg>
+          </Link>
+        </motion.div>
+      </div>
+
+      <style>{`
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+        
+        @media (max-width: 480px) {
+          .xs\\:w-\\[280px\\] {
+            width: 280px;
+          }
+          .xs\\:h-\\[240px\\] {
+            height: 240px;
+          }
+        }
+      `}</style>
+    </section>
   );
 };
 
-export default MousepadCategories;
+export default EventCategories;
