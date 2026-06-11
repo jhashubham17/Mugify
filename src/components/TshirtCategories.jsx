@@ -16,7 +16,7 @@ const TShirtCategories = () => {
     {
       id: 1,
       name: "Dryfit Collor T-Shirt",
-      image: "./MainMugImage/PoloTshirt.jpeg",
+      image: "./MainMugImage/DryfitCollorTshirt.png",
       badge: "Premium",
       color: "Black",
       description: "Sleek black t-shirt for bold and vibrant prints",
@@ -25,7 +25,7 @@ const TShirtCategories = () => {
     {
       id: 2,
       name: "Dryfit Round Neck T-Shirt",
-      image: "./MainMugImage/HoneycomeTshirt.jpeg",
+      image: "./MainMugImage/DryfitTshirt.png",
       badge: "Trending",
       color: "Grey",
       description: "Classic heather grey, perfect for any design style",
@@ -43,7 +43,7 @@ const TShirtCategories = () => {
     {
       id: 5,
       name: "Cotton T-Shirt",
-      image: "./MainMugImage/Tshirt.jpeg",
+      image: "./MainMugImage/CottonTshirt.jpeg",
       badge: "Color Plus",
       color: "Royal Blue",
       description: "Vibrant royal blue tee for eye-catching designs",
@@ -53,7 +53,7 @@ const TShirtCategories = () => {
     {
       id: 6,
       name: "Sarena Round Neck T-Shirt",
-      image: "./MainMugImage/Tshirt.jpeg",
+      image: "./MainMugImage/SarenaThsirt.png",
       badge: "Premium",
       color: "Purple",
       description: "Royal purple t-shirt for vibrant and colorful prints",
@@ -71,7 +71,7 @@ const TShirtCategories = () => {
     {
       id: 8,
       name: "Sap Matty",
-      image: "./MainMugImage/PoloTshirt.jpeg",
+      image: "./MainMugImage/SapMattyTshirt.png",
       badge: "Trending",
       color: "Red",
       description: "Bold red t-shirt that makes your design stand out",

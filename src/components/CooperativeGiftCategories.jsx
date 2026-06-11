@@ -27,7 +27,7 @@ const CooperativeGiftCategories = () => {
     {
       id: 2,
       name: "3 in 1 Corporate Gift Box",
-      image: "MainMugImage/3in1CooperativeGits.jpeg",
+      image: "MainMugImage/3In1GiftSetImage.jpeg",
       badge: "Trending",
       color: "Festive",
       description:

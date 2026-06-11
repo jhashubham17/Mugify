@@ -15,7 +15,7 @@ const MousepadCategories = () => {
     {
       id: 1,
       name: "7 by 9",
-      image: "MainMugImage/MousePad7By9.jpeg",
+      image: "MainMugImage/MousePad7by9.png",
       badge: "Best Seller",
       color: "Stealth Black",
       description:
@@ -24,8 +24,8 @@ const MousepadCategories = () => {
     },
     {
       id: 2,
-      name: "12 by 30",
-      image: "MainMugImage/MousePad12By30.jpeg",
+      name: "11 by 30",
+      image: "MainMugImage/MousePad12by30.png",
       badge: "Best Seller",
       color: "Stealth Black",
       description:
@@ -35,7 +35,7 @@ const MousepadCategories = () => {
     {
       id: 3,
       name: "Custom Size",
-      image: "MainMugImage/MousePad12By30.jpeg",
+      image: "MainMugImage/MousePad12by30.png",
       badge: "Best Seller",
       color: "Stealth Black",
       description:
