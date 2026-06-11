@@ -62,7 +62,7 @@ const TShirtCategories = () => {
     {
       id: 7,
       name: "Sarena T-Shirt",
-      image: "./MainMugImage/PoloTshirt.jpeg",
+      image: "./MainMugImage/SarenaCollorTshirt.png",
       badge: "Premium",
       color: "Purple",
       description: "Royal purple t-shirt for vibrant and colorful prints",
