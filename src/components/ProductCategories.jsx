@@ -8,6 +8,9 @@ import CooperativeGiftCategories from "./CooperativeGiftCategories";
 import CapCategories from "./CapCategories";
 import MousepadCategories from "./MousepadCategories";
 import EventCategories from "./EventCategories";
+import CoasterCategories from "./CoasterCategories";
+import PaperweightCategories from "./PaperWeightCategories";
+import KeychainCategories from "./KeychainCategories;";
 
 const ProductCategories = () => {
   return (
@@ -21,6 +24,9 @@ const ProductCategories = () => {
       <MousepadCategories />
       <PenCategories />
       <EventCategories />
+      <CoasterCategories />
+      <PaperweightCategories />
+      <KeychainCategories />
       <BalloonCategories />
     </>
   );
