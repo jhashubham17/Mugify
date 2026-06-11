@@ -25,7 +25,7 @@ const TShirtCategories = () => {
     {
       id: 2,
       name: "Dryfit Round Neck T-Shirt",
-      image: "./MainMugImage/Tshirt.jpeg",
+      image: "./MainMugImage/HoneycomeTshirt.jpeg",
       badge: "Trending",
       color: "Grey",
       description: "Classic heather grey, perfect for any design style",
@@ -34,7 +34,7 @@ const TShirtCategories = () => {
     {
       id: 3,
       name: "Cotton Matty",
-      image: "./MainMugImage/PoloTshirt.jpeg",
+      image: "./MainMugImage/CottonCollarTshirt.jpeg",
       badge: "New Arrival",
       color: "Navy",
       description: "Rich navy blue t-shirt for elegant custom prints",
@@ -51,7 +51,7 @@ const TShirtCategories = () => {
     },
 
     {
-      id: 8,
+      id: 6,
       name: "Sarena Round Neck T-Shirt",
       image: "./MainMugImage/Tshirt.jpeg",
       badge: "Premium",
@@ -60,7 +60,7 @@ const TShirtCategories = () => {
       accent: "#c084fc",
     },
     {
-      id: 8,
+      id: 7,
       name: "Sarena T-Shirt",
       image: "./MainMugImage/PoloTshirt.jpeg",
       badge: "Premium",
@@ -69,7 +69,7 @@ const TShirtCategories = () => {
       accent: "#c084fc",
     },
     {
-      id: 6,
+      id: 8,
       name: "Sap Matty",
       image: "./MainMugImage/PoloTshirt.jpeg",
       badge: "Trending",
@@ -78,9 +78,9 @@ const TShirtCategories = () => {
       accent: "#f43f5e",
     },
     {
-      id: 1,
+      id: 9,
       name: "Honeycomb Matty",
-      image: "./MainMugImage/Tshirt.jpeg",
+      image: "./MainMugImage/HoneycombCollorTshirt.jpeg",
       badge: "Best Seller",
       color: "White",
       description:
@@ -88,18 +88,18 @@ const TShirtCategories = () => {
       accent: "#a78bfa",
     },
     {
-      id: 9,
+      id: 10,
       name: "Sweatshirt",
-      image: "./MainMugImage/Tshirt.jpeg",
+      image: "./MainMugImage/SweatsShirtImage.png",
       badge: "Premium",
       color: "Purple",
       description: "Royal purple t-shirt for vibrant and colorful prints",
       accent: "#c084fc",
     },
     {
-      id: 10,
+      id: 11,
       name: "Cotton Hoodies",
-      image: "./MainMugImage/PoloTshirt.jpeg",
+      image: "./MainMugImage/Hoodies.png",
       badge: "Premium",
       color: "Purple",
       description: "Royal purple t-shirt for vibrant and colorful prints",
