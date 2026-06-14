@@ -1,8 +1,8 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 
-const KeychainCategories = () => {
+const FridgeMagnetCategories = () => {
   const scrollContainerRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -12,76 +12,33 @@ const KeychainCategories = () => {
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [activeCard, setActiveCard] = useState(null);
 
-  const keychainCategories = [
+  const fridgeMagnetCategories = [
     {
       id: 1,
-      name: "MDF Keychain",
-      image: "./KeychainImages/MDFKeychain.jpeg",
+      name: "Acrylic Magnets",
+      image: "./FridgeMagnetImages/AcrylicMagnet.jpeg",
       badge: "Best Seller",
-      color: "MDF Wood",
-      description:
-        "Eco-friendly MDF wood keychain with laser engraving for natural branding",
+      color: "Crystal Clear",
+      description: "Vibrant acrylic fridge magnets with crystal clear finish",
       accent: "#a78bfa",
     },
     {
       id: 2,
-      name: "Acrylic Keychain",
-      image: "./KeychainImages/AcrylicKeychain.jpeg",
-      badge: "Trending",
-      color: "Crystal Clear",
-      description:
-        "Crystal clear acrylic keychain with vibrant UV printing for modern designs",
+      name: "MDF Magnets",
+      image: "./FridgeMagnetImages/WoodenMagnet.jpeg",
+      badge: "Premium",
+      color: "Natural Wood",
+      description: "Eco-friendly wooden magnets with laser engraving",
       accent: "#f472b6",
     },
     {
       id: 3,
-      name: "Silicone Keychain",
-      image: "./KeychainImages/SiliconeKeychain.jpeg",
-      badge: "Popular",
+      name: "Silicone Coaster",
+      image: "./CoasterImages/SiliconeCoaster.jpeg",
+      badge: "New Arrival",
       color: "Silicone",
-      description:
-        "Soft flexible silicone keychain perfect for promotional events and giveaways",
-      accent: "#34d399",
-    },
-    {
-      id: 4,
-      name: "Plastic Keychain",
-      image: "./KeychainImages/PlasticKeychain.jpeg",
-      badge: "Budget Friendly",
-      color: "Plastic",
-      description:
-        "High-quality plastic keychain with full-color printing for bulk orders",
+      description: "Soft flexible silicone coaster non-slip and heat resistant",
       accent: "#fb923c",
-    },
-    {
-      id: 5,
-      name: "Metal Keychain",
-      image: "./KeychainImages/MetalKeychain.jpeg",
-      badge: "Premium",
-      color: "Metal",
-      description:
-        "Premium metal keychain with zinc alloy for a luxurious feel",
-      accent: "#818cf8",
-    },
-    {
-      id: 6,
-      name: "Leather Keychain",
-      image: "./KeychainImages/LeatherKeychain.jpeg",
-      badge: "Classic",
-      color: "Genuine Leather",
-      description:
-        "Genuine leather keychain with embossed logos for corporate gifts",
-      accent: "#f43f5e",
-    },
-    {
-      id: 8,
-      name: "Wooden Keychain",
-      image: "./KeychainImages/WoodenKeychain.jpeg",
-      badge: "Eco Friendly",
-      color: "Natural Wood",
-      description:
-        "Natural wooden keychain with laser engraving sustainable and stylish",
-      accent: "#818cf8",
     },
   ];
 
@@ -166,7 +123,7 @@ const KeychainCategories = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-        .pc-section {
+        .fm-section {
           font-family: 'DM Sans', sans-serif;
           background: #0a0a0f;
           padding: 80px 0 100px;
@@ -174,7 +131,7 @@ const KeychainCategories = () => {
           position: relative;
         }
 
-        .pc-section::before {
+        .fm-section::before {
           content: '';
           position: absolute;
           top: -200px;
@@ -182,33 +139,33 @@ const KeychainCategories = () => {
           transform: translateX(-50%);
           width: 800px;
           height: 800px;
-          background: radial-gradient(ellipse, rgba(139,92,246,0.12) 0%, transparent 70%);
+          background: radial-gradient(ellipse, rgba(236,72,153,0.12) 0%, transparent 70%);
           pointer-events: none;
         }
 
-        .pc-label {
+        .fm-label {
           font-family: 'DM Sans', sans-serif;
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 3px;
           text-transform: uppercase;
-          color: #7c3aed;
+          color: #ec4899;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           margin-bottom: 16px;
         }
 
-        .pc-label::before,
-        .pc-label::after {
+        .fm-label::before,
+        .fm-label::after {
           content: '';
           display: block;
           width: 28px;
           height: 1px;
-          background: #7c3aed;
+          background: #ec4899;
         }
 
-        .pc-title {
+        .fm-title {
           font-family: 'Playfair Display', serif;
           font-size: clamp(2rem, 5vw, 3.5rem);
           font-weight: 700;
@@ -218,15 +175,15 @@ const KeychainCategories = () => {
           letter-spacing: -0.02em;
         }
 
-        .pc-title em {
+        .fm-title em {
           font-style: italic;
-          background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+          background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
-        .pc-subtitle {
+        .fm-subtitle {
           font-size: 15px;
           font-weight: 300;
           color: #6b6b80;
@@ -235,7 +192,7 @@ const KeychainCategories = () => {
           line-height: 1.7;
         }
 
-        .pc-nav-btn {
+        .fm-nav-btn {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
@@ -254,33 +211,34 @@ const KeychainCategories = () => {
           transition: all 0.25s ease;
         }
 
-        .pc-nav-btn:hover {
-          background: #7c3aed;
-          border-color: #7c3aed;
+        .fm-nav-btn:hover {
+          background: #ec4899;
+          border-color: #ec4899;
           color: #fff;
           transform: translateY(-50%) scale(1.08);
         }
 
-        .pc-nav-left { left: -22px; }
-        .pc-nav-right { right: -22px; }
+        .fm-nav-left { left: -22px; }
+        .fm-nav-right { right: -22px; }
 
-        .pc-track {
+        .fm-track {
           overflow-x: auto;
           scrollbar-width: none;
           cursor: grab;
           padding-bottom: 8px;
         }
 
-        .pc-track:active { cursor: grabbing; }
-        .pc-track::-webkit-scrollbar { display: none; }
+        .fm-track:active { cursor: grabbing; }
+        .fm-track::-webkit-scrollbar { display: none; }
 
-        .pc-cards {
+        .fm-cards {
           display: flex;
           gap: 20px;
           padding: 20px 4px 20px;
+          justify-content: center;
         }
 
-        .pc-card {
+        .fm-card {
           flex-shrink: 0;
           width: 280px;
           background: #13131f;
@@ -291,13 +249,13 @@ const KeychainCategories = () => {
           transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s ease, box-shadow 0.35s ease;
         }
 
-        .pc-card:hover {
+        .fm-card:hover {
           transform: translateY(-10px);
-          border-color: rgba(167,139,250,0.25);
-          box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(124,58,237,0.08);
+          border-color: rgba(236,72,153,0.25);
+          box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(236,72,153,0.08);
         }
 
-        .pc-card-img-wrap {
+        .fm-card-img-wrap {
           position: relative;
           height: 260px;
           overflow: hidden;
@@ -308,25 +266,25 @@ const KeychainCategories = () => {
           padding: 16px;
         }
 
-        .pc-card-img-wrap img {
+        .fm-card-img-wrap img {
           width: 100%;
           height: 100%;
           object-fit: contain;
           transition: transform 0.6s ease;
         }
 
-        .pc-card:hover .pc-card-img-wrap img {
+        .fm-card:hover .fm-card-img-wrap img {
           transform: scale(1.05);
         }
 
-        .pc-card-img-overlay {
+        .fm-card-img-overlay {
           position: absolute;
           inset: 0;
           background: linear-gradient(180deg, transparent 40%, rgba(19,19,31,0.95) 100%);
           pointer-events: none;
         }
 
-        .pc-badge {
+        .fm-badge {
           position: absolute;
           top: 14px;
           left: 14px;
@@ -343,7 +301,7 @@ const KeychainCategories = () => {
           z-index: 2;
         }
 
-        .pc-color-dot {
+        .fm-color-dot {
           position: absolute;
           top: 14px;
           right: 14px;
@@ -357,11 +315,11 @@ const KeychainCategories = () => {
           z-index: 2;
         }
 
-        .pc-card-body {
+        .fm-card-body {
           padding: 18px 20px 22px;
         }
 
-        .pc-card-name {
+        .fm-card-name {
           font-family: 'Playfair Display', serif;
           font-size: 18px;
           font-weight: 600;
@@ -370,7 +328,7 @@ const KeychainCategories = () => {
           line-height: 1.3;
         }
 
-        .pc-card-desc {
+        .fm-card-desc {
           font-size: 12.5px;
           font-weight: 300;
           color: #5a5a70;
@@ -382,7 +340,7 @@ const KeychainCategories = () => {
           overflow: hidden;
         }
 
-        .pc-view-btn {
+        .fm-view-btn {
           display: block;
           width: 100%;
           padding: 11px 0;
@@ -399,29 +357,29 @@ const KeychainCategories = () => {
           text-decoration: none;
         }
 
-        .pc-view-btn:hover {
-          background: rgba(124,58,237,0.15);
-          border-color: rgba(124,58,237,0.4);
-          color: #c4b5fd;
+        .fm-view-btn:hover {
+          background: rgba(236,72,153,0.15);
+          border-color: rgba(236,72,153,0.4);
+          color: #f9a8d4;
         }
 
-        .pc-card-accent-line {
+        .fm-card-accent-line {
           position: absolute;
           bottom: 0;
           left: 0;
           right: 0;
           height: 2px;
-          background: linear-gradient(90deg, #7c3aed, #ec4899);
+          background: linear-gradient(90deg, #ec4899, #f472b6);
           transform: scaleX(0);
           transform-origin: left;
           transition: transform 0.4s ease;
         }
 
-        .pc-card:hover .pc-card-accent-line {
+        .fm-card:hover .fm-card-accent-line {
           transform: scaleX(1);
         }
 
-        .pc-dots {
+        .fm-dots {
           display: flex;
           gap: 6px;
           align-items: center;
@@ -429,7 +387,7 @@ const KeychainCategories = () => {
           margin-top: 32px;
         }
 
-        .pc-dot {
+        .fm-dot {
           width: 6px;
           height: 6px;
           border-radius: 50%;
@@ -437,13 +395,13 @@ const KeychainCategories = () => {
           transition: all 0.3s;
         }
 
-        .pc-dot.active {
+        .fm-dot.active {
           width: 20px;
           border-radius: 3px;
-          background: linear-gradient(90deg, #7c3aed, #ec4899);
+          background: linear-gradient(90deg, #ec4899, #f472b6);
         }
 
-        .pc-all-btn {
+        .fm-all-btn {
           display: inline-flex;
           align-items: center;
           gap: 10px;
@@ -461,31 +419,47 @@ const KeychainCategories = () => {
           text-decoration: none;
         }
 
-        .pc-all-btn:hover {
-          background: linear-gradient(135deg, #7c3aed, #ec4899);
+        .fm-all-btn:hover {
+          background: linear-gradient(135deg, #ec4899, #f472b6);
           border-color: transparent;
           color: #fff;
-          box-shadow: 0 10px 40px rgba(124,58,237,0.35);
+          box-shadow: 0 10px 40px rgba(236,72,153,0.35);
           transform: translateY(-2px);
         }
 
-        .pc-all-btn svg {
+        .fm-all-btn svg {
           transition: transform 0.3s;
         }
 
-        .pc-all-btn:hover svg {
+        .fm-all-btn:hover svg {
           transform: translateX(4px);
         }
 
-        .pc-divider {
+        .fm-divider {
           width: 1px;
           height: 40px;
           background: linear-gradient(180deg, transparent, rgba(255,255,255,0.06), transparent);
           margin: 0 auto 48px;
         }
+
+        /* Center container for scroll when items are less */
+        .fm-scroll-wrapper {
+          position: relative;
+          display: flex;
+          justify-content: center;
+        }
+
+        .fm-track.center-mode {
+          display: flex;
+          justify-content: center;
+        }
+
+        .fm-track.center-mode .fm-cards {
+          justify-content: center;
+        }
       `}</style>
 
-      <section className="pc-section">
+      <section className="fm-section">
         <div
           style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}
         >
@@ -497,133 +471,145 @@ const KeychainCategories = () => {
             viewport={{ once: true }}
             style={{ textAlign: "center", marginBottom: "52px" }}
           >
-            <div className="pc-label">Premium Accessories</div>
-            <h2 className="pc-title">
-              Keychains & <em>Keyrings</em>
+            <div className="fm-label">Kitchen Decor</div>
+            <h2 className="fm-title">
+              Shop by <em>Fridge Magnet Categories</em>
             </h2>
-            <p className="pc-subtitle">
-              Explore our diverse collection of custom keychains — perfect for
-              branding and gifting.
+            <p className="fm-subtitle">
+              Explore our vibrant fridge magnet collection — perfect for notes,
+              memories, and daily inspiration.
             </p>
           </motion.div>
 
-          {/* Scroll Container */}
-          <div
-            style={{ position: "relative" }}
-            onMouseEnter={() => setIsAutoScrolling(false)}
-            onMouseLeave={() =>
-              setTimeout(() => setIsAutoScrolling(true), 5000)
-            }
-          >
-            {showLeftArrow && (
-              <button
-                className="pc-nav-btn pc-nav-left"
-                onClick={() => scroll("left")}
-                aria-label="Scroll left"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-            )}
-
-            {showRightArrow && (
-              <button
-                className="pc-nav-btn pc-nav-right"
-                onClick={() => scroll("right")}
-                aria-label="Scroll right"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            )}
-
+          {/* Scroll Container - Centered */}
+          <div className="fm-scroll-wrapper">
             <div
-              ref={scrollContainerRef}
-              className="pc-track"
-              onMouseDown={handleMouseDown}
-              onMouseLeave={handleMouseLeave}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "900px",
+                margin: "0 auto",
+              }}
+              onMouseEnter={() => setIsAutoScrolling(false)}
+              onMouseLeave={() =>
+                setTimeout(() => setIsAutoScrolling(true), 5000)
+              }
             >
-              <div className="pc-cards">
-                {keychainCategories.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.06 }}
-                    viewport={{ once: true }}
-                    className="pc-card"
-                    onMouseEnter={() => setActiveCard(item.id)}
-                    onMouseLeave={() => setActiveCard(null)}
+              {showLeftArrow && (
+                <button
+                  className="fm-nav-btn fm-nav-left"
+                  onClick={() => scroll("left")}
+                  aria-label="Scroll left"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
                   >
-                    {/* Image */}
-                    <Link to={`/products/keychain/${item.id}`}>
-                      <div className="pc-card-img-wrap">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          draggable="false"
-                        />
-                        <div className="pc-card-img-overlay" />
-                        <span className="pc-badge">{item.badge}</span>
-                        <span className="pc-color-dot">{item.color}</span>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+              )}
+
+              {showRightArrow && (
+                <button
+                  className="fm-nav-btn fm-nav-right"
+                  onClick={() => scroll("right")}
+                  aria-label="Scroll right"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              )}
+
+              <div
+                ref={scrollContainerRef}
+                className="fm-track"
+                style={{
+                  overflowX: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+              >
+                <div className="fm-cards" style={{ justifyContent: "center" }}>
+                  {fridgeMagnetCategories.map((item, index) => (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.06 }}
+                      viewport={{ once: true }}
+                      className="fm-card"
+                      onMouseEnter={() => setActiveCard(item.id)}
+                      onMouseLeave={() => setActiveCard(null)}
+                    >
+                      {/* Image */}
+                      <Link to={`/products/fridge-magnet/${item.id}`}>
+                        <div className="fm-card-img-wrap">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            draggable="false"
+                          />
+                          <div className="fm-card-img-overlay" />
+                          <span className="fm-badge">{item.badge}</span>
+                          <span className="fm-color-dot">{item.color}</span>
+                        </div>
+                      </Link>
+
+                      {/* Body */}
+                      <div className="fm-card-body">
+                        <Link
+                          to={`/products/fridge-magnet/${item.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <div className="fm-card-name">{item.name}</div>
+                        </Link>
+                        <p className="fm-card-desc">{item.description}</p>
+
+                        <Link
+                          to={`/products/fridge-magnet/${item.id}`}
+                          className="fm-view-btn"
+                        >
+                          View Details →
+                        </Link>
                       </div>
-                    </Link>
 
-                    {/* Body */}
-                    <div className="pc-card-body">
-                      <Link
-                        to={`/products/keychain/${item.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <div className="pc-card-name">{item.name}</div>
-                      </Link>
-                      <p className="pc-card-desc">{item.description}</p>
-
-                      <Link
-                        to={`/products/keychain/${item.id}`}
-                        className="pc-view-btn"
-                      >
-                        View Details →
-                      </Link>
-                    </div>
-
-                    <div className="pc-card-accent-line" />
-                  </motion.div>
-                ))}
+                      <div className="fm-card-accent-line" />
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
           {/* Dots */}
-          <div className="pc-dots">
+          <div className="fm-dots">
             {[0, 1, 2, 3, 4].map((i) => (
-              <div key={i} className={`pc-dot ${i === 0 ? "active" : ""}`} />
+              <div key={i} className={`fm-dot ${i === 0 ? "active" : ""}`} />
             ))}
           </div>
 
@@ -635,8 +621,8 @@ const KeychainCategories = () => {
             viewport={{ once: true }}
             style={{ textAlign: "center", marginTop: "52px" }}
           >
-            <Link to="/products/keychains" className="pc-all-btn">
-              View All Keychains
+            <Link to="/products/fridge-magnets" className="fm-all-btn">
+              View All Fridge Magnets
               <svg
                 width="14"
                 height="14"
@@ -659,4 +645,4 @@ const KeychainCategories = () => {
   );
 };
 
-export default KeychainCategories;
+export default FridgeMagnetCategories;

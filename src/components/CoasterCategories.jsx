@@ -52,43 +52,6 @@ const CoasterCategories = () => {
       description: "Soft flexible silicone coaster non-slip and heat resistant",
       accent: "#fb923c",
     },
-    {
-      id: 5,
-      name: "Marble Coaster",
-      image: "./CoasterImages/MarbleCoaster.jpeg",
-      badge: "Luxury",
-      color: "Natural Marble",
-      description:
-        "Premium marble coaster with laser engraving for luxury homes",
-      accent: "#818cf8",
-    },
-    {
-      id: 6,
-      name: "Ceramic Coaster",
-      image: "./CoasterImages/CeramicCoaster.jpeg",
-      badge: "Classic",
-      color: "Ceramic",
-      description: "Beautiful ceramic coaster with sublimation printing",
-      accent: "#f43f5e",
-    },
-    {
-      id: 7,
-      name: "Bamboo Coaster",
-      image: "./CoasterImages/BambooCoaster.jpeg",
-      badge: "Eco Friendly",
-      color: "Bamboo",
-      description: "Sustainable bamboo coaster eco-friendly and stylish",
-      accent: "#22d3ee",
-    },
-    {
-      id: 8,
-      name: "Photo Coaster",
-      image: "./CoasterImages/PhotoCoaster.jpeg",
-      badge: "Personalized",
-      color: "Photo Insert",
-      description: "Custom photo coaster with your favorite memories",
-      accent: "#818cf8",
-    },
   ];
 
   useEffect(() => {

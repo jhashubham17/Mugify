@@ -40,51 +40,6 @@ const PaperweightCategories = () => {
       description: "Crystal clear acrylic paperweight with UV printing",
       accent: "#34d399",
     },
-    {
-      id: 4,
-      name: "Glass Paperweight",
-      image: "./PaperweightImages/GlassPaperweight.jpeg",
-      badge: "New Arrival",
-      color: "Glass",
-      description: "Elegant glass paperweight with 3D engraving",
-      accent: "#fb923c",
-    },
-    {
-      id: 5,
-      name: "Resin Paperweight",
-      image: "./PaperweightImages/ResinPaperweight.jpeg",
-      badge: "Artistic",
-      color: "Resin",
-      description: "Beautiful resin paperweight with embedded flowers",
-      accent: "#818cf8",
-    },
-    {
-      id: 6,
-      name: "Marble Paperweight",
-      image: "./PaperweightImages/MarblePaperweight.jpeg",
-      badge: "Luxury",
-      color: "Natural Marble",
-      description: "Premium marble paperweight with laser engraving",
-      accent: "#f43f5e",
-    },
-    {
-      id: 7,
-      name: "Crystal Paperweight",
-      image: "./PaperweightImages/CrystalPaperweight.jpeg",
-      badge: "Limited Edition",
-      color: "Crystal",
-      description: "Premium crystal paperweight with 3D laser engraving",
-      accent: "#22d3ee",
-    },
-    {
-      id: 8,
-      name: "Photo Paperweight",
-      image: "./PaperweightImages/PhotoPaperweight.jpeg",
-      badge: "Personalized",
-      color: "Photo Insert",
-      description: "Personalized photo paperweight with your memories",
-      accent: "#818cf8",
-    },
   ];
 
   useEffect(() => {
@@ -280,6 +235,7 @@ const PaperweightCategories = () => {
           display: flex;
           gap: 20px;
           padding: 20px 4px 20px;
+          justify-content: center;
         }
 
         .pc-card {
@@ -485,6 +441,13 @@ const PaperweightCategories = () => {
           background: linear-gradient(180deg, transparent, rgba(255,255,255,0.06), transparent);
           margin: 0 auto 48px;
         }
+
+        /* Center wrapper styles */
+        .pc-scroll-wrapper {
+          position: relative;
+          display: flex;
+          justify-content: center;
+        }
       `}</style>
 
       <section className="pc-section">
@@ -509,115 +472,127 @@ const PaperweightCategories = () => {
             </p>
           </motion.div>
 
-          {/* Scroll Container */}
-          <div
-            style={{ position: "relative" }}
-            onMouseEnter={() => setIsAutoScrolling(false)}
-            onMouseLeave={() =>
-              setTimeout(() => setIsAutoScrolling(true), 5000)
-            }
-          >
-            {showLeftArrow && (
-              <button
-                className="pc-nav-btn pc-nav-left"
-                onClick={() => scroll("left")}
-                aria-label="Scroll left"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-            )}
-
-            {showRightArrow && (
-              <button
-                className="pc-nav-btn pc-nav-right"
-                onClick={() => scroll("right")}
-                aria-label="Scroll right"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            )}
-
+          {/* Scroll Container - Centered */}
+          <div className="pc-scroll-wrapper">
             <div
-              ref={scrollContainerRef}
-              className="pc-track"
-              onMouseDown={handleMouseDown}
-              onMouseLeave={handleMouseLeave}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "900px",
+                margin: "0 auto",
+              }}
+              onMouseEnter={() => setIsAutoScrolling(false)}
+              onMouseLeave={() =>
+                setTimeout(() => setIsAutoScrolling(true), 5000)
+              }
             >
-              <div className="pc-cards">
-                {paperweightCategories.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.06 }}
-                    viewport={{ once: true }}
-                    className="pc-card"
-                    onMouseEnter={() => setActiveCard(item.id)}
-                    onMouseLeave={() => setActiveCard(null)}
+              {showLeftArrow && (
+                <button
+                  className="pc-nav-btn pc-nav-left"
+                  onClick={() => scroll("left")}
+                  aria-label="Scroll left"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
                   >
-                    {/* Image */}
-                    <Link to={`/products/paperweight/${item.id}`}>
-                      <div className="pc-card-img-wrap">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          draggable="false"
-                        />
-                        <div className="pc-card-img-overlay" />
-                        <span className="pc-badge">{item.badge}</span>
-                        <span className="pc-color-dot">{item.color}</span>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+              )}
+
+              {showRightArrow && (
+                <button
+                  className="pc-nav-btn pc-nav-right"
+                  onClick={() => scroll("right")}
+                  aria-label="Scroll right"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              )}
+
+              <div
+                ref={scrollContainerRef}
+                className="pc-track"
+                style={{
+                  overflowX: "auto",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+              >
+                <div className="pc-cards" style={{ justifyContent: "center" }}>
+                  {paperweightCategories.map((item, index) => (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.06 }}
+                      viewport={{ once: true }}
+                      className="pc-card"
+                      onMouseEnter={() => setActiveCard(item.id)}
+                      onMouseLeave={() => setActiveCard(null)}
+                    >
+                      {/* Image */}
+                      <Link to={`/products/paperweight/${item.id}`}>
+                        <div className="pc-card-img-wrap">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            draggable="false"
+                          />
+                          <div className="pc-card-img-overlay" />
+                          <span className="pc-badge">{item.badge}</span>
+                          <span className="pc-color-dot">{item.color}</span>
+                        </div>
+                      </Link>
+
+                      {/* Body */}
+                      <div className="pc-card-body">
+                        <Link
+                          to={`/products/paperweight/${item.id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <div className="pc-card-name">{item.name}</div>
+                        </Link>
+                        <p className="pc-card-desc">{item.description}</p>
+
+                        <Link
+                          to={`/products/paperweight/${item.id}`}
+                          className="pc-view-btn"
+                        >
+                          View Details →
+                        </Link>
                       </div>
-                    </Link>
 
-                    {/* Body */}
-                    <div className="pc-card-body">
-                      <Link
-                        to={`/products/paperweight/${item.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <div className="pc-card-name">{item.name}</div>
-                      </Link>
-                      <p className="pc-card-desc">{item.description}</p>
-
-                      <Link
-                        to={`/products/paperweight/${item.id}`}
-                        className="pc-view-btn"
-                      >
-                        View Details →
-                      </Link>
-                    </div>
-
-                    <div className="pc-card-accent-line" />
-                  </motion.div>
-                ))}
+                      <div className="pc-card-accent-line" />
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

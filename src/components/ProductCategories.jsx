@@ -11,7 +11,8 @@ import EventCategories from "./EventCategories";
 import CoasterCategories from "./CoasterCategories";
 import PaperweightCategories from "./PaperWeightCategories";
 import KeychainCategories from "./KeychainCategories;";
-
+import FridgeMagnetCategories from "./FridgeMagnetCategories";
+import BeerMugCategories from "./BeerMugCategories";
 const ProductCategories = () => {
   return (
     <>
@@ -26,8 +27,10 @@ const ProductCategories = () => {
       <EventCategories />
       <CoasterCategories />
       <PaperweightCategories />
+      <FridgeMagnetCategories />
       <KeychainCategories />
       <BalloonCategories />
+      <BeerMugCategories />
     </>
   );
 };

@@ -88,6 +88,15 @@ const MugCategories = () => {
       description: "Heat sensitive magic mug — reveals design when hot",
       accent: "#818cf8",
     },
+    {
+      id: 9,
+      name: "White Tea Mug",
+      image: "./MainMugImage/TeaMug.png",
+      badge: "Best Seller",
+      color: "White",
+      description: "Pure white ceramic mug perfect for any design",
+      accent: "#a78bfa",
+    },
   ];
 
   useEffect(() => {
@@ -504,7 +513,7 @@ const MugCategories = () => {
           >
             <div className="pc-label">Premium Collection</div>
             <h2 className="pc-title">
-              Shop by <em>Mug Categories</em>
+              Shop by <em>Ceramic Categories</em>
             </h2>
             <p className="pc-subtitle">
               Explore our curated mug collection — each piece crafted for
